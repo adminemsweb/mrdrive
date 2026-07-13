@@ -6604,9 +6604,9 @@ body {
 }
 
 .site-header .brand-logo {
-  min-width: 112px !important;
-  width: 112px !important;
-  height: 58px !important;
+  min-width: 142px !important;
+  width: 142px !important;
+  height: 64px !important;
   padding: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -6616,18 +6616,18 @@ body {
 }
 
 .site-header .brand-logo img {
-  width: 112px !important;
-  height: 58px !important;
+  width: 142px !important;
+  height: 64px !important;
   object-fit: contain !important;
-  transform: none !important;
+  transform: scale(2.25) !important;
   filter: drop-shadow(0 2px 0 rgba(255,255,255,.18)) drop-shadow(0 10px 18px rgba(0,0,0,.36)) saturate(1.1) !important;
 }
 
 .site-header .brand-logo img[src$="logo.png"],
 .site-header .brand-logo img[src$="logo-site.png"] {
-  transform: none !important;
-  width: 112px !important;
-  height: 58px !important;
+  transform: scale(2.25) !important;
+  width: 142px !important;
+  height: 64px !important;
   object-fit: contain !important;
 }
 
@@ -6651,9 +6651,9 @@ body {
 
 @media (max-width: 720px) {
   .site-header .brand-logo {
-    min-width: 98px !important;
-    width: 98px !important;
-    height: 50px !important;
+    min-width: 118px !important;
+    width: 118px !important;
+    height: 54px !important;
     padding: 0 !important;
     background: transparent !important;
     border: 0 !important;
@@ -6661,14 +6661,16 @@ body {
   }
 
   .site-header .brand-logo img {
-    width: 98px !important;
-    height: 50px !important;
+    width: 118px !important;
+    height: 54px !important;
+    transform: scale(2.15) !important;
   }
 
   .site-header .brand-logo img[src$="logo.png"],
   .site-header .brand-logo img[src$="logo-site.png"] {
-    width: 98px !important;
-    height: 50px !important;
+    width: 118px !important;
+    height: 54px !important;
+    transform: scale(2.15) !important;
   }
 
   .visual-banner-only {

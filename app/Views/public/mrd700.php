@@ -1,13 +1,13 @@
 <section class="section mrd700-landing-hero">
     <div class="mrd700-hero-copy">
-        <a class="product-back-link" href="/catalogo">Voltar ao catalogo</a>
+        <a class="product-back-link" href="/catalogo">Voltar ao catálogo</a>
         <p class="eyebrow">Linha MRD700</p>
-        <h1>Inversor vetorial modular para alta performance e automacao industrial.</h1>
-        <p>O MRD700 foi projetado para aplicacoes que exigem controle robusto, arquitetura modular, protocolos industriais, STO, PLC opcional e operacao em motores sincronos e assincronos.</p>
+        <h1>Inversor vetorial modular para alta performance e automação industrial.</h1>
+        <p>O MRD700 foi projetado para aplicações que exigem controle robusto, arquitetura modular, protocolos industriais, STO, PLC opcional e operação em motores síncronos e assíncronos.</p>
         <div class="mrd700-hero-actions">
-            <a class="btn btn-whatsapp" href="https://wa.me/<?= e($whatsapp) ?>?text=Tenho%20interesse%20no%20MRD700" target="_blank"><span class="wa-icon" aria-hidden="true">W</span>Solicitar orcamento</a>
-            <a class="btn btn-secondary" href="<?= asset('img/mrd700/MRD700.pdf') ?>" target="_blank">Baixar catalogo tecnico</a>
-            <a class="btn btn-secondary" href="<?= asset('img/mrd700/mrd700guia_rapido.pdf') ?>" target="_blank">Baixar guia rapido</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/<?= e($whatsapp) ?>?text=Tenho%20interesse%20no%20MRD700" target="_blank"><span class="wa-icon" aria-hidden="true">W</span>Solicitar orçamento</a>
+            <a class="btn btn-secondary" href="<?= asset('img/mrd700/MRD700.pdf') ?>" target="_blank">Baixar catálogo técnico</a>
+            <a class="btn btn-secondary" href="<?= asset('img/mrd700/mrd700guia_rapido.pdf') ?>" target="_blank">Baixar guia rápido</a>
         </div>
     </div>
     <div class="mrd700-hero-media">
@@ -31,23 +31,23 @@
 <section class="section mrd700-feature-section">
     <div class="section-heading">
         <div>
-            <p class="eyebrow">Caracteristicas do produto</p>
-            <h2>Arquitetura modular, comunicacao completa e controle para processos exigentes.</h2>
+            <p class="eyebrow">Características do produto</p>
+            <h2>Arquitetura modular, comunicação completa e controle para processos exigentes.</h2>
         </div>
     </div>
     <div class="mrd700-feature-grid">
         <?php foreach ([
-            ['01', 'Design tipo livro', 'Economiza espaco e facilita a instalacao em armarios e paineis industriais.'],
-            ['02', 'Motores sincronos e assincronos', 'Suporte para combinacao sincrona e assincrona, incluindo motores sincronos de ima permanente.'],
-            ['03', 'Design modular', 'Dispensa fiacao e fios de conexao tradicionais, reduzindo dificuldade de manutencao e desmontagem.'],
-            ['04', 'Modulos independentes', 'Modulo de alimentacao e modulo de controle podem funcionar independentemente, reduzindo custos de estoque.'],
-            ['05', 'Teclado atualizado', 'Display duplo de LED, conexao remota de ate 300 metros e suporte a LCD grande com troca de idioma.'],
-            ['06', 'Reator CC', 'Reator CC integrado opcional de 37 kW a 132 kW e padrao para potencias maiores ou iguais a 160 kW.'],
-            ['07', 'Frenagem integrada', 'Unidade de frenagem padrao ate 37 kW e modulo opcional de 45 kW a 160 kW.'],
-            ['08', 'Entradas e saidas completas', '7 entradas digitais, 2 entradas analogicas, 2 saidas analogicas, 2 reles e terminais STO.'],
+            ['01', 'Design tipo livro', 'Economiza espaco e facilita a instalação em armários e painéis industriais.'],
+            ['02', 'Motores síncronos e assíncronos', 'Suporte para combinação síncrona e assíncrona, incluindo motores síncronos de ímã permanente.'],
+            ['03', 'Design modular', 'Dispensa fiação e fios de conexão tradicionais, reduzindo dificuldade de manutenção e desmontagem.'],
+            ['04', 'Módulos independentes', 'Módulo de alimentação e módulo de controle podem funcionar independentemente, reduzindo custos de estoque.'],
+            ['05', 'Teclado atualizado', 'Display duplo de LED, conexão remota de até 300 metros e suporte a LCD grande com troca de idioma.'],
+            ['06', 'Reator CC', 'Reator CC integrado opcional de 37 kW a 132 kW e padrão para potências maiores ou iguais a 160 kW.'],
+            ['07', 'Frenagem integrada', 'Unidade de frenagem padrão até 37 kW e módulo opcional de 45 kW a 160 kW.'],
+            ['08', 'Entradas e saídas completas', '7 entradas digitais, 2 entradas analógicas, 2 saídas analógicas, 2 relés e terminais STO.'],
             ['09', 'Protocolos industriais', 'Modbus RS485, Profinet, Profibus-DP, CANopen, EtherCAT e placas PG.'],
-            ['10', 'PLC opcional', 'Modulo PLC integrado opcional para reduzir custos de implementacao e treinamento.'],
-            ['11', 'Programas especiais', 'Recursos para bomba solar, elevador, elevacao, controle de tensao e PID para agua com pressao constante.'],
+            ['10', 'PLC opcional', 'Módulo PLC integrado opcional para reduzir custos de implementação e treinamento.'],
+            ['11', 'Programas especiais', 'Recursos para bomba solar, elevador, elevação, controle de tensão e PID para água com pressão constante.'],
         ] as $feature): ?>
             <article>
                 <span><?= e($feature[0]) ?></span>
@@ -61,20 +61,20 @@
 <section class="section mrd700-spec-section">
     <div class="section-heading">
         <div>
-            <p class="eyebrow">Detalhes tecnicos</p>
-            <h2>Especificacoes principais do MRD700.</h2>
+            <p class="eyebrow">Detalhes técnicos</p>
+            <h2>Especificações principais do MRD700.</h2>
         </div>
         <a class="btn btn-secondary" href="<?= asset('img/mrd700/MRD700.pdf') ?>" target="_blank">Abrir PDF completo</a>
     </div>
     <div class="mrd700-spec-table-wrap">
         <table class="mrd700-spec-table">
             <tbody>
-                <tr><th>Tensao de entrada</th><td><strong>220~240V monofasico e trifasico</strong><br>380~480V trifasico</td></tr>
-                <tr><th>Frequencia de saida</th><td>0~1200Hz V/F<br>0~600Hz FVC</td></tr>
+                <tr><th>Tensão de entrada</th><td><strong>220~240V monofásico e trifásico</strong><br>380~480V trifásico</td></tr>
+                <tr><th>Frequência de saída</th><td>0~1200Hz V/F<br>0~600Hz FVC</td></tr>
                 <tr><th>Tecnologia de controle</th><td>V/Hz, SVC1, SVC2, VC</td></tr>
                 <tr><th>Capacidade de sobrecarga</th><td>150% da corrente nominal por 60s<br>180% da corrente nominal por 10s<br>200% da corrente nominal por 1s</td></tr>
-                <tr><th>CLP simples</th><td>Controle de velocidade de ate 16 niveis, 7 entradas digitais compativeis com NPN/PNP, 2 entradas analogicas e 2 saidas analogicas.</td></tr>
-                <tr><th>Comunicacao</th><td>MODBUS RS485, Profinet, Profibus, CANopen, EtherCAT, PG</td></tr>
+                <tr><th>CLP simples</th><td>Controle de velocidade de até 16 niveis, 7 entradas digitais compatíveis com NPN/PNP, 2 entradas analógicas e 2 saídas analógicas.</td></tr>
+                <tr><th>Comunicação</th><td>MODBUS RS485, Profinet, Profibus, CANopen, EtherCAT, PG</td></tr>
             </tbody>
         </table>
     </div>
@@ -83,13 +83,13 @@
 <section class="section mrd700-diagram-section">
     <div class="mrd700-diagram-grid">
         <article>
-            <p class="eyebrow">Ligacao e terminais</p>
-            <h2>Diagrama de alimentacao, I/O, comunicacao e STO.</h2>
-            <img src="<?= asset('img/mrd700/modelomrd700_2.png') ?>" alt="Diagrama eletrico MRD700">
+            <p class="eyebrow">Ligação e terminais</p>
+            <h2>Diagrama de alimentação, I/O, comunicação e STO.</h2>
+            <img src="<?= asset('img/mrd700/modelomrd700_2.png') ?>" alt="Diagrama elétrico MRD700">
         </article>
         <article>
             <p class="eyebrow">Modelo e tamanho</p>
-            <h2>Referencias mecanicas para integracao.</h2>
+            <h2>Referências mecanicas para integração.</h2>
             <img src="<?= asset('img/mrd700/modelomrd700.png') ?>" alt="Modelo e tamanho MRD700">
         </article>
     </div>
@@ -99,7 +99,7 @@
     <div class="section-heading">
         <div>
             <p class="eyebrow">Tabela de modelos</p>
-            <h2>Selecao por tensao, potencia e dimensoes.</h2>
+            <h2>Seleção por tensão, potência e dimensões.</h2>
         </div>
         <a class="text-link" href="/#contato" data-product="MRD700">Solicitar dimensionamento</a>
     </div>
@@ -110,14 +110,14 @@
                     <th>Modelo de acionamento CA</th>
                     <th>Motor (kW)</th>
                     <th>Corrente entrada (A)</th>
-                    <th>Saida nominal (A)</th>
+                    <th>Saída nominal (A)</th>
                     <th>D</th>
                     <th>C</th>
                     <th>H</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="group"><td colspan="7">Tensao de entrada: monofasica 220V. Faixa de tensao: -15% a 20%.</td></tr>
+                <tr class="group"><td colspan="7">Tensão de entrada: monofásica 220V. Faixa de tensão: -15% a 20%.</td></tr>
                 <tr><td>MRD700-2S-0.4G</td><td>0,4</td><td>5.4</td><td>2.3</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-2S-0,7G</td><td>0,7</td><td>8.2</td><td>4</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-2S-1.5G</td><td>1,5</td><td>14.0</td><td>7</td><td>138</td><td>80</td><td>200</td></tr>
@@ -125,7 +125,7 @@
                 <tr><td>MRD700-2S-4.0G</td><td>4.0</td><td>40.0</td><td>17</td><td>170</td><td>98</td><td>260</td></tr>
                 <tr><td>MRD700-2S-5.5G</td><td>5,5</td><td>60,0</td><td>25</td><td>187</td><td>115</td><td>310</td></tr>
                 <tr><td>MRD700-2S-7.5G</td><td>7,5</td><td>75,0</td><td>32</td><td>187</td><td>115</td><td>310</td></tr>
-                <tr class="group"><td colspan="7">Tensao de entrada: trifasica 220V. Faixa: -15%~20%.</td></tr>
+                <tr class="group"><td colspan="7">Tensão de entrada: trifásica 220V. Faixa: -15%~20%.</td></tr>
                 <tr><td>MRD700-2T-0.4G</td><td>0,4</td><td>2.7</td><td>2.3</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-2T-0,7G</td><td>0,7</td><td>4.2</td><td>3,8</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-2T-1.5G</td><td>1,5</td><td>7,7</td><td>7</td><td>138</td><td>80</td><td>200</td></tr>
@@ -148,7 +148,7 @@
                 <tr><td>MRD700-2T-160G</td><td>160</td><td>590</td><td>585</td><td>120</td><td>98</td><td>170</td></tr>
                 <tr><td>MRD700-2T-200G</td><td>200</td><td>785</td><td>725</td><td>120</td><td>98</td><td>170</td></tr>
                 <tr><td>MRD700-2T-220G</td><td>220</td><td>883</td><td>820</td><td>120</td><td>98</td><td>170</td></tr>
-                <tr class="group"><td colspan="7">Tensao de entrada: trifasica 380V. Faixa: -15%~20%.</td></tr>
+                <tr class="group"><td colspan="7">Tensão de entrada: trifásica 380V. Faixa: -15%~20%.</td></tr>
                 <tr><td>MRD700-4T-0.7G</td><td>0,7</td><td>3,4/5,0</td><td>2.1/3.8</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-4T-1.5G</td><td>1,5</td><td>5,0/5,8</td><td>3,8/5,1</td><td>138</td><td>80</td><td>200</td></tr>
                 <tr><td>MRD700-4T-2.2G</td><td>2.2</td><td>5,8/10,5</td><td>5.1/9.0</td><td>138</td><td>80</td><td>200</td></tr>
@@ -191,12 +191,12 @@
 
 <section class="section mrd700-cta-section">
     <div>
-        <p class="eyebrow">Aplicacao assistida</p>
-        <h2>Precisa de automacao, comunicacao industrial ou alta potencia?</h2>
-        <p>Envie tensao, potencia do motor, protocolo de comunicacao e aplicacao. A equipe MRDRIVES valida o MRD700 correto para seu projeto.</p>
+        <p class="eyebrow">Aplicação assistida</p>
+        <h2>Precisa de automação, comunicação industrial ou alta potência?</h2>
+        <p>Envie tensão, potência do motor, protocolo de comunicação e aplicação. A equipe MRDRIVES valida o MRD700 correto para seu projeto.</p>
     </div>
     <div class="mrd700-cta-actions">
         <a class="btn btn-whatsapp" href="https://wa.me/<?= e($whatsapp) ?>?text=Quero%20dimensionar%20um%20MRD700" target="_blank"><span class="wa-icon" aria-hidden="true">W</span>Chamar no WhatsApp</a>
-        <a class="btn btn-secondary" href="/ticket">Enviar dados tecnicos</a>
+        <a class="btn btn-secondary" href="/ticket">Enviar dados técnicos</a>
     </div>
 </section>

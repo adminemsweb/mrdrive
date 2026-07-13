@@ -68,7 +68,7 @@ final class PublicController
         }
 
         View::render('public/catalog', [
-            'title' => 'Catalogo MRDRIVES | MRD-320 Series',
+            'title' => 'Catálogo MRDRIVES | MRD-320 Series',
             'products' => $products,
             'documents' => $documents,
         ], 'public/layout');
@@ -108,7 +108,7 @@ final class PublicController
     public function ticket(): void
     {
         View::render('public/ticket', [
-            'title' => 'Ticket tecnico | MRDRIVES',
+            'title' => 'Ticket técnico | MRDRIVES',
             'whatsapp' => app_config('whatsapp'),
         ], 'public/layout');
     }
@@ -118,7 +118,7 @@ final class PublicController
         Csrf::verify();
 
         $data = [
-            'type' => trim((string) ($_POST['ticket_type'] ?? 'Solicitacao tecnica')),
+            'type' => trim((string) ($_POST['ticket_type'] ?? 'Solicitação técnica')),
             'name' => trim((string) ($_POST['name'] ?? '')),
             'company' => trim((string) ($_POST['company'] ?? '')),
             'email' => trim((string) ($_POST['email'] ?? '')),
@@ -134,22 +134,22 @@ final class PublicController
         $attachment = $_FILES['attachment']['name'] ?? '';
         $lines = [
             'Ticket MRDRIVES',
-            'Tipo: ' . ($data['type'] ?: 'Solicitacao tecnica'),
-            'Nome: ' . ($data['name'] ?: 'Nao informado'),
-            'Empresa: ' . ($data['company'] ?: 'Nao informado'),
-            'E-mail: ' . ($data['email'] ?: 'Nao informado'),
-            'WhatsApp: ' . ($data['phone'] ?: 'Nao informado'),
-            'Produto: ' . ($data['product_interest'] ?: 'Nao informado'),
-            'Catalogo/guia: ' . ($data['catalog'] ?: 'Nao informado'),
-            'Potencia: ' . ($data['power'] ?: 'Nao informado'),
-            'Tensao: ' . ($data['voltage'] ?: 'Nao informado'),
-            'Aplicacao: ' . ($data['application'] ?: 'Nao informado'),
-            'Mensagem: ' . ($data['message'] ?: 'Nao informado'),
+            'Tipo: ' . ($data['type'] ?: 'Solicitação técnica'),
+            'Nome: ' . ($data['name'] ?: 'Não informado'),
+            'Empresa: ' . ($data['company'] ?: 'Não informado'),
+            'E-mail: ' . ($data['email'] ?: 'Não informado'),
+            'WhatsApp: ' . ($data['phone'] ?: 'Não informado'),
+            'Produto: ' . ($data['product_interest'] ?: 'Não informado'),
+            'Catálogo/guia: ' . ($data['catalog'] ?: 'Não informado'),
+            'Potência: ' . ($data['power'] ?: 'Não informado'),
+            'Tensão: ' . ($data['voltage'] ?: 'Não informado'),
+            'Aplicação: ' . ($data['application'] ?: 'Não informado'),
+            'Mensagem: ' . ($data['message'] ?: 'Não informado'),
         ];
 
         if ($attachment !== '') {
             $lines[] = 'Anexo selecionado: ' . $attachment;
-            $lines[] = 'Observacao: enviar a imagem/video nesta conversa do WhatsApp.';
+            $lines[] = 'Observação: enviar a imagem/video nesta conversa do WhatsApp.';
         }
 
         $url = 'https://wa.me/' . app_config('whatsapp') . '?text=' . rawurlencode(implode("\n", $lines));
@@ -178,22 +178,22 @@ final class PublicController
         }
 
         try {
-            (new QuoteRequest())->create($data);
+            (new QuoteRequest())->creaté($data);
         } catch (\Throwable) {
             $_SESSION['flash'] = ['type' => 'error', 'message' => 'Banco de dados indisponivel. Envie pelo WhatsApp ou configure o .env.'];
             redirect('/#contato');
         }
 
         $this->sendMail($data);
-        $_SESSION['flash'] = ['type' => 'success', 'message' => 'Solicitacao enviada. Nossa equipe entrara em contato.'];
+        $_SESSION['flash'] = ['type' => 'success', 'message' => 'Solicitação enviada. Nossa equipe entrara em contato.'];
         redirect('/#contato');
     }
 
     private function sendMail(array $data): void
     {
         $mail = app_config('mail');
-        $subject = 'Nova solicitacao de orcamento - MRDRIVES';
-        $body = "Nome: {$data['name']}\nEmpresa: {$data['company']}\nE-mail: {$data['email']}\nTelefone: {$data['phone']}\nProduto: {$data['product_interest']}\nAplicacao: {$data['application']}\n\nMensagem:\n{$data['message']}";
+        $subject = 'Nova solicitação de orçamento - MRDRIVES';
+        $body = "Nome: {$data['name']}\nEmpresa: {$data['company']}\nE-mail: {$data['email']}\nTelefone: {$data['phone']}\nProduto: {$data['product_interest']}\nAplicação: {$data['application']}\n\nMensagem:\n{$data['message']}";
         $headers = 'From: ' . $mail['from'] . "\r\nReply-To: " . $data['email'];
         @mail($mail['to'], $subject, $body, $headers);
     }
@@ -205,7 +205,7 @@ final class PublicController
                 'id' => 1,
                 'name' => 'Inversor MRD-320 220V',
                 'model_code' => 'MRD-320 220V',
-                'short_description' => 'Inversor vetorial compacto para redes 220V com excelente custo-beneficio.',
+                'short_description' => 'Inversor vetorial compacto para redes 220V com excelente custo-benefício.',
                 'power' => '0.4 kW a 5.5 kW',
                 'voltage' => '220 V / 380 V',
                 'main_image' => 'assets/img/mrd600/mrd600_2.jpeg',
@@ -215,7 +215,7 @@ final class PublicController
                 'id' => 2,
                 'name' => 'Inversor MRD-320 380V',
                 'model_code' => 'MRD-320 380V',
-                'short_description' => 'Modelo trifasico para aplicacoes industriais com potencia ate 7.5 kW.',
+                'short_description' => 'Modelo trifásico para aplicações industriais com potência até 7.5 kW.',
                 'power' => '0.4 kW a 7.5 kW',
                 'voltage' => '380 V',
                 'main_image' => 'assets/img/mrd600/mrd600_2.jpeg',
@@ -225,7 +225,7 @@ final class PublicController
                 'id' => 3,
                 'name' => 'MRD-320 Interface e Controle',
                 'model_code' => 'MRD-320 I/O',
-                'short_description' => 'Configuracao com display duplo LED, potenciometro integrado e conexoes de controle.',
+                'short_description' => 'Configuração com display duplo LED, potenciômetro integrado e conexões de controle.',
                 'power' => 'Conforme projeto',
                 'voltage' => '220 V / 380 V',
                 'main_image' => 'assets/img/mrd600/mrd600_2.jpeg',
@@ -235,7 +235,7 @@ final class PublicController
                 'id' => 700,
                 'name' => 'Inversor MRD700/IP65',
                 'model_code' => 'MRD700/IP65',
-                'short_description' => 'Inversor lavavel IP65 para ambientes severos, com STO, comunicacao industrial e interfaces completas.',
+                'short_description' => 'Inversor lavável IP65 para ambientes severos, com STO, comunicação industrial e interfaces completas.',
                 'power' => '0.4 kW a 400 kW',
                 'voltage' => '220 V / 380 V / 480 V',
                 'main_image' => 'assets/img/mrd700-ip65/mrd700ip65-transparent.png',

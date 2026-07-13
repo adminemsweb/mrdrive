@@ -6,7 +6,7 @@
 
 <section class="section legal-page">
     <div class="legal-card">
-        <p class="legal-updated">Última atualização: <?= date('d/m/Y') ?></p>
+        <p class="legal-updatéd">Última atualização: <?= daté('d/m/Y') ?></p>
 
         <h2>1. Informações coletadas</h2>
         <p>Podemos coletar dados enviados voluntariamente em formulários de orçamento, contato ou atendimento técnico, como nome, empresa, e-mail, telefone, produto de interesse, aplicação e mensagem.</p>

@@ -53,12 +53,72 @@
         </nav>
         <a class="header-cta header-cta-desktop" href="/#contato"><span class="wa-icon" aria-hidden="true">W</span>Solicitar orcamento</a>
         <nav class="mobile-nav" id="mobile-nav" aria-label="Navegacao mobile">
-            <a href="/">Inicio</a>
-            <a href="/catalogo">Catalogo</a>
-            <a href="/#guias">Guias e materiais</a>
-            <a href="/#feedbacks">Feedbacks e videos</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contato">Contato</a>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/">Inicio</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opcoes de Inicio"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/#beneficios">Beneficios</a>
+                    <a href="/#especificacoes">Especificacoes</a>
+                    <a href="/#aplicacoes">Aplicacoes</a>
+                    <a href="/#guias">Guias</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/catalogo">Catalogo</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir produtos do catalogo"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/mrd600">MRD600</a>
+                    <a href="/mrd700">MRD700</a>
+                    <a href="/mrd700-ip65">MRD700/IP65</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/#guias">Guias e materiais</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir guias e materiais"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/#guias">Baixar materiais</a>
+                    <a href="/mrd600">Guia MRD600</a>
+                    <a href="/mrd700">Guia MRD700</a>
+                    <a href="/mrd700-ip65">Guia MRD700/IP65</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/#feedbacks">Feedbacks e videos</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir feedbacks e videos"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/#feedbacks">Provas reais</a>
+                    <a href="/#mrd700-lavavel">Video MRD700/IP65</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/#faq">FAQ</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir perguntas frequentes"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/#faq">Duvidas frequentes</a>
+                    <a href="/#contato">Falar com suporte</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row">
+                    <a href="/#contato">Contato</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opcoes de contato"></button>
+                </div>
+                <div class="mobile-submenu">
+                    <a href="/ticket">Enviar formulario</a>
+                    <a href="/#contato">Abrir contato</a>
+                    <a href="https://wa.me/<?= e(app_config('whatsapp')) ?>" target="_blank">WhatsApp direto</a>
+                </div>
+            </div>
             <a class="mobile-nav-cta" href="/#contato">Solicitar orcamento</a>
         </nav>
     </header>
@@ -107,6 +167,7 @@
             <span>Eficiencia, controle e continuidade para a sua operacao.</span>
         </div>
     </footer>
+    <button class="scroll-top-button" type="button" aria-label="Voltar ao topo"></button>
     <script src="<?= asset('js/main.js') ?>"></script>
 </body>
 </html>

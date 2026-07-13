@@ -12,6 +12,29 @@ document.querySelectorAll('.mobile-nav a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('.mobile-submenu-toggle').forEach((button) => {
+  button.addEventListener('click', () => {
+    const group = button.closest('.mobile-nav-group');
+    if (!group) return;
+    const isOpen = group.classList.toggle('open');
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+const scrollTopButton = document.querySelector('.scroll-top-button');
+if (scrollTopButton) {
+  const updateScrollTopButton = () => {
+    scrollTopButton.classList.toggle('visible', window.scrollY > 420);
+  };
+
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  updateScrollTopButton();
+  window.addEventListener('scroll', updateScrollTopButton, { passive: true });
+}
+
 const canvas = document.querySelector('#ambient-canvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');

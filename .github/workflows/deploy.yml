@@ -1,0 +1,53 @@
+name: Deploy MRDRIVES
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: mrdrives-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/mrdrives_key
+          chmod 600 ~/.ssh/mrdrives_key
+          PORT="${VPS_PORT:-22}"
+          ssh-keyscan -p "$PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload source to VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          set -euo pipefail
+          PORT="${VPS_PORT:-22}"
+          tar --exclude='.git' --exclude='mrdrives-deploy.zip' -czf /tmp/mrdrives-source.tar.gz .
+          ssh -i ~/.ssh/mrdrives_key -p "$PORT" "$VPS_USER@$VPS_HOST" "rm -rf /root/mrdrives && mkdir -p /root/mrdrives"
+          scp -i ~/.ssh/mrdrives_key -P "$PORT" /tmp/mrdrives-source.tar.gz "$VPS_USER@$VPS_HOST:/tmp/mrdrives-source.tar.gz"
+          ssh -i ~/.ssh/mrdrives_key -p "$PORT" "$VPS_USER@$VPS_HOST" "tar -xzf /tmp/mrdrives-source.tar.gz -C /root/mrdrives && chmod +x /root/mrdrives/scripts/deploy-prod.sh"
+
+      - name: Run isolated MRDRIVES deploy
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          set -euo pipefail
+          PORT="${VPS_PORT:-22}"
+          ssh -i ~/.ssh/mrdrives_key -p "$PORT" "$VPS_USER@$VPS_HOST" "bash /root/mrdrives/scripts/deploy-prod.sh /root/mrdrives"

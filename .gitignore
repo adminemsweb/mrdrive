@@ -3,6 +3,7 @@
 !.env.example
 
 .tmp-screens/
+mrdrives-deploy.zip
 
 public/uploads/documents/*
 !public/uploads/documents/.gitkeep

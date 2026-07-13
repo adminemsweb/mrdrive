@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  app:
+    image: mrdrives-app:latest
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: https://mrdrives.com.br
+      DB_HOST: mariadb_mariadb
+      DB_PORT: "3306"
+      DB_DATABASE: mrdrives
+      DB_USERNAME: mrdrives_user
+      DB_PASSWORD: ${MRDRIVES_DB_PASSWORD}
+      MAIL_FROM: site@mrdrives.com.br
+      MAIL_TO: comercial@mrdrives.com.br
+      WHATSAPP_NUMBER: "5511921047460"
+    volumes:
+      - /var/www/mrdrives/public/uploads:/var/www/html/public/uploads
+    networks:
+      - traefik_public
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik_public
+        - traefik.http.services.mrdrives.loadbalancer.server.port=80
+        - traefik.http.routers.mrdrives.rule=Host(`mrdrives.com.br`) || Host(`www.mrdrives.com.br`)
+        - traefik.http.routers.mrdrives.entrypoints=web
+        - traefik.http.routers.mrdrives-secure.rule=Host(`mrdrives.com.br`) || Host(`www.mrdrives.com.br`)
+        - traefik.http.routers.mrdrives-secure.entrypoints=websecure
+        - traefik.http.routers.mrdrives-secure.tls=true
+        - traefik.http.routers.mrdrives-secure.tls.certresolver=le
+        - traefik.http.routers.mrdrives-secure.service=mrdrives
+
+networks:
+  traefik_public:
+    external: true

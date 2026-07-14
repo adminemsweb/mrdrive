@@ -58,6 +58,7 @@ set -e
 rm -rf '$RemoteDir'
 mkdir -p '$RemoteDir'
 unzip -oq /tmp/mrdrives-deploy.zip -d '$RemoteDir'
+find '$RemoteDir' -type f -name '*.sh' -exec sed -i 's/\r$//' {} +
 chmod +x '$RemoteDir/scripts/deploy-prod.sh'
 bash '$RemoteDir/scripts/deploy-prod.sh' '$RemoteDir'
 "@

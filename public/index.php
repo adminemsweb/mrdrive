@@ -24,6 +24,11 @@ if ($path === '/catalogo') {
     return;
 }
 
+if ($path === '/downloads') {
+    $controller->downloads();
+    return;
+}
+
 if ($path === '/politica-de-privacidade') {
     $controller->privacy();
     return;

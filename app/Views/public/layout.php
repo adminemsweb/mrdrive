@@ -17,85 +17,66 @@
             <img src="<?= asset('img/logo.png') ?>" alt="MRDRIVES">
         </div>
         <button class="menu-toggle mobile-menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
-        <nav class="site-nav site-nav-desktop" aria-label="Navegação principal">
+        <nav class="site-nav site-nav-desktop" aria-label="Navegacao principal">
             <div class="nav-group">
-                <a class="nav-parent" href="/">Início</a>
+                <a class="nav-parent" href="/">In&iacute;cio</a>
                 <div class="nav-dropdown">
-                    <a href="/#beneficios">Benefícios</a>
-                    <a href="/#especificacoes">Especificações</a>
-                    <a href="/#aplicacoes">Aplicações</a>
-                    <a href="/#guias">Guias</a>
+                    <a href="/#beneficios">Benef&iacute;cios</a>
+                    <a href="/#especificacoes">Especifica&ccedil;&otilde;es</a>
+                    <a href="/#aplicacoes">Aplica&ccedil;&otilde;es</a>
+                    <a href="/downloads">Downloads</a>
                 </div>
             </div>
             <div class="nav-group">
-                <a class="nav-parent" href="/catalogo">Catálogo</a>
+                <a class="nav-parent" href="/catalogo">Cat&aacute;logo</a>
                 <div class="nav-dropdown">
+                    <a href="/downloads">Downloads</a>
                     <a href="/mrd600">MRD600</a>
                     <a href="/mrd700">MRD700</a>
                     <a href="/mrd700-ip65">MRD700/IP65</a>
-                </div>
-            </div>
-            <div class="nav-group">
-                <a class="nav-parent" href="/#contato">Contato</a>
-                <div class="nav-dropdown">
-                    <a href="/ticket">Enviar formulário</a>
-                    <a href="/#contato">Abrir ticket</a>
-                    <a href="https://wa.me/<?= e(app_config('whatsapp')) ?>" target="_blank">WhatsApp direto</a>
                 </div>
             </div>
             <div class="nav-group">
                 <a class="nav-parent" href="/#faq">FAQ</a>
                 <div class="nav-dropdown">
-                    <a href="/#faq">Dúvidas frequentes</a>
+                    <a href="/#faq">D&uacute;vidas frequentes</a>
                     <a href="/#feedbacks">Feedbacks</a>
+                </div>
+            </div>
+            <a class="nav-parent nav-plain" href="/downloads">Downloads</a>
+            <div class="nav-group">
+                <a class="nav-parent" href="/#contato">Contato</a>
+                <div class="nav-dropdown">
+                    <a href="/ticket">Enviar formul&aacute;rio</a>
+                    <a href="/#contato">Abrir ticket</a>
+                    <a href="https://wa.me/<?= e(app_config('whatsapp')) ?>" target="_blank">WhatsApp direto</a>
                 </div>
             </div>
         </nav>
         <a class="header-cta header-cta-desktop" href="/#contato"><span class="wa-icon" aria-hidden="true">W</span>Solicitar orçamento</a>
-        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile">
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegacao mobile">
             <div class="mobile-nav-group">
                 <div class="mobile-nav-row">
-                    <a href="/">Início</a>
-                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opções de Início"></button>
+                    <a href="/">In&iacute;cio</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opcoes de inicio"></button>
                 </div>
                 <div class="mobile-submenu">
-                    <a href="/#beneficios">Benefícios</a>
-                    <a href="/#especificacoes">Especificações</a>
-                    <a href="/#aplicacoes">Aplicações</a>
-                    <a href="/#guias">Guias</a>
+                    <a href="/#beneficios">Benef&iacute;cios</a>
+                    <a href="/#especificacoes">Especifica&ccedil;&otilde;es</a>
+                    <a href="/#aplicacoes">Aplica&ccedil;&otilde;es</a>
+                    <a href="/downloads">Downloads</a>
                 </div>
             </div>
             <div class="mobile-nav-group">
                 <div class="mobile-nav-row">
-                    <a href="/catalogo">Catálogo</a>
-                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir produtos do catálogo"></button>
+                    <a href="/catalogo">Cat&aacute;logo</a>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir produtos do catalogo"></button>
                 </div>
                 <div class="mobile-submenu">
+                    <a href="/downloads">Downloads</a>
                     <a href="/mrd600">MRD600</a>
                     <a href="/mrd700">MRD700</a>
                     <a href="/mrd700-ip65">MRD700/IP65</a>
-                </div>
-            </div>
-            <div class="mobile-nav-group">
-                <div class="mobile-nav-row">
-                    <a href="/#guias">Guias e materiais</a>
-                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir guias e materiais"></button>
-                </div>
-                <div class="mobile-submenu">
-                    <a href="/#guias">Baixar materiais</a>
-                    <a href="/mrd600">Guia MRD600</a>
-                    <a href="/mrd700">Guia MRD700</a>
-                    <a href="/mrd700-ip65">Guia MRD700/IP65</a>
-                </div>
-            </div>
-            <div class="mobile-nav-group">
-                <div class="mobile-nav-row">
-                    <a href="/#feedbacks">Feedbacks e vídeos</a>
-                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir feedbacks e vídeos"></button>
-                </div>
-                <div class="mobile-submenu">
-                    <a href="/#feedbacks">Provas reais</a>
-                    <a href="/#mrd700-lavavel">Vídeo MRD700/IP65</a>
                 </div>
             </div>
             <div class="mobile-nav-group">
@@ -104,22 +85,27 @@
                     <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir perguntas frequentes"></button>
                 </div>
                 <div class="mobile-submenu">
-                    <a href="/#faq">Dúvidas frequentes</a>
-                    <a href="/#contato">Falar com suporte</a>
+                    <a href="/#faq">D&uacute;vidas frequentes</a>
+                    <a href="/#feedbacks">Feedbacks</a>
+                </div>
+            </div>
+            <div class="mobile-nav-group">
+                <div class="mobile-nav-row mobile-nav-row-single">
+                    <a href="/downloads">Downloads</a>
                 </div>
             </div>
             <div class="mobile-nav-group">
                 <div class="mobile-nav-row">
                     <a href="/#contato">Contato</a>
-                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opções de contato"></button>
+                    <button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir opcoes de contato"></button>
                 </div>
                 <div class="mobile-submenu">
-                    <a href="/ticket">Enviar formulário</a>
+                    <a href="/ticket">Enviar formul&aacute;rio</a>
                     <a href="/#contato">Abrir contato</a>
                     <a href="https://wa.me/<?= e(app_config('whatsapp')) ?>" target="_blank">WhatsApp direto</a>
                 </div>
             </div>
-            <a class="mobile-nav-cta" href="/#contato">Solicitar orçamento</a>
+            <a class="mobile-nav-cta" href="/#contato">Solicitar or&ccedil;amento</a>
         </nav>
     </header>
     <main>
@@ -139,11 +125,12 @@
         </div>
         <div class="footer-column">
             <h3><span class="footer-title-icon" aria-hidden="true">M</span>Mapa do site</h3>
-            <a href="/"><span class="footer-link-icon">01</span>Início</a>
-            <a href="/catalogo"><span class="footer-link-icon">02</span>Catálogo</a>
-            <a href="/#contato"><span class="footer-link-icon">03</span>Contato</a>
-            <a href="/#faq"><span class="footer-link-icon">04</span>FAQ</a>
-            <a href="/#feedbacks"><span class="footer-link-icon">05</span>Feedbacks</a>
+            <a href="/"><span class="footer-link-icon">01</span>In&iacute;cio</a>
+            <a href="/catalogo"><span class="footer-link-icon">02</span>Cat&aacute;logo</a>
+            <a href="/#faq"><span class="footer-link-icon">03</span>FAQ</a>
+            <a href="/downloads"><span class="footer-link-icon">04</span>Downloads</a>
+            <a href="/#contato"><span class="footer-link-icon">05</span>Contato</a>
+            <a href="/#feedbacks"><span class="footer-link-icon">06</span>Feedbacks</a>
         </div>
         <div class="footer-column">
             <h3><span class="footer-title-icon" aria-hidden="true">S</span>Soluções</h3>

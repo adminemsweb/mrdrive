@@ -122,68 +122,6 @@
     </div>
 </section>
 
-<section class="section download-section" id="guias">
-    <div class="section-heading">
-        <div>
-            <p class="eyebrow">Guias e materiais</p>
-            <h2>Baixe ou solicite materiais técnicos por linha.</h2>
-        </div>
-        <a class="btn btn-secondary" href="#contato">Pedir catálogo completo</a>
-    </div>
-    <div class="guide-card-grid">
-        <?php foreach ([
-            [
-                'line' => 'MRD600',
-                'image' => asset('img/mrd600/capatecnico600.png'),
-                'alt' => 'Capa do guia técnico MRD600',
-                'description' => 'Materiais para consulta técnica, instalação, parametrização e uso inicial da linha MRD600.',
-                'links' => [
-                    ['Guia técnico MRD600', 'PDF completo do produto com capa, linha e principais informações comerciais.', 'Baixar PDF', asset('img/mrd600/MRD600.pdf')],
-                    ['Guia rápido MRD600', 'Consulta rápida de instalação, parametrização e uso inicial.', 'Baixar guia rápido', asset('img/mrd600/mrd600_guia_rapido.pdf')],
-                ],
-            ],
-            [
-                'line' => 'MRD700',
-                'image' => asset('img/mrd700/capatecnicamrd700.png'),
-                'alt' => 'Capa do guia técnico MRD700',
-                'description' => 'Materiais para aplicações da linha MRD700, expansão de automação e configuração inicial.',
-                'links' => [
-                    ['Guia técnico MRD700', 'PDF completo do produto com capa e informações da linha MRD700.', 'Baixar PDF', asset('img/mrd700/MRD700.pdf')],
-                    ['Guia rápido MRD700', 'Guia rápido para consulta de instalação, parametrização e uso inicial.', 'Baixar guia rápido', asset('img/mrd700/mrd700guia_rapido.pdf')],
-                ],
-            ],
-        ] as $guideCard): ?>
-            <article class="guide-line-card">
-                <div class="guide-line-cover">
-                    <img src="<?= e($guideCard['image']) ?>" alt="<?= e($guideCard['alt']) ?>">
-                </div>
-                <div class="guide-line-content">
-                    <span><?= e($guideCard['line']) ?></span>
-                    <h3>Guias da linha <?= e($guideCard['line']) ?></h3>
-                    <p><?= e($guideCard['description']) ?></p>
-                    <div class="guide-line-links">
-                        <?php foreach ($guideCard['links'] as $guide): ?>
-                            <div class="guide-item">
-                                <span><?= e($guide[0]) ?></span>
-                                <p><?= e($guide[1]) ?></p>
-                                <a class="text-link" href="<?= e($guide[3]) ?>" target="_blank" data-product="<?= e($guide[0]) ?>"><?= e($guide[2]) ?></a>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </article>
-        <?php endforeach; ?>
-        <article class="guide-line-card guide-analysis-card">
-            <div class="guide-line-content">
-                <span>Dimensionamento</span>
-                <h3>Precisa escolher a linha certa?</h3>
-                <p>Envie dados do motor, carga e tensão para receber indicação entre MRD600, MRD700 ou MRD700/IP65.</p>
-                <a class="btn btn-secondary" href="/ticket">Solicitar análise</a>
-            </div>
-        </article>
-    </div>
-</section>
-
 <section class="section process-section">
     <p class="eyebrow">Como funciona</p>
     <h2>Do diagnóstico ao equipamento certo.</h2>

@@ -74,6 +74,22 @@ final class PublicController
         ], 'public/layout');
     }
 
+    public function downloads(): void
+    {
+        $documents = [];
+
+        try {
+            $documents = (new Document())->active();
+        } catch (\Throwable) {
+            $documents = [];
+        }
+
+        View::render('public/downloads', [
+            'title' => 'Downloads | MRDRIVES',
+            'documents' => $documents,
+        ], 'public/layout');
+    }
+
     public function privacy(): void
     {
         View::render('public/privacy', [

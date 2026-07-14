@@ -62,6 +62,7 @@ find '$RemoteDir' -type f -name '*.sh' -exec sed -i 's/\r$//' {} +
 chmod +x '$RemoteDir/scripts/deploy-prod.sh'
 bash '$RemoteDir/scripts/deploy-prod.sh' '$RemoteDir'
 "@
+$remoteCommand = $remoteCommand -replace "`r`n", "`n"
 
 Run-Step "Publicando na producao" {
     $remoteCommand | ssh "${VpsUser}@${VpsHost}" "bash -s"

@@ -9321,3 +9321,19 @@ body {
     clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%) !important;
   }
 }
+
+/* Reduce the oversized breathing room above the desktop hero content. */
+@media (min-width: 981px) {
+  .hero-premium {
+    padding-top: 20px !important;
+  }
+
+  .hero-premium .hero-copy,
+  .hero-premium .hero-visual {
+    margin-top: -72px !important;
+  }
+
+  .hero-premium .hero-metrics {
+    margin-top: -42px !important;
+  }
+}

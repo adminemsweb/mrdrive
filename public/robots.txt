@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /quote
+
+Sitemap: https://mrdrives.com.br/sitemap.xml

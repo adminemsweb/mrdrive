@@ -94,8 +94,8 @@ done
 docker service ls | grep "$SERVICE_NAME" || true
 
 echo "==> Teste local via Traefik"
-if curl -k -fsS -H "Host: mrdrives.com.br" https://127.0.0.1/ >/tmp/mrdrives-home.html; then
-  if grep -q '<title>MRDRIVES</title>' /tmp/mrdrives-home.html; then
+if curl -k -fsS --resolve "mrdrives.com.br:443:127.0.0.1" https://mrdrives.com.br/ >/tmp/mrdrives-home.html; then
+  if grep -q '<title>MRDRIVES' /tmp/mrdrives-home.html; then
     echo "OK: MRDRIVES esta respondendo na VPS pelo Traefik."
   else
     echo "AVISO: respondeu, mas o titulo esperado nao apareceu."

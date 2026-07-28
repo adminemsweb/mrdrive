@@ -4,8 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MRDRIVES</title>
-    <meta name="description" content="Landing page profissional da MRDRIVES para inversores industriais MRD600 e MRD700.">
+    <title>MRDRIVES | Inversores e Automação Industrial</title>
+    <meta name="description" content="Inversores industriais MRD600, MRD700 e MRD700/IP65 com suporte técnico para escolher a solução ideal para sua aplicação.">
+    <link rel="canonical" href="https://mrdrives.com.br/">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MRDRIVES">
+    <meta property="og:url" content="https://mrdrives.com.br/">
+    <meta property="og:title" content="MRDRIVES | Inversores e Automação Industrial">
+    <meta property="og:description" content="Inversores MRD600, MRD700 e MRD700/IP65 com suporte técnico especializado para sua aplicação industrial.">
+    <meta property="og:image" content="https://mrdrives.com.br/assets/img/banner.png">
+    <meta property="og:image:secure_url" content="https://mrdrives.com.br/assets/img/banner.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="Inversores industriais MRDRIVES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MRDRIVES | Inversores e Automação Industrial">
+    <meta name="twitter:description" content="Inversores industriais com suporte técnico especializado para sua aplicação.">
+    <meta name="twitter:image" content="https://mrdrives.com.br/assets/img/banner.png">
     <link rel="icon" type="image/png" sizes="64x64" href="<?= asset('img/favicon-64.png') ?>">
     <link rel="shortcut icon" type="image/png" href="<?= asset('img/favicon-64.png') ?>">
     <link rel="stylesheet" href="<?= asset('css/style.css') ?>?v=<?= filemtime(public_path('assets/css/style.css')) ?>">

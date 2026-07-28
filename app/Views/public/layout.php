@@ -4,7 +4,7 @@ use App\Core\Csrf;
 $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $seoPages = [
     '/' => [
-        'title' => 'Inversores de Frequência e Automação Industrial | MRDRIVES',
+        'title' => 'MR Drives',
         'description' => 'Inversores de frequência MRD600, MRD700 e MRD700/IP65 para máquinas, bombas e automação industrial, com suporte técnico especializado.',
     ],
     '/catalogo' => [

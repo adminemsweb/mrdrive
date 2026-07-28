@@ -58,8 +58,14 @@ if [ -n "$MARIADB_CONTAINER" ]; then
     docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -e "CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
     docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${MRDRIVES_DB_PASSWORD}';"
     docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%'; FLUSH PRIVILEGES;"
-    docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/schema.sql
-    docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/seed.sql
+    SCHEMA_READY="$(docker exec "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -Nse "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='${DB_NAME}' AND table_name='users';")"
+    if [ "$SCHEMA_READY" = "0" ]; then
+      echo "==> Inicializando esquema e dados padrao"
+      docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/schema.sql
+      docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/seed.sql
+    else
+      echo "==> Banco existente detectado; preservando dados atuais"
+    fi
     if [ -f database/update_mrd700_ip65.sql ]; then
       docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_mrd700_ip65.sql || true
     fi

@@ -3,6 +3,7 @@
 !.env.example
 
 .tmp-screens/
+.tmp-three-vendor/
 mrdrives-deploy.zip
 
 public/uploads/documents/*

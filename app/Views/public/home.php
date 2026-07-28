@@ -12,12 +12,15 @@
             <a class="btn btn-ghost" href="/catalogo">Conhecer produtos</a>
         </div>
     </div>
-    <div class="hero-visual" aria-label="Imagem real dos inversores MRDRIVES">
-        <div class="hero-device-stage">
+    <div class="hero-visual" aria-label="Modelo tridimensional do inversor MRD700/IP65">
+        <div class="hero-device-stage hero-webgl-model" data-product-model tabindex="0" aria-label="Modelo 3D do MRD700/IP65. Arraste para girar em qualquer direção.">
             <div class="device-glow"></div>
-            <img class="hero-product-photo hero-product-original hero-product-line hero-product-banner" src="<?= asset('img/mrd600/mrd600.png') ?>" alt="Linha de inversores industriais MRDRIVES">
-            <div class="floating-panel panel-a"><strong>MRD600</strong><span>linha compacta</span></div>
-            <div class="floating-panel panel-b"><strong>MRD700</strong><span>automação e expansão</span></div>
+            <div class="hero-model-loading">Carregando modelo 3D...</div>
+            <p class="hero-product-3d-hint" aria-label="Arraste para girar o modelo em 360 graus">
+                <span class="hero-rotate-icon" aria-hidden="true">⟳</span>
+                <span class="hero-rotate-label" aria-hidden="true">360°</span>
+            </p>
+            <noscript><img class="hero-model-fallback" src="<?= asset('img/mrd700-ip65/quatro-transparent.png') ?>" alt="Inversor industrial MRD700/IP65"></noscript>
         </div>
     </div>
     <div class="hero-metrics">
@@ -283,6 +286,3 @@
         </div>
     </form>
 </section>
-
-
-

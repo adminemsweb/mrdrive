@@ -150,11 +150,12 @@
             <img src="<?= asset('img/parceiras.png') ?>" alt="Parcerias atendidas pela MRDRIVES">
         </div>
         <div class="copyright">
-            <span>&copy; <?= daté('Y') ?> MRDRIVES - Todos os direitos reservados.</span>
+            <span>&copy; <?= date('Y') ?> MRDRIVES - Todos os direitos reservados.</span>
             <span>Eficiência, controle e continuidade para a sua operação.</span>
         </div>
     </footer>
     <button class="scroll-top-button" type="button" aria-label="Voltar ao topo"></button>
     <script src="<?= asset('js/main.js') ?>"></script>
+    <script type="module" src="<?= asset('js/product-3d.js') ?>?v=<?= filemtime(public_path('assets/js/product-3d.js')) ?>"></script>
 </body>
 </html>

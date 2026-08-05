@@ -14,10 +14,10 @@ services:
       DB_DATABASE: mrdrives
       DB_USERNAME: mrdrives_user
       DB_PASSWORD: ${MRDRIVES_DB_PASSWORD}
-      MAIL_FROM: site@mrdrives.com.br
+      MAIL_FROM: ${MRDRIVES_MAIL_FROM:-site@mrdrives.com.br}
       MAIL_TO: comercial@mrdrives.com.br
       MAIL_FROM_NAME: MR Drives
-      MAIL_REPLY_TO: comercial@mrdrives.com.br
+      MAIL_REPLY_TO: ${MRDRIVES_MAIL_REPLY_TO:-comercial@mrdrives.com.br}
       MAIL_DRIVER: ${MRDRIVES_MAIL_DRIVER:-mail}
       MAIL_SMTP_HOST: ${MRDRIVES_MAIL_SMTP_HOST:-}
       MAIL_SMTP_PORT: ${MRDRIVES_MAIL_SMTP_PORT:-587}

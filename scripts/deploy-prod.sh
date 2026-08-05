@@ -9,6 +9,7 @@ DB_NAME="mrdrives"
 DB_USER="mrdrives_user"
 DB_PASS_FILE="/root/mrdrives-db-pass.txt"
 ADMIN_KEY_FILE="/root/mrdrives-admin-entry-key.txt"
+SMTP_PASS_FILE="/root/mrdrives-smtp-pass.txt"
 
 echo "==> MRDRIVES deploy isolado"
 echo "Fonte: ${SOURCE_DIR}"
@@ -56,6 +57,19 @@ fi
 
 export MRDRIVES_ADMIN_ENTRY_KEY
 MRDRIVES_ADMIN_ENTRY_KEY="$(cat "$ADMIN_KEY_FILE")"
+
+if [ -s "$SMTP_PASS_FILE" ]; then
+  export MRDRIVES_MAIL_DRIVER="smtp"
+  export MRDRIVES_MAIL_FROM="sistema@svtech.cloud"
+  export MRDRIVES_MAIL_REPLY_TO="admin@svtech.cloud"
+  export MRDRIVES_MAIL_SMTP_HOST="mail.svtech.cloud"
+  export MRDRIVES_MAIL_SMTP_PORT="465"
+  export MRDRIVES_MAIL_SMTP_ENCRYPTION="ssl"
+  export MRDRIVES_MAIL_SMTP_USERNAME="sistema@svtech.cloud"
+  export MRDRIVES_MAIL_SMTP_PASSWORD
+  MRDRIVES_MAIL_SMTP_PASSWORD="$(cat "$SMTP_PASS_FILE")"
+  echo "==> SMTP seguro da MRDRIVES habilitado"
+fi
 
 MARIADB_CONTAINER="$(docker ps --format '{{.Names}}' | grep '^mariadb_mariadb' | head -n1 || true)"
 if [ -n "$MARIADB_CONTAINER" ]; then

@@ -37,6 +37,26 @@ if ($path === '/minha-conta') {
     return;
 }
 
+if ($path === '/confirmar-email') {
+    $customerAuth->confirmEmail();
+    return;
+}
+
+if ($path === '/reenviar-confirmacao' && is_post()) {
+    $customerAuth->resendConfirmation();
+    return;
+}
+
+if ($path === '/minha-conta/configuracoes') {
+    is_post() ? $customerAuth->updateSettings() : $customerAuth->settings();
+    return;
+}
+
+if ($path === '/minha-conta/senha' && is_post()) {
+    $customerAuth->updatePassword();
+    return;
+}
+
 if ($path === '/sair' && is_post()) {
     $customerAuth->logout();
     return;

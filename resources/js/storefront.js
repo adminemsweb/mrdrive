@@ -302,6 +302,7 @@ if (cepLookup) {
     city: cepLookup.querySelector('[data-address-city]'),
     state: cepLookup.querySelector('[data-address-state]'),
   };
+  let lastLookup = '';
 
   const maskCep = () => {
     const digits = cepInput.value.replace(/\D/g, '').slice(0, 8);
@@ -326,6 +327,7 @@ if (cepLookup) {
       const data = await response.json();
       if (!response.ok || !data.ok) throw new Error(data.message || 'CEP não encontrado.');
       Object.entries(fields).forEach(([key, input]) => { if (input) input.value = data.address?.[key] || ''; });
+      lastLookup = digits;
       status.textContent = 'Endereço localizado. Confira os dados e informe o número.';
       status.classList.add('is-success');
       cepLookup.querySelector('[name="address_number"]')?.focus();
@@ -337,10 +339,26 @@ if (cepLookup) {
     }
   };
 
-  cepInput?.addEventListener('input', maskCep);
+  if (cepInput) maskCep();
+  cepInput?.addEventListener('input', () => {
+    const digits = maskCep();
+    if (digits.length === 8 && digits !== lastLookup) findAddress();
+  });
   cepInput?.addEventListener('blur', () => { if (maskCep().length === 8 && !fields.city?.value) findAddress(); });
   lookupButton?.addEventListener('click', findAddress);
 }
+
+document.querySelectorAll('.customer-profile-form input[name="phone"]').forEach((input) => {
+  const maskPhone = () => {
+    const digits = input.value.replace(/\D/g, '').slice(0, 11);
+    if (digits.length <= 2) input.value = digits;
+    else if (digits.length <= 6) input.value = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    else if (digits.length <= 10) input.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    else input.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  };
+  maskPhone();
+  input.addEventListener('input', maskPhone);
+});
 
 const headerCep = document.querySelector('[data-header-cep]');
 if (headerCep) {

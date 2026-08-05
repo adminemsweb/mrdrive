@@ -15,6 +15,7 @@ final class CustomerAuth
             'first_name' => (string) ($customer['first_name'] ?? explode(' ', trim((string) $customer['name']))[0]),
             'last_name' => (string) ($customer['last_name'] ?? ''),
             'email' => (string) $customer['email'],
+            'email_verified_at' => $customer['email_verified_at'] ?? null,
         ];
     }
 

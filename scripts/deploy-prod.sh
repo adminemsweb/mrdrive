@@ -95,6 +95,16 @@ if [ -n "$MARIADB_CONTAINER" ]; then
       echo "==> Separando nome e sobrenome das contas de clientes"
       docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_customer_names.sql
     fi
+    CUSTOMER_VERIFICATION_READY="$(docker exec "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='${DB_NAME}' AND table_name='customers' AND column_name='email_verified_at';")"
+    if [ "$CUSTOMER_VERIFICATION_READY" = "0" ] && [ -f database/update_customer_email_verification.sql ]; then
+      echo "==> Adicionando confirmação de e-mail das contas de clientes"
+      docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_customer_email_verification.sql
+    fi
+    CUSTOMER_PROFILE_READY="$(docker exec "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='${DB_NAME}' AND table_name='customers' AND column_name='birth_date';")"
+    if [ "$CUSTOMER_PROFILE_READY" = "0" ] && [ -f database/update_customer_profile.sql ]; then
+      echo "==> Adicionando perfil e endereço das contas de clientes"
+      docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_customer_profile.sql
+    fi
     ADMIN_ROLES_READY="$(docker exec "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" -Nse "SELECT COUNT(*) FROM information_schema.columns WHERE table_schema='${DB_NAME}' AND table_name='users' AND column_name='role';")"
     if [ "$ADMIN_ROLES_READY" = "0" ] && [ -f database/update_admin_users.sql ]; then
       echo "==> Adicionando perfis e status da equipe administrativa"

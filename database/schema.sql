@@ -18,9 +18,22 @@ CREATE TABLE customers (
     name VARCHAR(140) NOT NULL,
     email VARCHAR(180) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    email_verified_at DATETIME NULL,
+    email_verification_token CHAR(64) NULL,
+    email_verification_expires_at DATETIME NULL,
+    birth_date DATE NULL,
+    phone VARCHAR(20) NULL,
+    postal_code VARCHAR(9) NULL,
+    street VARCHAR(180) NULL,
+    address_number VARCHAR(30) NULL,
+    complement VARCHAR(120) NULL,
+    district VARCHAR(120) NULL,
+    city VARCHAR(120) NULL,
+    state CHAR(2) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    INDEX idx_customers_created_at (created_at)
+    INDEX idx_customers_created_at (created_at),
+    INDEX idx_customers_verification_token (email_verification_token)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE products (

@@ -36,8 +36,18 @@ return [
         'charset' => 'utf8mb4',
     ],
     'mail' => [
+        'driver' => $_ENV['MAIL_DRIVER'] ?? 'mail',
         'to' => $_ENV['MAIL_TO'] ?? 'comercial@mrdrives.com.br',
         'from' => $_ENV['MAIL_FROM'] ?? 'site@mrdrives.com.br',
+        'from_name' => $_ENV['MAIL_FROM_NAME'] ?? 'MR Drives',
+        'reply_to' => $_ENV['MAIL_REPLY_TO'] ?? ($_ENV['MAIL_TO'] ?? 'comercial@mrdrives.com.br'),
+        'smtp' => [
+            'host' => $_ENV['MAIL_SMTP_HOST'] ?? '',
+            'port' => (int) ($_ENV['MAIL_SMTP_PORT'] ?? 587),
+            'encryption' => $_ENV['MAIL_SMTP_ENCRYPTION'] ?? 'tls',
+            'username' => $_ENV['MAIL_SMTP_USERNAME'] ?? '',
+            'password' => $_ENV['MAIL_SMTP_PASSWORD'] ?? '',
+        ],
     ],
     'whatsapp' => $_ENV['WHATSAPP_NUMBER'] ?? '5511921047460',
     'company' => [

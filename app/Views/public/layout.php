@@ -218,6 +218,18 @@ $structuredData = [
             <a class="mobile-nav-cta" href="https://wa.me/<?= e(app_config('whatsapp')) ?>" target="_blank" rel="noopener">Atendimento no WhatsApp</a>
         </nav>
     </header>
+    <nav class="marketplace-category-nav site-nav-mobile-scroll" aria-label="Navegação principal no celular">
+        <a href="/">Início</a>
+        <a href="/catalogo#produtos">Produtos MR Drives</a>
+        <a href="/mrd600">MRD600</a>
+        <a href="/mrd700">MRD700</a>
+        <a href="/mrd700-ip65">MRD700/IP65</a>
+        <a href="/#aplicacoes">Aplicações</a>
+        <a href="/downloads">Downloads</a>
+        <a href="/#feedbacks">Avaliações</a>
+        <a href="/#contato">Contato</a>
+        <a href="<?= $customerUser ? '/minha-conta' : '/entrar' ?>"><?= $customerUser ? 'Minha conta' : 'Entrar' ?></a>
+    </nav>
     <nav class="marketplace-category-nav site-nav-desktop" aria-label="Departamentos da loja">
         <a href="/">Início</a>
         <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/catalogo#produtos">Todos os produtos</a><a href="/mrd600">MRD600 · Compacto</a><a href="/mrd700">MRD700 · Alto desempenho</a><a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a></div></div>

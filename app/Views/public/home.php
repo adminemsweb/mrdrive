@@ -1,38 +1,43 @@
-<?php use App\Core\Csrf; ?>
-<section class="hero hero-premium">
-    <div class="hero-bg-banner" aria-hidden="true"></div>
-    <div class="hero-orbit orbit-one"></div>
-    <div class="hero-orbit orbit-two"></div>
-    <div class="hero-copy">
-        <p class="eyebrow">MRDRIVES automação industrial</p>
-        <h1><span>Inversores <br class="hero-mobile-break">industriais</span> com presença, <br class="hero-mobile-break">proteção <br class="hero-mobile-break">e controle.</h1>
-        <p class="lead">Linha MRDRIVES para controle de motores.<br>MRD600 e MRD700 para automação industrial.<br>Atendimento técnico para escolher o equipamento certo.</p>
-        <div class="actions hero-actions">
-            <a class="btn btn-whatsapp" href="#contato">Solicitar cotação rápida</a>
-            <a class="btn btn-ghost" href="/catalogo">Conhecer produtos</a>
-        </div>
-    </div>
-    <div class="hero-visual" aria-label="Modelo tridimensional do inversor MRD700/IP65">
-        <div class="hero-device-stage hero-webgl-model" data-product-model tabindex="0" aria-label="Modelo 3D do MRD700/IP65. Arraste para girar em qualquer direção.">
-            <div class="device-glow"></div>
-            <div class="hero-model-loading">Carregando modelo 3D...</div>
-            <p class="hero-product-3d-hint" aria-label="Arraste para girar o modelo em 360 graus">
-                <span class="hero-rotate-icon" aria-hidden="true">⟳</span>
-                <span class="hero-rotate-label" aria-hidden="true">360°</span>
-            </p>
-            <noscript><img class="hero-model-fallback" src="<?= asset('img/mrd700-ip65/quatro-transparent.png') ?>" alt="Inversor industrial MRD700/IP65"></noscript>
-        </div>
-    </div>
-    <div class="hero-metrics">
-        <div><strong>Rede 220V</strong><span>0.4 kW até 5.5 kW</span></div>
-        <div><strong>Rede 380V</strong><span>0.4 kW até 7.5 kW</span></div>
-        <div><strong>MRD700</strong><span>expansão e protocolos</span></div>
-    </div>
-</section>
+<?php
+use App\Core\Csrf;
 
-<section class="section visual-proof">
-    <div class="visual-carousel visual-banner-only" aria-label="Banner institucional MRDRIVES">
-        <img src="<?= asset('img/banner.png') ?>?v=<?= filemtime(public_path('assets/img/banner.png')) ?>" alt="Linha MRDRIVES para automação industrial">
+$heroProducts = array_values($products);
+$heroMessages = [
+    ['Linha compacta e versátil', 'Controle inteligente em um formato compacto', 'purple', 'Explore a linha MRD600'],
+    ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],
+    ['Linha protegida IP65', 'Proteção preparada para ambientes severos', 'blue', 'Conheça o MRD700/IP65'],
+];
+?>
+<section class="storefront-hero" aria-label="Loja de automação industrial MR Drives">
+    <div class="storefront-hero-carousel swiper" data-hero-carousel>
+        <div class="swiper-wrapper">
+            <?php foreach ($heroProducts as $index => $item):
+                $heroImage = !empty($item['main_image']) ? upload_url($item['main_image']) : asset('img/mrd600/mrd600_2.jpeg');
+                $heroUrl = $item['url'] ?? ('/produto?id=' . (int) $item['id']);
+                $message = $heroMessages[$index] ?? ['Linha MR Drives', 'Controle industrial para a sua operação', 'blue', 'Conheça nossos produtos'];
+            ?>
+                <article class="storefront-promotion storefront-promotion--<?= e($message[2]) ?> swiper-slide">
+                    <div class="storefront-promotion-copy">
+                        <span class="storefront-promotion-label"><?= e($message[0]) ?> <b>•</b> Entrega nacional</span>
+                        <h1><?= e($message[1]) ?></h1>
+                        <p><?= e($item['short_description']) ?></p>
+                        <div class="storefront-promotion-tags"><span><?= e($item['power']) ?></span><span><?= e($item['voltage']) ?></span></div>
+                        <div class="storefront-promotion-actions"><a href="<?= e($heroUrl) ?>"><?= e($message[3]) ?> <i data-lucide="arrow-right"></i></a><a href="/ticket">Falar com um especialista</a></div>
+                    </div>
+                    <div class="storefront-promotion-product">
+                        <span class="storefront-promotion-model"><?= e($item['name']) ?></span>
+                        <img src="<?= e($heroImage) ?>" alt="<?= e($item['name']) ?>" <?= $index === 1 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </div>
+        <div class="storefront-hero-pagination" aria-label="Selecionar produto em destaque"></div>
+    </div>
+    <div class="storefront-hero-assurances">
+        <span><i data-lucide="truck"></i><strong>Entrega nacional</strong><small>Atendimento em todo o Brasil</small></span>
+        <span><i data-lucide="headphones"></i><strong>Compra assistida</strong><small>Ajuda para escolher o modelo</small></span>
+        <span><i data-lucide="badge-check"></i><strong>Garantia e nota fiscal</strong><small>Consulte as condições da linha</small></span>
+        <span><i data-lucide="shield-check"></i><strong>Compra protegida</strong><small>Políticas claras e suporte</small></span>
     </div>
 </section>
 
@@ -49,13 +54,6 @@
     <div class="mrd-home-video-frame">
         <video src="<?= asset('img/videos/mrd700ip65.mp4') ?>" controls playsinline preload="metadata" poster="<?= asset('img/mrd700-ip65/mrip65banner.png') ?>"></video>
     </div>
-</section>
-
-<section class="trust-band">
-    <div><span class="mini-emoji">01</span><strong>Dimensionamento técnico</strong><span>Indicação do modelo correto para motor, tensão e carga.</span></div>
-    <div><span class="mini-emoji">02</span><strong>Controle de consumo</strong><span>Ajuste de velocidade em cargas variáveis.</span></div>
-    <div><span class="mini-emoji">03</span><strong>Operação protegida</strong><span>Partida suave, proteção e previsibilidade.</span></div>
-    <div><span class="mini-emoji">04</span><strong>Suporte comercial</strong><span>Atendimento para orçamento e aplicação.</span></div>
 </section>
 
 <section class="section engineered" id="beneficios">
@@ -150,10 +148,10 @@
             <p class="eyebrow">Catálogo</p>
             <h2>Produtos MRDRIVES</h2>
         </div>
-        <a class="btn btn-secondary" href="/catalogo">Abrir catálogo completo</a>
     </div>
     <?php $featuredProducts = [
         [
+            'id' => 'mrd600-family',
             'name' => 'MRD600',
             'model_code' => 'MRD600',
             'short_description' => 'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
@@ -163,6 +161,7 @@
             'href' => '/mrd600',
         ],
         [
+            'id' => 'mrd700-family',
             'name' => 'MRD700',
             'model_code' => 'MRD700',
             'short_description' => 'Linha vetorial de alto desempenho com expansão PLC e protocolos industriais.',
@@ -172,6 +171,7 @@
             'href' => '/mrd700',
         ],
         [
+            'id' => 'mrd700-ip65-family',
             'name' => 'MRD700/IP65',
             'model_code' => 'MRD700/IP65',
             'short_description' => 'Inversor lavável para ambientes com água, poeira e rotinas severas de limpeza.',
@@ -188,14 +188,17 @@
                 <div>
                     <p class="code"><?= e($product['model_code']) ?></p>
                     <h3><?= e($product['name']) ?></h3>
+                    <div class="product-rating" aria-label="Avaliação 4,8 de 5 estrelas">
+                        <strong>4,8</strong><span aria-hidden="true">★★★★★</span><small>Avaliações</small>
+                    </div>
                     <p><?= e($product['short_description']) ?></p>
                     <dl>
                         <dt>Potência</dt><dd><?= e($product['power']) ?></dd>
                         <dt>Tensão</dt><dd><?= e($product['voltage']) ?></dd>
                     </dl>
                     <div class="card-actions">
-                        <a class="btn btn-small" href="<?= e($product['href']) ?>">Ver detalhes</a>
-                        <a class="text-link" href="#contato" data-product="<?= e($product['name']) ?>">Solicitar orçamento</a>
+                        <a class="btn btn-small product-details-button" href="<?= e($product['href']) ?>" aria-label="Ver detalhes de <?= e($product['name']) ?>" title="Ver detalhes"><i data-lucide="file-text"></i></a>
+                        <a class="home-shop-whatsapp" href="https://wa.me/<?= e(app_config('whatsapp')) ?>?text=Tenho%20interesse%20no%20<?= rawurlencode($product['name']) ?>" target="_blank" rel="noopener"><i data-lucide="message-circle" aria-hidden="true"></i><span>Comprar via WhatsApp</span></a>
                     </div>
                 </div>
             </article>
@@ -210,17 +213,17 @@
             <h2>Provas reais, vídeos e comentários de clientes.</h2>
         </div>
     </div>
-    <div class="feedback-grid">
-        <article class="video-proof-card video-proof-portrait"><video src="<?= asset('img/videos/provas.mp4') ?>?v=<?= filemtime(public_path('assets/img/videos/provas.mp4')) ?>" muted loop playsinline controls preload="metadata"></video></article>
-        <article class="video-proof-card video-proof-portrait"><video src="<?= asset('img/videos/provas2.mp4') ?>?v=<?= filemtime(public_path('assets/img/videos/provas2.mp4')) ?>" muted loop playsinline controls preload="metadata"></video></article>
-    </div>
-    <div class="rating-summary"><strong>4,8</strong><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><p>Média de avaliação em atendimentos técnicos e aplicações industriais.</p></div>
-    <div class="feedback-carousel-tools" aria-label="Navegação dos comentários">
-        <button class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Comentários anteriores" data-scroll-target=".testimonial-carousel" data-scroll-direction="-1"></button>
-        <button class="carousel-arrow carousel-arrow-next" type="button" aria-label="Próximos comentários" data-scroll-target=".testimonial-carousel" data-scroll-direction="1"></button>
-    </div>
-    <div class="testimonial-carousel drag-scroll" data-drag-scroll aria-label="Comentários de clientes">
-        <div class="testimonial-track">
+    <div class="feedback-summary-inline"><strong>4,8</strong><span aria-label="5 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Avaliações de clientes</small></div>
+    <div class="feedback-swiper swiper" data-feedback-swiper aria-label="Vídeos e comentários de clientes">
+        <div class="swiper-wrapper">
+            <article class="feedback-carousel-card feedback-video-feature swiper-slide">
+                <div class="feedback-carousel-media"><video src="<?= asset('img/videos/provas.mp4') ?>?v=<?= filemtime(public_path('assets/img/videos/provas.mp4')) ?>" muted playsinline controls controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture preload="metadata"></video></div>
+                <div class="feedback-carousel-copy"><span class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="feedback-person"><img src="<?= asset('img/testimonials/customer-avatar-ai.webp') ?>" alt="Avatar ilustrativo da equipe MR Drives"><span><h3>Equipe MR Drives</h3><small>Demonstração técnica</small></span></div><p>Registro em campo do equipamento durante uma aplicação acompanhada.</p></div>
+            </article>
+            <article class="feedback-carousel-card feedback-video-feature swiper-slide">
+                <div class="feedback-carousel-media"><video src="<?= asset('img/videos/provas2.mp4') ?>?v=<?= filemtime(public_path('assets/img/videos/provas2.mp4')) ?>" muted playsinline controls controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture preload="metadata"></video></div>
+                <div class="feedback-carousel-copy"><span class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="feedback-person"><img src="<?= asset('img/testimonials/customer-avatar-ai.webp') ?>" alt="Avatar ilustrativo da demonstração em campo"><span><h3>Demonstração em campo</h3><small>Aplicação real</small></span></div><p>Continuidade do teste com suporte durante toda a demonstração.</p></div>
+            </article>
         <?php foreach ([
             ['Excelente produto, chegou bem orientado e com suporte para parametrização.', 'Carlos M.', 'Manutenção industrial'],
             ['O atendimento ajudou a escolher a potência correta sem comprar acima do necessário.', 'Renata S.', 'Compras técnicas'],
@@ -229,9 +232,12 @@
             ['Produto robusto, visual profissional e entrega alinhada com o combinado.', 'Eduardo L.', 'Integrador'],
             ['A equipe entendeu a carga da máquina e indicou a linha certa.', 'Paulo A.', 'Máquinas industriais'],
         ] as $review): ?>
-            <article class="testimonial-card"><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span><p>"<?= e($review[0]) ?>"</p><strong><?= e($review[1]) ?></strong><small><?= e($review[2]) ?></small></article>
+            <article class="feedback-carousel-card feedback-carousel-review swiper-slide">
+                <div class="feedback-carousel-copy"><span class="feedback-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="feedback-person feedback-person-placeholder"><span class="feedback-placeholder-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 22c.4-5.2 3.1-8 8-8s7.6 2.8 8 8Z"/></svg></span><span><h3><?= e($review[1]) ?></h3><small><?= e($review[2]) ?></small></span></div><p>“<?= e($review[0]) ?>”</p></div>
+            </article>
         <?php endforeach; ?>
         </div>
+        <div class="feedback-swiper-pagination" aria-hidden="true"></div>
     </div>
 </section>
 
@@ -260,6 +266,11 @@
         <p class="eyebrow">Contato</p>
         <h2>Orçamento rápido, sem formulário gigante.</h2>
         <p>Escolha a linha, deixe seu WhatsApp e envie um ticket direto para nossa equipe técnica.</p>
+        <?php $companyData = app_config('company'); ?>
+        <address class="contact-company-location">
+            <i data-lucide="map-pin"></i>
+            <span><small>Localização da empresa</small><strong>MR Drives • Sorocaba, SP</strong><span><?= e($companyData['address']) ?></span><a href="https://www.google.com/maps/search/?api=1&amp;query=<?= rawurlencode($companyData['address']) ?>" target="_blank" rel="noopener">Ver no Google Maps →</a></span>
+        </address>
         <?php if (!empty($flash)): ?>
             <div class="flash <?= e($flash['type']) ?>"><?= e($flash['message']) ?></div>
         <?php endif; ?>

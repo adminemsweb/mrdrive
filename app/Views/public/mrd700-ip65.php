@@ -1,3 +1,4 @@
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd700ip65-hero">
     <div class="mrd700ip65-hero-copy">
         <a class="product-back-link" href="/catalogo">Voltar ao catálogo</a>
@@ -33,6 +34,7 @@
         <?php endforeach; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="section mrd700ip65-diagram-section">
     <div class="mrd700ip65-diagram-grid">
@@ -171,6 +173,7 @@
     </div>
 </section>
 
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd700ip65-cta-section">
     <div>
         <p class="eyebrow">Aplicação assistida</p>
@@ -182,3 +185,4 @@
         <a class="btn btn-secondary" href="/ticket">Enviar dados técnicos</a>
     </div>
 </section>
+<?php endif; ?>

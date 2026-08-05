@@ -1,3 +1,4 @@
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd600-hero">
     <div class="mrd600-hero-copy">
         <a class="product-back-link" href="/catalogo">Voltar ao catálogo</a>
@@ -28,6 +29,7 @@
         <img src="<?= asset('img/mrd600/mrd600_5.png') ?>" alt="MRD600 linha de inversores">
     </div>
 </section>
+<?php endif; ?>
 
 <section class="section mrd600-feature-section">
     <div class="section-heading">
@@ -144,6 +146,7 @@
     </div>
 </section>
 
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd600-cta-section">
     <div>
         <p class="eyebrow">Aplicação assistida</p>
@@ -155,3 +158,4 @@
         <a class="btn btn-secondary" href="/ticket">Enviar dados técnicos</a>
     </div>
 </section>
+<?php endif; ?>

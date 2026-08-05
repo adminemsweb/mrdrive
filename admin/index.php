@@ -9,7 +9,11 @@ use App\Controllers\AuthController;
 use App\Controllers\DocumentAdminController;
 use App\Controllers\ProductAdminController;
 use App\Controllers\QuoteAdminController;
+use App\Controllers\UserAdminController;
+use App\Core\AdminGate;
 use App\Core\Auth;
+
+AdminGate::enforce();
 
 $route = (string) ($_GET['route'] ?? 'dashboard');
 
@@ -47,5 +51,9 @@ match ($route) {
     'quotes.show' => (new QuoteAdminController())->show(),
     'quotes.toggle' => (new QuoteAdminController())->toggle(),
     'quotes.delete' => (new QuoteAdminController())->delete(),
+    'users' => (new UserAdminController())->index(),
+    'users.store' => (new UserAdminController())->store(),
+    'users.toggle' => (new UserAdminController())->toggle(),
+    'users.password' => (new UserAdminController())->password(),
     default => (new AdminController())->dashboard(),
 };

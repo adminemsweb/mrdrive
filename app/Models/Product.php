@@ -40,13 +40,22 @@ final class Product extends Model
         return $product ?: null;
     }
 
+    public function findActiveByModelCode(string $modelCode): ?array
+    {
+        $stmt = $this->db->prepare('SELECT * FROM products WHERE model_code = :model_code AND is_active = 1 LIMIT 1');
+        $stmt->execute(['model_code' => $modelCode]);
+        $product = $stmt->fetch();
+
+        return $product ?: null;
+    }
+
     public function create(array $data): int
     {
         $stmt = $this->db->prepare(
             'INSERT INTO products
-            (name, model_code, category, short_description, full_description, power, voltage, recommended_applications, technical_specs, main_image, manual_pdf, is_active, is_featured, sort_order)
+            (name, model_code, category, short_description, full_description, power, voltage, recommended_applications, technical_specs, sku, price, compare_at_price, sale_channel, stock_quantity, track_stock, shipping_days, main_image, manual_pdf, is_active, is_featured, is_offer, is_best_seller, is_new, sort_order)
             VALUES
-            (:name, :model_code, :category, :short_description, :full_description, :power, :voltage, :recommended_applications, :technical_specs, :main_image, :manual_pdf, :is_active, :is_featured, :sort_order)'
+            (:name, :model_code, :category, :short_description, :full_description, :power, :voltage, :recommended_applications, :technical_specs, :sku, :price, :compare_at_price, :sale_channel, :stock_quantity, :track_stock, :shipping_days, :main_image, :manual_pdf, :is_active, :is_featured, :is_offer, :is_best_seller, :is_new, :sort_order)'
         );
         $stmt->execute($data);
 
@@ -67,10 +76,20 @@ final class Product extends Model
             voltage = :voltage,
             recommended_applications = :recommended_applications,
             technical_specs = :technical_specs,
+            sku = :sku,
+            price = :price,
+            compare_at_price = :compare_at_price,
+            sale_channel = :sale_channel,
+            stock_quantity = :stock_quantity,
+            track_stock = :track_stock,
+            shipping_days = :shipping_days,
             main_image = :main_image,
             manual_pdf = :manual_pdf,
             is_active = :is_active,
             is_featured = :is_featured,
+            is_offer = :is_offer,
+            is_best_seller = :is_best_seller,
+            is_new = :is_new,
             sort_order = :sort_order
             WHERE id = :id'
         );

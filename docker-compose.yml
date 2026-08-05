@@ -7,6 +7,8 @@ services:
       APP_ENV: production
       APP_DEBUG: "false"
       APP_URL: https://mrdrives.com.br
+      ADMIN_ENTRY_KEY: ${MRDRIVES_ADMIN_ENTRY_KEY}
+      STORE_CART_ENABLED: "false"
       DB_HOST: mariadb_mariadb
       DB_PORT: "3306"
       DB_DATABASE: mrdrives

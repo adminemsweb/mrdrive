@@ -1,3 +1,4 @@
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd700-landing-hero">
     <div class="mrd700-hero-copy">
         <a class="product-back-link" href="/catalogo">Voltar ao catálogo</a>
@@ -27,6 +28,7 @@
         <?php endforeach; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="section mrd700-feature-section">
     <div class="section-heading">
@@ -189,6 +191,7 @@
     </div>
 </section>
 
+<?php if (empty($embeddedShopDetail)): ?>
 <section class="section mrd700-cta-section">
     <div>
         <p class="eyebrow">Aplicação assistida</p>
@@ -200,3 +203,4 @@
         <a class="btn btn-secondary" href="/ticket">Enviar dados técnicos</a>
     </div>
 </section>
+<?php endif; ?>

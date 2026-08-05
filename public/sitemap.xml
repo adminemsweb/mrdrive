@@ -43,8 +43,14 @@
   </url>
   <url>
     <loc>https://mrdrives.com.br/politica-de-privacidade</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
+  <url><loc>https://mrdrives.com.br/termos-de-uso</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://mrdrives.com.br/politica-de-entrega</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://mrdrives.com.br/trocas-e-devolucoes</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://mrdrives.com.br/garantia</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://mrdrives.com.br/formas-de-pagamento</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://mrdrives.com.br/politica-de-cookies</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>

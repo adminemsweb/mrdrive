@@ -12,7 +12,7 @@
         <div class="ticket-form-grid">
             <label>Nome<input name="name" required></label>
             <label>Empresa<input name="company"></label>
-            <label>E-mail<input type="email" name="email"></label>
+            <label>E-mail<input type="email" name="email" value="<?= e($_GET['email'] ?? '') ?>"></label>
             <label>WhatsApp<input name="phone" required placeholder="+55 11 99999-9999"></label>
             <label>Produto
                 <select name="product_interest">

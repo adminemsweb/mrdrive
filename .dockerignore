@@ -1,0 +1,15 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+node_modules
+public/build
+.tmp-screens
+.tmp-three-vendor
+.tmp-docs
+tmp
+output
+mrdrives-deploy.zip
+*.log
+*.tmp

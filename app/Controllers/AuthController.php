@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Core\Auth;
+use App\Core\AdminGate;
 use App\Core\Csrf;
 use App\Core\View;
 
@@ -24,8 +25,14 @@ final class AuthController
         $email = trim((string) ($_POST['email'] ?? ''));
         $password = (string) ($_POST['password'] ?? '');
 
-        if (Auth::attempt($email, $password)) {
-            redirect('/admin/index.php');
+        try {
+            if (Auth::attempt($email, $password)) {
+                redirect('/admin/index.php');
+            }
+        } catch (\PDOException $e) {
+            error_log('[MRDRIVES admin] Database connection unavailable during authentication.');
+            $_SESSION['login_error'] = 'O painel está temporariamente sem conexão com o banco de dados. Verifique a configuração e tente novamente.';
+            redirect('/admin/index.php?route=login');
         }
 
         $_SESSION['login_error'] = 'E-mail ou senha inválidos.';
@@ -35,6 +42,7 @@ final class AuthController
     public function logout(): void
     {
         Auth::logout();
-        redirect('/admin/index.php?route=login');
+        AdminGate::clear();
+        redirect('/');
     }
 }

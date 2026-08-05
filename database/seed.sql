@@ -1,5 +1,5 @@
-INSERT INTO users (name, email, password) VALUES
-('Administrador', 'admin@mrdrives.com.br', '$2y$12$03cQS0ifwFZIXXwqDAYwQOpRGRFwzCvz9ny/ANIhNIGrE9xPw2uaK');
+INSERT INTO users (name, email, password, role, is_active) VALUES
+('Administrador', 'admin@mrdrives.com.br', '$2y$12$j9WyoLOu2/plFVqP1/gnyuH5YuQRr5see3SVzNcGTmTjM0eI8xecW', 'owner', 1);
 
 INSERT INTO products
 (name, model_code, category, short_description, full_description, power, voltage, recommended_applications, technical_specs, main_image, manual_pdf, is_active, is_featured, sort_order)

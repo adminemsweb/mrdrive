@@ -11,7 +11,7 @@ final class Auth
     public static function attempt(string $email, string $password): bool
     {
         $user = (new User())->findByEmail($email);
-        if (!$user || !password_verify($password, $user['password'])) {
+        if (!$user || empty($user['is_active']) || !password_verify($password, $user['password'])) {
             return false;
         }
 
@@ -20,7 +20,9 @@ final class Auth
             'id' => (int) $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
+            'role' => $user['role'] ?? 'admin',
         ];
+        (new User())->touchLastLogin((int) $user['id']);
 
         return true;
     }
@@ -39,6 +41,32 @@ final class Auth
     {
         if (!self::check()) {
             redirect('/admin/index.php?route=login');
+        }
+
+        $sessionUser = self::user();
+        $currentUser = (new User())->find((int) ($sessionUser['id'] ?? 0));
+        if (!$currentUser || empty($currentUser['is_active'])) {
+            self::logout();
+            $_SESSION['login_error'] = 'Seu acesso administrativo está suspenso.';
+            redirect('/admin/index.php?route=login');
+        }
+
+        $_SESSION['admin_user']['name'] = $currentUser['name'];
+        $_SESSION['admin_user']['email'] = $currentUser['email'];
+        $_SESSION['admin_user']['role'] = $currentUser['role'] ?? 'admin';
+    }
+
+    public static function isOwner(): bool
+    {
+        return (self::user()['role'] ?? null) === 'owner';
+    }
+
+    public static function requireOwner(): void
+    {
+        self::requireAdmin();
+        if (!self::isOwner()) {
+            http_response_code(403);
+            exit('Acesso não autorizado.');
         }
     }
 

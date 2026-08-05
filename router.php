@@ -60,11 +60,6 @@ if ($publicFile && str_starts_with($publicFile, realpath($root . '/public')) && 
     return;
 }
 
-$directFile = realpath($root . $path);
-if ($directFile && str_starts_with($directFile, realpath($root)) && is_file($directFile)) {
-    return false;
-}
-
 if (str_starts_with($path, '/admin')) {
     require $root . '/admin/index.php';
     return;

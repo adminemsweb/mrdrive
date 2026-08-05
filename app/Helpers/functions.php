@@ -57,3 +57,25 @@ function money_br(float $value): string
 {
     return 'R$ ' . number_format($value, 2, ',', '.');
 }
+
+function vite_tags(string $entry = 'resources/js/storefront.js'): string
+{
+    $manifestPath = public_path('build/.vite/manifest.json');
+    if (!is_file($manifestPath)) {
+        return '';
+    }
+
+    $manifest = json_decode((string) file_get_contents($manifestPath), true);
+    $chunk = is_array($manifest) ? ($manifest[$entry] ?? null) : null;
+    if (!is_array($chunk) || empty($chunk['file'])) {
+        return '';
+    }
+
+    $tags = [];
+    foreach (($chunk['css'] ?? []) as $cssFile) {
+        $tags[] = '<link rel="stylesheet" href="/build/' . e($cssFile) . '">';
+    }
+    $tags[] = '<script type="module" src="/build/' . e((string) $chunk['file']) . '"></script>';
+
+    return implode("\n    ", $tags);
+}

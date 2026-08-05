@@ -3,7 +3,24 @@ CREATE TABLE users (
     name VARCHAR(120) NOT NULL,
     email VARCHAR(160) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    role ENUM('owner', 'admin') NOT NULL DEFAULT 'admin',
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    last_login_at DATETIME NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_users_active_role (is_active, role)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE customers (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(80) NOT NULL,
+    last_name VARCHAR(120) NOT NULL,
+    name VARCHAR(140) NOT NULL,
+    email VARCHAR(180) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_customers_created_at (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE products (
@@ -17,14 +34,25 @@ CREATE TABLE products (
     voltage VARCHAR(120) NULL,
     recommended_applications TEXT NULL,
     technical_specs MEDIUMTEXT NULL,
+    sku VARCHAR(120) NULL,
+    price DECIMAL(12,2) NULL,
+    compare_at_price DECIMAL(12,2) NULL,
+    sale_channel ENUM('whatsapp', 'cart') NOT NULL DEFAULT 'whatsapp',
+    stock_quantity INT UNSIGNED NOT NULL DEFAULT 0,
+    track_stock TINYINT(1) NOT NULL DEFAULT 0,
+    shipping_days VARCHAR(80) NULL,
     main_image VARCHAR(255) NULL,
     manual_pdf VARCHAR(255) NULL,
     is_active TINYINT(1) NOT NULL DEFAULT 1,
     is_featured TINYINT(1) NOT NULL DEFAULT 0,
+    is_offer TINYINT(1) NOT NULL DEFAULT 0,
+    is_best_seller TINYINT(1) NOT NULL DEFAULT 0,
+    is_new TINYINT(1) NOT NULL DEFAULT 0,
     sort_order INT NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    INDEX idx_products_active_sort (is_active, sort_order)
+    INDEX idx_products_active_sort (is_active, sort_order),
+    UNIQUE INDEX idx_products_sku (sku)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE product_images (

@@ -2009,6 +2009,19 @@
   min-height: 510px;
 }
 
+/* Keep the desktop slide flush with the carousel so the colored banner reaches
+   the assurances strip without exposing the hero's fallback background. */
+@media (min-width: 981px) {
+  .storefront-hero-carousel {
+    height: 510px;
+  }
+
+  .storefront-hero-carousel .swiper-wrapper,
+  .storefront-hero-carousel .storefront-promotion.swiper-slide {
+    height: 100%;
+  }
+}
+
 .storefront-hero-carousel .storefront-promotion.swiper-slide {
   position: relative;
   isolation: isolate;

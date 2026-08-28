@@ -62,6 +62,16 @@ $isProductPage = in_array($requestPath, ['/produto', '/mrd600', '/mrd700', '/mrd
     && is_array($product);
 $productImagePath = $isProductPage && !empty($product['main_image']) ? optimized_image_url((string) $product['main_image']) : '';
 $seoImage = 'https://mrdrives.com.br' . ($productImagePath ?: optimized_image_url('assets/img/banner.png'));
+$seoImageExtension = strtolower(pathinfo((string) parse_url($seoImage, PHP_URL_PATH), PATHINFO_EXTENSION));
+$seoImageType = match ($seoImageExtension) {
+    'avif' => 'image/avif',
+    'jpg', 'jpeg' => 'image/jpeg',
+    'png' => 'image/png',
+    default => 'image/webp',
+};
+$seoImageAlt = $isProductPage
+    ? (string) ($product['name'] ?? 'Inversor industrial MRDRIVES')
+    : 'Inversores industriais MRDRIVES';
 $nonIndexablePaths = [
     '/ticket',
     '/checkout',
@@ -166,8 +176,8 @@ if ($isProductPage) {
     <meta property="og:description" content="<?= e($seo['description']) ?>">
     <meta property="og:image" content="<?= e($seoImage) ?>">
     <meta property="og:image:secure_url" content="<?= e($seoImage) ?>">
-    <meta property="og:image:type" content="image/webp">
-    <meta property="og:image:alt" content="Inversores industriais MRDRIVES">
+    <meta property="og:image:type" content="<?= e($seoImageType) ?>">
+    <meta property="og:image:alt" content="<?= e($seoImageAlt) ?>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= e($seo['title']) ?>">
     <meta name="twitter:description" content="<?= e($seo['description']) ?>">

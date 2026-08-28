@@ -7,7 +7,7 @@ $customerUser = CustomerAuth::user();
 $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
 $seoPages = [
     '/' => [
-        'title' => 'MR Drives',
+        'title' => 'Inversores de Frequência Industriais | MR Drives',
         'description' => 'Inversores de frequência MRD600, MRD700 e MRD700/IP65 para máquinas, bombas e automação industrial, com suporte técnico especializado.',
     ],
     '/catalogo' => [
@@ -57,10 +57,27 @@ if ($canonicalPath === '/produto' && isset($_GET['id'])) {
     $canonicalPath .= '?id=' . max(0, (int) $_GET['id']);
 }
 $canonicalUrl = 'https://mrdrives.com.br' . ($canonicalPath === '/' ? '/' : rtrim($canonicalPath, '/'));
-$seoImage = 'https://mrdrives.com.br/assets/img/banner.png';
-$robotsContent = in_array($requestPath, ['/ticket', '/checkout'], true)
+$isProductPage = in_array($requestPath, ['/produto', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
+    && !empty($product)
+    && is_array($product);
+$productImagePath = $isProductPage && !empty($product['main_image']) ? optimized_image_url((string) $product['main_image']) : '';
+$seoImage = 'https://mrdrives.com.br' . ($productImagePath ?: optimized_image_url('assets/img/banner.png'));
+$nonIndexablePaths = [
+    '/ticket',
+    '/checkout',
+    '/entrar',
+    '/criar-conta',
+    '/confirmar-email',
+    '/reenviar-confirmacao',
+    '/sair',
+];
+$isErrorResponse = http_response_code() >= 400;
+$isPrivatePath = in_array($requestPath, $nonIndexablePaths, true)
+    || str_starts_with($requestPath, '/minha-conta');
+$robotsContent = ($isErrorResponse || $isPrivatePath)
     ? 'noindex, follow'
     : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+$openGraphType = $isProductPage ? 'product' : 'website';
 $structuredData = [
     '@context' => 'https://schema.org',
     '@graph' => [
@@ -92,6 +109,44 @@ $structuredData = [
         ],
     ],
 ];
+if ($isProductPage) {
+    $productUrl = $canonicalUrl;
+    $productSchema = [
+        '@type' => 'Product',
+        '@id' => $productUrl . '#product',
+        'name' => (string) ($product['name'] ?? 'Inversor de frequência MRDRIVES'),
+        'description' => (string) ($product['short_description'] ?? $seo['description']),
+        'image' => [$seoImage],
+        'sku' => (string) ($product['sku'] ?? $product['model_code'] ?? ''),
+        'mpn' => (string) ($product['model_code'] ?? ''),
+        'category' => (string) ($product['category'] ?? 'Inversores de frequência'),
+        'brand' => ['@type' => 'Brand', 'name' => 'MRDRIVES'],
+        'url' => $productUrl,
+    ];
+    if (isset($product['price']) && $product['price'] !== '' && (float) $product['price'] > 0) {
+        $outOfStock = !empty($product['track_stock']) && (int) ($product['stock_quantity'] ?? 0) < 1;
+        $productSchema['offers'] = [
+            '@type' => 'Offer',
+            'url' => $productUrl,
+            'priceCurrency' => 'BRL',
+            'price' => number_format((float) $product['price'], 2, '.', ''),
+            'availability' => $outOfStock
+                ? 'https://schema.org/OutOfStock'
+                : 'https://schema.org/InStock',
+            'itemCondition' => 'https://schema.org/NewCondition',
+        ];
+    }
+    $structuredData['@graph'][] = $productSchema;
+    $structuredData['@graph'][] = [
+        '@type' => 'BreadcrumbList',
+        '@id' => $productUrl . '#breadcrumb',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Início', 'item' => 'https://mrdrives.com.br/'],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Produtos', 'item' => 'https://mrdrives.com.br/catalogo'],
+            ['@type' => 'ListItem', 'position' => 3, 'name' => (string) ($product['name'] ?? 'Produto'), 'item' => $productUrl],
+        ],
+    ];
+}
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -104,16 +159,14 @@ $structuredData = [
     <meta name="googlebot" content="<?= e($robotsContent) ?>">
     <link rel="canonical" href="<?= e($canonicalUrl) ?>">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="<?= e($openGraphType) ?>">
     <meta property="og:site_name" content="MRDRIVES">
     <meta property="og:url" content="<?= e($canonicalUrl) ?>">
     <meta property="og:title" content="<?= e($seo['title']) ?>">
     <meta property="og:description" content="<?= e($seo['description']) ?>">
     <meta property="og:image" content="<?= e($seoImage) ?>">
     <meta property="og:image:secure_url" content="<?= e($seoImage) ?>">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="1920">
-    <meta property="og:image:height" content="1080">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:image:alt" content="Inversores industriais MRDRIVES">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= e($seo['title']) ?>">
@@ -122,8 +175,8 @@ $structuredData = [
     <script type="application/ld+json"><?= json_encode($structuredData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
     <link rel="icon" type="image/png" sizes="64x64" href="<?= asset('img/favicon-64.png') ?>">
     <link rel="shortcut icon" type="image/png" href="<?= asset('img/favicon-64.png') ?>">
-    <link rel="stylesheet" href="<?= asset('css/style.css') ?>?v=<?= filemtime(public_path('assets/css/style.css')) ?>">
-    <link rel="stylesheet" href="<?= asset('css/ecommerce.css') ?>?v=<?= filemtime(public_path('assets/css/ecommerce.css')) ?>">
+    <link rel="stylesheet" href="<?= versioned_asset('css/style.css') ?>">
+    <link rel="stylesheet" href="<?= versioned_asset('css/ecommerce.css') ?>">
     <?= vite_tags() ?>
 </head>
 <body>
@@ -133,9 +186,9 @@ $structuredData = [
         <nav aria-label="Links comerciais"><a href="/politica-de-entrega">Entrega e frete</a><a href="/trocas-e-devolucoes">Trocas e devoluções</a><a href="/garantia">Garantia</a><a href="/ticket">Central de ajuda</a></nav>
     </div>
     <header class="site-header marketplace-main-header" x-data="marketplaceSearch">
-        <a class="brand brand-logo marketplace-logo" href="/" aria-label="MRDRIVES - Página inicial">
+        <div class="brand brand-logo marketplace-logo">
             <img src="<?= asset('img/logo-site.png') ?>" alt="MRDRIVES">
-        </a>
+        </div>
         <form class="header-postal-code" data-header-cep novalidate>
             <label for="header-postal-code"><i data-lucide="map-pin" aria-hidden="true"></i><span><small>Entregar em</small><strong data-header-cep-label>Informe seu CEP</strong></span></label>
             <span class="header-postal-entry">
@@ -333,9 +386,9 @@ $structuredData = [
     </footer>
     <aside class="cookie-banner" data-cookie-banner hidden aria-label="Preferências de privacidade"><div><strong>Sua privacidade importa</strong><p>Usamos armazenamento essencial para manter suas preferências. Tecnologias opcionais só serão usadas com sua escolha.</p><a href="/politica-de-cookies">Entenda nossa política</a></div><div><button type="button" data-cookie-reject>Somente essenciais</button><button type="button" data-cookie-accept>Aceitar opcionais</button></div></aside>
     <button class="scroll-top-button" type="button" aria-label="Voltar ao topo"><i data-lucide="chevron-up"></i></button>
-    <script src="<?= asset('js/main.js') ?>"></script>
+    <script src="<?= versioned_asset('js/main.js') ?>"></script>
     <script>window.MRShop = <?= json_encode(['whatsapp' => app_config('whatsapp'), 'cartEnabled' => $cartEnabled], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>;</script>
-    <script src="<?= asset('js/ecommerce.js') ?>?v=<?= filemtime(public_path('assets/js/ecommerce.js')) ?>"></script>
-    <script type="module" src="<?= asset('js/product-3d.js') ?>?v=<?= filemtime(public_path('assets/js/product-3d.js')) ?>"></script>
+    <script src="<?= versioned_asset('js/ecommerce.js') ?>"></script>
+    <script type="module" src="<?= versioned_asset('js/product-3d.js') ?>"></script>
 </body>
 </html>

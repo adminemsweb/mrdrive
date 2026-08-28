@@ -37,6 +37,33 @@ function asset(string $path): string
     return '/assets/' . ltrim($path, '/');
 }
 
+function versioned_asset(string $path): string
+{
+    $normalizedPath = ltrim($path, '/');
+    $file = public_path('assets/' . $normalizedPath);
+    $version = is_file($file) ? '?v=' . filemtime($file) : '';
+
+    return asset($normalizedPath) . $version;
+}
+
+function optimized_image_url(?string $path): string
+{
+    $normalizedPath = ltrim((string) $path, '/');
+    if ($normalizedPath === '') {
+        return '';
+    }
+
+    $extension = strtolower(pathinfo($normalizedPath, PATHINFO_EXTENSION));
+    if (in_array($extension, ['png', 'jpg', 'jpeg'], true)) {
+        $webpPath = preg_replace('/\.(?:png|jpe?g)$/i', '.webp', $normalizedPath);
+        if (is_string($webpPath) && is_file(public_path($webpPath))) {
+            return '/' . $webpPath;
+        }
+    }
+
+    return '/' . $normalizedPath;
+}
+
 function upload_url(?string $path): string
 {
     return $path ? '/' . ltrim($path, '/') : '';

@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="mrd700ip65-hero-media">
-        <img class="mrd700ip65-main-product" src="<?= asset('img/mrd700-ip65/mrd700ip65-transparent.png') ?>" alt="Inversor MRD700/IP65">
+        <img class="mrd700ip65-main-product" src="<?= optimized_image_url('assets/img/mrd700-ip65/mrd700ip65-transparent.png') ?>" alt="Inversor MRD700/IP65" decoding="async">
         <div class="mrd700ip65-hero-badges">
             <span>IP65 lavável</span>
             <span>0,4 a 400 kW</span>
@@ -30,7 +30,7 @@
     </div>
     <div class="mrd700ip65-gallery">
         <?php foreach (['um.jpeg', 'dois.jpeg', 'tres.jpeg', 'quatro.jpeg', 'cinco.jpeg', 'seis.jpeg', 'sete.jpeg', 'oito.jpeg'] as $image): ?>
-            <img src="<?= asset('img/mrd700-ip65/' . $image) ?>" alt="Detalhe MRD700/IP65">
+            <img src="<?= optimized_image_url('assets/img/mrd700-ip65/' . $image) ?>" alt="Detalhe MRD700/IP65" loading="lazy" decoding="async">
         <?php endforeach; ?>
     </div>
 </section>
@@ -41,12 +41,12 @@
         <article>
             <p class="eyebrow">Modelo e tamanho</p>
             <h2>Dimensões para instalação.</h2>
-            <img src="<?= asset('img/mrd700-ip65/modelomrd700ip65.png') ?>" alt="Modelo e tamanho MRD700/IP65">
+            <img src="<?= optimized_image_url('assets/img/mrd700-ip65/modelomrd700ip65.png') ?>" alt="Modelo e tamanho MRD700/IP65" loading="lazy" decoding="async">
         </article>
         <article>
             <p class="eyebrow">Diagrama elétrico</p>
             <h2>Ligação e expansão do inversor.</h2>
-            <img src="<?= asset('img/mrd700-ip65/image.png') ?>" alt="Diagrama elétrico MRD700/IP65">
+            <img src="<?= optimized_image_url('assets/img/mrd700-ip65/image.png') ?>" alt="Diagrama elétrico MRD700/IP65" loading="lazy" decoding="async">
         </article>
     </div>
 </section>
@@ -60,7 +60,7 @@
         <p>Esse video mostra a proposta do modelo IP65: proteção para instalações sujeitas a poeira, umidade e rotinas de limpeza.</p>
     </div>
     <div class="mrd700ip65-video-card">
-        <video src="<?= asset('img/videos/mrd700ip65.mp4') ?>" controls playsinline preload="metadata" poster="<?= asset('img/mrd700-ip65/mrip65banner.png') ?>"></video>
+        <video src="<?= asset('img/videos/mrd700ip65.mp4') ?>" controls playsinline preload="none" poster="<?= optimized_image_url('assets/img/mrd700-ip65/mrip65banner.png') ?>"></video>
     </div>
 </section>
 

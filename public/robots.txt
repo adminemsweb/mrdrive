@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /minha-conta
+Disallow: /confirmar-email
+Disallow: /reenviar-confirmacao
+Disallow: /sair
 Disallow: /quote
 
 Sitemap: https://mrdrives.com.br/sitemap.xml

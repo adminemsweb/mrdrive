@@ -623,7 +623,7 @@
 .storefront-promotion::before { content: ''; position: absolute; right: -80px; bottom: -120px; width: 380px; height: 380px; border: 1px solid rgba(18,104,179,.13); border-radius: 50%; box-shadow: 0 0 0 42px rgba(18,104,179,.035), 0 0 0 88px rgba(18,104,179,.025); }
 .storefront-promotion-copy { position: relative; z-index: 2; align-self: center; padding: clamp(30px, 4vw, 58px); padding-right: 10px; }
 .storefront-promotion-label { display: inline-flex; padding: 7px 10px; border-radius: 20px; background: #fff; color: #e85b1d; font-size: .62rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(15,48,73,.08); }
-.storefront-promotion h1 { max-width: 620px; margin: 18px 0 13px; color: #11283b; font-size: clamp(2.25rem, 3.5vw, 4rem); line-height: .98; letter-spacing: -.052em; }
+.storefront-promotion :is(h1, h2) { max-width: 620px; margin: 18px 0 13px; color: #11283b; font-size: clamp(2.25rem, 3.5vw, 4rem); line-height: .98; letter-spacing: -.052em; }
 .storefront-promotion-copy > p { max-width: 530px; margin: 0; color: #53687a; font-size: .85rem; line-height: 1.6; }
 .storefront-promotion-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
 .storefront-promotion-actions a { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid #c4d2dc; border-radius: 8px; background: #fff; color: #183247; font-size: .72rem; font-weight: 900; }
@@ -687,7 +687,7 @@
   .storefront-hero { padding: 12px 12px 0; }
   .storefront-promotion { grid-template-columns: 1fr; min-height: 0; }
   .storefront-promotion-copy { padding: 28px 22px 12px; }
-  .storefront-promotion h1 { font-size: 2.25rem; }
+  .storefront-promotion :is(h1, h2) { font-size: 2.25rem; }
   .storefront-promotion-product { min-height: 230px; padding: 0 20px 10px; }
   .storefront-promotion-product img { height: 220px; }
   .storefront-promotion-product > span { top: 10px; right: 14px; }
@@ -773,7 +773,7 @@
 .storefront-promotion::before { right: 10%; bottom: -190px; width: 500px; height: 500px; opacity: .6; }
 .storefront-promotion-copy { padding: 48px clamp(24px, 5.5vw, 90px); }
 .storefront-promotion-label { padding: 0; background: transparent; color: #e55720; box-shadow: none; }
-.storefront-promotion h1 { max-width: 680px; margin-top: 17px; font-size: clamp(2.7rem, 4.2vw, 4.7rem); line-height: .96; }
+.storefront-promotion :is(h1, h2) { max-width: 680px; margin-top: 17px; font-size: clamp(2.7rem, 4.2vw, 4.7rem); line-height: .96; }
 .storefront-promotion-copy > p { font-size: .95rem; }
 .storefront-promotion-actions a { min-height: 48px; padding-inline: 22px; border-color: #17222c; border-radius: 0; background: transparent; color: #17222c; }
 .storefront-promotion-actions a:first-child { border-color: #171d22; background: #171d22; color: #fff; box-shadow: none; }
@@ -816,14 +816,14 @@
   .marketplace-search { grid-column: 1 / -1; grid-row: 2; }
   .storefront-promotion { min-height: 350px; }
   .storefront-promotion-copy { padding-inline: 30px; }
-  .storefront-promotion h1 { font-size: 3.2rem; }
+  .storefront-promotion :is(h1, h2) { font-size: 3.2rem; }
   .storefront-promotion-product img { height: 300px; }
 }
 
 @media (max-width: 700px) {
   .storefront-promotion { grid-template-columns: 1fr; }
   .storefront-promotion-copy { padding: 35px 22px 10px; }
-  .storefront-promotion h1 { font-size: 2.55rem; }
+  .storefront-promotion :is(h1, h2) { font-size: 2.55rem; }
   .storefront-promotion-product { min-height: 230px; padding: 0 24px 8px; }
   .storefront-promotion-product img { height: 225px; }
   .storefront-hero-assurances { grid-template-columns: 1fr 1fr; padding: 0 12px; }
@@ -849,7 +849,7 @@
   min-height: 430px;
   padding: 58px max(24px, calc((100vw - 1180px) / 2));
   border: 0;
-  background: url('/assets/img/banner.png') center 48% / cover no-repeat;
+  background: url('/assets/img/banner.webp') center 48% / cover no-repeat;
   text-align: center;
   overflow: hidden;
 }
@@ -1180,7 +1180,7 @@
   box-shadow: 0 0 0 42px rgba(10,48,75,.03), 0 0 0 88px rgba(239,100,31,.025);
 }
 .storefront-promotion-label { color: #d85116; }
-.storefront-promotion h1 { color: var(--mr-brand-navy); }
+.storefront-promotion :is(h1, h2) { color: var(--mr-brand-navy); }
 .storefront-promotion-copy > p { color: #566a76; }
 .storefront-promotion-actions a { border-color: var(--mr-brand-navy); color: var(--mr-brand-navy); }
 .storefront-promotion-actions a:first-child { border-color: var(--mr-brand-orange); background: var(--mr-brand-orange); color: #fff; box-shadow: 0 10px 22px rgba(239,100,31,.18); }
@@ -2009,16 +2009,30 @@
   min-height: 510px;
 }
 
-/* Keep the desktop slide flush with the carousel so the colored banner reaches
-   the assurances strip without exposing the hero's fallback background. */
+/* Keep the desktop slide flush with the carousel and leave enough vertical
+   room for the longest headline, action buttons and pagination controls. */
 @media (min-width: 981px) {
   .storefront-hero-carousel {
-    height: 510px;
+    height: clamp(560px, 36vw, 620px);
   }
 
   .storefront-hero-carousel .swiper-wrapper,
   .storefront-hero-carousel .storefront-promotion.swiper-slide {
     height: 100%;
+  }
+
+  .storefront-hero-carousel .storefront-promotion-copy {
+    padding-top: 46px;
+    padding-bottom: 86px;
+  }
+
+  .storefront-hero-carousel .storefront-promotion-actions {
+    position: relative;
+    z-index: 6;
+  }
+
+  .storefront-hero-pagination.swiper-pagination-horizontal {
+    bottom: 30px;
   }
 }
 
@@ -2085,7 +2099,7 @@
   color: #fff;
 }
 
-.storefront-hero-carousel .storefront-promotion h1 {
+.storefront-hero-carousel .storefront-promotion :is(h1, h2) {
   max-width: 760px;
   color: #fff;
   font-size: clamp(2.8rem, 4.4vw, 5rem);
@@ -2226,7 +2240,7 @@
     right: 18px;
   }
 
-  .storefront-hero-carousel .storefront-promotion h1 {
+  .storefront-hero-carousel .storefront-promotion :is(h1, h2) {
     font-size: clamp(2.35rem, 11vw, 3.35rem);
   }
 
@@ -4348,7 +4362,7 @@
   padding: 58px max(24px, calc((100vw - 1180px) / 2));
   border: 0;
   border-radius: 0;
-  background: url('/assets/img/banner.png') center 48% / cover no-repeat;
+  background: url('/assets/img/banner.webp') center 48% / cover no-repeat;
   text-align: center;
   overflow: hidden;
 }

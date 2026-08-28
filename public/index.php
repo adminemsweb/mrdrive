@@ -136,4 +136,4 @@ if ($path === '/quote' && is_post()) {
 }
 
 http_response_code(404);
-$controller->home();
+$controller->notFound();

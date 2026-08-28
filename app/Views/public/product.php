@@ -1,7 +1,7 @@
 <?php
 $price = isset($product['price']) && $product['price'] !== '' ? (float) $product['price'] : null;
 $comparePrice = isset($product['compare_at_price']) && $product['compare_at_price'] !== '' ? (float) $product['compare_at_price'] : null;
-$mainImage = !empty($product['main_image']) ? upload_url($product['main_image']) : asset('img/mrd600/mrd600_2.jpeg');
+$mainImage = !empty($product['main_image']) ? optimized_image_url($product['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
 $outOfStock = !empty($product['track_stock']) && (int) ($product['stock_quantity'] ?? 0) < 1;
 $saleChannel = (string) ($product['sale_channel'] ?? 'whatsapp');
 $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
@@ -13,11 +13,12 @@ $reviewCount = 6;
 
 <section class="shop-product-detail">
     <div class="shop-detail-gallery" data-product-gallery>
-        <div class="shop-detail-main-image"><img src="<?= e($mainImage) ?>" alt="<?= e($product['name']) ?>" data-gallery-main></div>
+        <div class="shop-detail-main-image"><img src="<?= e($mainImage) ?>" alt="<?= e($product['name']) ?>" fetchpriority="high" decoding="async" data-gallery-main></div>
         <div class="shop-detail-thumbs">
             <button class="is-active" type="button" data-gallery-thumb="<?= e($mainImage) ?>"><img src="<?= e($mainImage) ?>" alt="Vista principal"></button>
             <?php foreach (($images ?? []) as $index => $image): ?>
-                <button type="button" data-gallery-thumb="<?= upload_url($image['image_path']) ?>"><img src="<?= upload_url($image['image_path']) ?>" alt="Vista <?= $index + 2 ?> de <?= e($product['name']) ?>"></button>
+                <?php $galleryImage = optimized_image_url($image['image_path']); ?>
+                <button type="button" data-gallery-thumb="<?= e($galleryImage) ?>"><img src="<?= e($galleryImage) ?>" alt="Vista <?= $index + 2 ?> de <?= e($product['name']) ?>" loading="lazy" decoding="async"></button>
             <?php endforeach; ?>
         </div>
     </div>
@@ -89,7 +90,7 @@ endif; ?>
     <h2 id="related-products-title">Produtos relacionados</h2>
     <div class="product-related-grid">
         <?php foreach ($relatedProducts as $related):
-            $relatedImage = !empty($related['main_image']) ? upload_url($related['main_image']) : asset('img/mrd600/mrd600_2.jpeg');
+            $relatedImage = !empty($related['main_image']) ? optimized_image_url($related['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
             $relatedPrice = isset($related['price']) && $related['price'] !== '' ? (float) $related['price'] : null;
             $relatedUrl = !empty($related['url']) ? (string) $related['url'] : '/produto?id=' . (int) $related['id'];
         ?>

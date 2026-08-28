@@ -166,6 +166,14 @@ final class PublicController
         ], 'public/layout');
     }
 
+    public function notFound(): void
+    {
+        View::render('public/not-found', [
+            'title' => 'Página não encontrada | MR Drives',
+            'description' => 'A página solicitada não foi encontrada no site da MR Drives.',
+        ], 'public/layout');
+    }
+
     public function ticketSubmit(): void
     {
         Csrf::verify();
@@ -309,13 +317,38 @@ final class PublicController
         }));
 
         View::render('public/product', [
-            'title' => ($product['name'] ?? 'Produto') . ' | MRDRIVES',
+            'title' => $this->productSeoTitle($product),
+            'description' => $this->productSeoDescription($product),
             'product' => $product,
             'images' => $gallery,
             'technicalView' => $presentation['technical_view'] ?? null,
             'relatedProducts' => array_slice(array_map(fn(array $item): array => $this->normalizeStoreProduct($item), $relatedProducts), 0, 4),
             'whatsapp' => app_config('whatsapp'),
         ], 'public/layout');
+    }
+
+    private function productSeoTitle(array $product): string
+    {
+        $modelCode = strtoupper(trim((string) ($product['model_code'] ?? '')));
+
+        return match ($modelCode) {
+            'MRD600' => 'Inversor de Frequência MRD600 220 V e 380 V | MR Drives',
+            'MRD700' => 'Inversor Vetorial MRD700 para Automação | MR Drives',
+            'MRD700/IP65', 'MRD700-IP65' => 'Inversor IP65 MRD700 para Ambientes Severos | MR Drives',
+            default => ($product['name'] ?? 'Inversor de Frequência') . ' | MR Drives',
+        };
+    }
+
+    private function productSeoDescription(array $product): string
+    {
+        $modelCode = strtoupper(trim((string) ($product['model_code'] ?? '')));
+
+        return match ($modelCode) {
+            'MRD600' => 'MRD600: inversor de frequência compacto para máquinas, bombas e ventiladores, disponível para aplicações industriais em redes 220 V e 380 V.',
+            'MRD700' => 'MRD700: inversor vetorial industrial de alto desempenho, com expansão PLC e protocolos para automação de máquinas e processos.',
+            'MRD700/IP65', 'MRD700-IP65' => 'MRD700/IP65: inversor de frequência protegido contra água, poeira e umidade, desenvolvido para ambientes industriais severos.',
+            default => (string) ($product['short_description'] ?? 'Inversores de frequência e soluções para automação industrial MR Drives.'),
+        };
     }
 
     private function normalizeStoreProduct(array $product): array

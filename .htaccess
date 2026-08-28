@@ -3,6 +3,9 @@ Options -Indexes
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteCond %{HTTP_HOST} ^www\.mrdrives\.com\.br$ [NC]
+    RewriteRule ^ https://mrdrives.com.br%{REQUEST_URI} [R=301,L,NE]
+
     RewriteRule ^admin/?$ admin/index.php [L]
     RewriteRule ^admin/(.*)$ admin/$1 [L]
 

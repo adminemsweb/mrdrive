@@ -76,7 +76,7 @@ sort($categories);
         <?php foreach ($products as $product):
             $price = isset($product['price']) && $product['price'] !== '' ? (float) $product['price'] : null;
             $comparePrice = isset($product['compare_at_price']) && $product['compare_at_price'] !== '' ? (float) $product['compare_at_price'] : null;
-            $image = !empty($product['main_image']) ? upload_url($product['main_image']) : asset('img/mrd600/mrd600_2.jpeg');
+            $image = !empty($product['main_image']) ? optimized_image_url($product['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
             $category = trim((string) ($product['category'] ?? 'Soluções industriais'));
             $outOfStock = !empty($product['track_stock']) && (int) ($product['stock_quantity'] ?? 0) < 1;
             $saleChannel = (string) ($product['sale_channel'] ?? 'whatsapp');
@@ -87,7 +87,7 @@ sort($categories);
             <article class="shop-product-card" data-product-card data-name="<?= e(strtolower(($product['name'] ?? '') . ' ' . ($product['model_code'] ?? '') . ' ' . $category . ' ' . ($product['recommended_applications'] ?? ''))) ?>" data-category="<?= e(strtolower($category)) ?>" data-price="<?= $price ?? '' ?>" data-featured="<?= !empty($product['is_featured']) ? '1' : '0' ?>">
                 <a class="shop-product-image" href="<?= e($productUrl) ?>">
                     <?php if (!empty($product['is_featured'])): ?><span class="shop-product-badge">Destaque</span><?php endif; ?>
-                    <img src="<?= e($image) ?>" alt="<?= e($product['name']) ?>" loading="lazy">
+                    <img src="<?= e($image) ?>" alt="<?= e($product['name']) ?>" loading="lazy" decoding="async">
                 </a>
                 <div class="shop-product-content">
                     <div class="shop-product-meta"><span><?= e($category) ?></span><small>SKU <?= e($product['sku'] ?? $product['model_code']) ?></small></div>

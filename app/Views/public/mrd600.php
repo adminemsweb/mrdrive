@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="mrd600-hero-media">
-        <img class="mrd600-main-product" src="<?= asset('img/mrd600/mrd600_2.png') ?>" alt="Inversor MRD600">
+        <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/mrd600_2.png') ?>" alt="Inversor MRD600" decoding="async">
         <div class="mrd600-hero-badges">
             <span>0,4 a 15 kW</span>
             <span>220V / 380V</span>
@@ -23,10 +23,10 @@
 
 <section class="section mrd600-gallery-section">
     <div class="mrd600-gallery">
-        <img src="<?= asset('img/mrd600/mrd600.png') ?>" alt="MRD600 vista frontal">
-        <img src="<?= asset('img/mrd600/mrd600_3.png') ?>" alt="MRD600 detalhe do produto">
-        <img src="<?= asset('img/mrd600/mrd600_4.png') ?>" alt="MRD600 em perspectiva">
-        <img src="<?= asset('img/mrd600/mrd600_5.png') ?>" alt="MRD600 linha de inversores">
+        <img src="<?= optimized_image_url('assets/img/mrd600/mrd600.png') ?>" alt="MRD600 vista frontal" loading="lazy" decoding="async">
+        <img src="<?= optimized_image_url('assets/img/mrd600/mrd600_3.png') ?>" alt="MRD600 detalhe do produto" loading="lazy" decoding="async">
+        <img src="<?= optimized_image_url('assets/img/mrd600/mrd600_4.png') ?>" alt="MRD600 em perspectiva" loading="lazy" decoding="async">
+        <img src="<?= optimized_image_url('assets/img/mrd600/mrd600_5.png') ?>" alt="MRD600 linha de inversores" loading="lazy" decoding="async">
     </div>
 </section>
 <?php endif; ?>
@@ -90,12 +90,12 @@
         <article>
             <p class="eyebrow">Ligação e terminais</p>
             <h2>Diagrama elétrico de referência.</h2>
-            <img src="<?= asset('img/mrd600/modelomrd600.png') ?>" alt="Diagrama elétrico MRD600">
+            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600.png') ?>" alt="Diagrama elétrico MRD600" loading="lazy" decoding="async">
         </article>
         <article>
             <p class="eyebrow">Dimensão do modelo</p>
             <h2>Medidas para painel e montagem.</h2>
-            <img src="<?= asset('img/mrd600/modelomrd600_2.png') ?>" alt="Dimensões mecanicas MRD600">
+            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600_2.png') ?>" alt="Dimensões mecanicas MRD600" loading="lazy" decoding="async">
         </article>
     </div>
 </section>

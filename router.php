@@ -17,6 +17,8 @@ if ($publicFile && str_starts_with($publicFile, realpath($root . '/public')) && 
         'webp' => 'image/webp',
         'gif' => 'image/gif',
         'svg' => 'image/svg+xml',
+        'txt' => 'text/plain; charset=utf-8',
+        'xml' => 'application/xml; charset=utf-8',
         'pdf' => 'application/pdf',
         'mp4' => 'video/mp4',
         'webm' => 'video/webm',

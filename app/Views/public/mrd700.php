@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="mrd700-hero-media">
-        <img class="mrd700-main-product" src="<?= asset('img/mrd700/capa.png') ?>" alt="Inversor MRD700">
+        <img class="mrd700-main-product" src="<?= optimized_image_url('assets/img/mrd700/capa.png') ?>" alt="Inversor MRD700" decoding="async">
         <div class="mrd700-hero-badges">
             <span>0,4 a 1000 kW</span>
             <span>220V / 380V / 480V</span>
@@ -24,7 +24,7 @@
 <section class="section mrd700-gallery-section">
     <div class="mrd700-gallery">
         <?php foreach (['089A0079.png', '089A0084.png', '089A0087.png', '089A0090.png', '089A0092.png', '089A0095.png', '089A0106.png', '089A9778.png'] as $image): ?>
-            <img src="<?= asset('img/mrd700/' . $image) ?>" alt="Detalhe do inversor MRD700">
+            <img src="<?= optimized_image_url('assets/img/mrd700/' . $image) ?>" alt="Detalhe do inversor MRD700" loading="lazy" decoding="async">
         <?php endforeach; ?>
     </div>
 </section>
@@ -87,12 +87,12 @@
         <article>
             <p class="eyebrow">Ligação e terminais</p>
             <h2>Diagrama de alimentação, I/O, comunicação e STO.</h2>
-            <img src="<?= asset('img/mrd700/modelomrd700_2.png') ?>" alt="Diagrama elétrico MRD700">
+            <img src="<?= optimized_image_url('assets/img/mrd700/modelomrd700_2.png') ?>" alt="Diagrama elétrico MRD700" loading="lazy" decoding="async">
         </article>
         <article>
             <p class="eyebrow">Modelo e tamanho</p>
             <h2>Referências mecanicas para integração.</h2>
-            <img src="<?= asset('img/mrd700/modelomrd700.png') ?>" alt="Modelo e tamanho MRD700">
+            <img src="<?= optimized_image_url('assets/img/mrd700/modelomrd700.png') ?>" alt="Modelo e tamanho MRD700" loading="lazy" decoding="async">
         </article>
     </div>
 </section>

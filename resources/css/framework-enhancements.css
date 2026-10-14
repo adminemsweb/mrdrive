@@ -1240,6 +1240,8 @@
   padding-inline: 18px;
   border-radius: 20px;
   white-space: nowrap;
+  background: transparent;
+  box-shadow: none;
 }
 
 .marketplace-category-nav .marketplace-departments-menu {
@@ -5022,3 +5024,23 @@
   .customer-dashboard-list { grid-template-columns: 1fr; }
   .customer-dashboard-card { padding: 21px 18px; }
 }
+/* Compact home carousel, shared by MR Drives and Samwha. */
+.storefront-hero-carousel,.storefront-hero-carousel .swiper-wrapper,.storefront-hero-carousel .storefront-promotion.swiper-slide{min-height:440px!important}
+.storefront-hero-carousel .storefront-promotion.swiper-slide{height:auto!important}
+.storefront-hero-carousel .storefront-promotion-copy{padding-top:34px;padding-bottom:44px}
+.storefront-hero-carousel .storefront-promotion :is(h1,h2){font-size:clamp(28px,3vw,46px);line-height:1.12;max-width:620px}
+.storefront-hero-carousel .storefront-promotion-copy>p{font-size:14px;line-height:1.65;max-width:500px}
+.storefront-hero-carousel .storefront-promotion-label{font-size:10px}
+.storefront-hero-carousel .storefront-promotion-tags span{font-size:10px;padding:6px 9px}
+.storefront-hero-carousel .storefront-promotion-actions{margin-top:20px;gap:10px}
+.storefront-hero-carousel .storefront-promotion-actions a{min-height:44px;padding:12px 18px;font-size:12px}
+.storefront-hero-carousel .storefront-promotion-product{padding-top:24px;padding-bottom:40px;min-height:0}
+.storefront-hero-carousel .storefront-promotion-product img{max-height:260px;max-width:75%}
+.storefront-hero-carousel .storefront-promotion-product::before{width:min(30vw,360px)}
+.storefront-hero-carousel .storefront-promotion--samwha.swiper-slide{background:linear-gradient(115deg,#072d39,#086371 65%,#0099a1)}
+.storefront-hero-carousel .storefront-samwha-brand{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+.storefront-samwha-logo{position:relative;z-index:2;width:min(80%,420px);height:170px;overflow:hidden;border-radius:16px;background:#fff;box-shadow:0 16px 40px #001c2930}
+.storefront-hero-carousel .storefront-samwha-logo img{width:100%;height:100%;max-width:100%;max-height:none;object-fit:cover;filter:none}
+.storefront-samwha-caption{position:relative;z-index:2;color:#d6f2f4;font-size:12px;letter-spacing:.5px}
+@media(max-width:900px){.storefront-hero-carousel .storefront-promotion :is(h1,h2){font-size:32px}.storefront-hero-carousel .storefront-promotion-product img{max-height:220px}.storefront-samwha-logo{height:130px}}
+@media(max-width:700px){.storefront-hero-carousel,.storefront-hero-carousel .swiper-wrapper,.storefront-hero-carousel .storefront-promotion.swiper-slide{min-height:520px!important}.storefront-hero-carousel .storefront-promotion-copy{padding-top:24px;padding-bottom:12px}.storefront-hero-carousel .storefront-promotion :is(h1,h2){font-size:28px;max-width:480px}.storefront-hero-carousel .storefront-promotion-copy>p{font-size:12px}.storefront-hero-carousel .storefront-promotion-product{min-height:170px;padding-top:12px;padding-bottom:42px}.storefront-hero-carousel .storefront-promotion-product img{max-height:160px}.storefront-hero-carousel .storefront-promotion-actions a{font-size:11px;padding:10px 12px}.storefront-hero-carousel .storefront-samwha-logo{max-width:290px;height:110px}.storefront-hero-carousel .storefront-samwha-logo img{max-height:none}.storefront-samwha-caption{font-size:10px}}

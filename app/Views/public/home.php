@@ -34,6 +34,20 @@ $heroMessages = [
                     </div>
                 </article>
             <?php endforeach; ?>
+            <article class="storefront-promotion storefront-promotion--samwha swiper-slide">
+                <div class="storefront-promotion-copy">
+                    <span class="storefront-promotion-label">Samwha DSP <b>•</b> Automação industrial</span>
+                    <h2>Proteção, controle e medição para sua indústria</h2>
+                    <p>Conheça os relés, contatores e instrumentos Samwha DSP. Consulte os modelos e acesse os manuais técnicos.</p>
+                    <div class="storefront-promotion-tags"><span>Relés e contatores</span><span>Medição e controle</span></div>
+                    <div class="storefront-promotion-actions"><a href="/samwha-dsp">Explore a linha Samwha <i data-lucide="arrow-right"></i></a><a href="/downloads#manuais-samwha">Manuais técnicos</a></div>
+                </div>
+                <div class="storefront-promotion-product storefront-samwha-brand">
+                    <span class="storefront-promotion-model">SAMWHA DSP</span>
+                    <div class="storefront-samwha-logo"><img src="<?= asset('img/logosamwha.png') ?>" alt="Samwha DSP Brasil" loading="lazy" decoding="async"></div>
+                    <span class="storefront-samwha-caption">Soluções para automação industrial</span>
+                </div>
+            </article>
         </div>
         <div class="storefront-hero-pagination" aria-label="Selecionar produto em destaque"></div>
     </div>

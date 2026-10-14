@@ -41,6 +41,16 @@ Use `.\stop-mrdrives.ps1` para parar apenas o servidor deste projeto.
 
 ## Produtos, imagens e PDFs
 
+### Catálogo Samwha DSP
+
+O menu **Produtos Samwha DSP** abre `/samwha-dsp`. O backend consulta a API pública `https://samwha.com.br/api/products`, sem credenciais, e os detalhes por slug. Categorias são extraídas dos produtos para os filtros. Preços ficam sob consulta e a disponibilidade segue `stock_status`.
+
+As respostas são armazenadas em `storage/samwha`, com atualização sob demanda a cada cinco minutos. Falhas HTTP ou respostas inválidas preservam a última resposta válida e exibem um aviso. Sem cache, aparece uma mensagem de indisponibilidade. Um detalhe com HTTP 404 deixa de ser exibido. O conteúdo HTML externo é exibido como texto; imagens e manuais relativos são resolvidos contra o domínio Samwha.
+
+O usuário do PHP precisa de permissão de escrita em `storage/samwha` (configurada na imagem Docker). Para preservar o cache entre recriações do container, monte um volume nessa pasta. Verificação do contrato e das falhas: `php scripts/test-samwha.php`.
+
+Para testar com a API local Samwha ativa, configure `SAMWHA_API_BASE=http://127.0.0.1:8010` no `.env`. O cache é separado por base; em produção use `https://samwha.com.br`.
+
 No painel, acesse **Produtos** para criar, editar, ativar/desativar e ordenar itens do catálogo. Campos disponíveis:
 
 - Nome, código/modelo, categoria

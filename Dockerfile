@@ -24,3 +24,5 @@ COPY --from=frontend /app/public/build /var/www/html/public/build
 
 RUN mkdir -p /var/www/html/public/uploads/documents /var/www/html/public/uploads/products \
     && chown -R www-data:www-data /var/www/html/public/uploads
+
+RUN mkdir -p /var/www/html/storage/samwha && chown -R www-data:www-data /var/www/html/storage

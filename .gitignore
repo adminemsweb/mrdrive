@@ -16,6 +16,7 @@ public/assets/img/videos/originals/
 *.log
 *.tmp
 *.cache
+storage/
 
 vendor/
 node_modules/

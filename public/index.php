@@ -12,6 +12,15 @@ $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $controller = new PublicController();
 $customerAuth = new CustomerAuthController();
 
+if ($path === '/samwha-dsp' || $path === '/samwha-dsp/') {
+    (new \App\Controllers\SamwhaController())->show();
+    return;
+}
+if (preg_match('~^/samwha-dsp/produto/([^/]+)$~', $path, $matches)) {
+    (new \App\Controllers\SamwhaController())->show(rawurldecode($matches[1]));
+    return;
+}
+
 if ($path === '/api/cep') {
     (new ShippingController())->postalCode();
     return;

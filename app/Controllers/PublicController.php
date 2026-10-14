@@ -115,6 +115,7 @@ final class PublicController
         View::render('public/downloads', [
             'title' => 'Downloads | MRDRIVES',
             'documents' => $documents,
+            'samwhaDownloads' => (new \App\Services\SamwhaService())->fetch('/api/products', true),
         ], 'public/layout');
     }
 

@@ -186,8 +186,8 @@
   const filterProducts = () => {
     if (!productGrid) return;
     const term = normalize(searchInput?.value);
-    const minimumPrice = priceMinInput?.value === '' ? null : Number(priceMinInput?.value);
-    const maximumPrice = priceMaxInput?.value === '' ? null : Number(priceMaxInput?.value);
+    const minimumPrice = !priceMinInput || priceMinInput.value === '' ? null : Number(priceMinInput.value);
+    const maximumPrice = !priceMaxInput || priceMaxInput.value === '' ? null : Number(priceMaxInput.value);
     let visibleCount = 0;
     productGrid.querySelectorAll('[data-product-card]').forEach((card) => {
       const matchesText = !term || normalize(card.dataset.name).includes(term);

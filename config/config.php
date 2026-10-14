@@ -15,6 +15,9 @@ if (is_file($envPath)) {
 }
 
 return [
+    'samwha' => [
+        'api_base' => $_ENV['SAMWHA_API_BASE'] ?? 'https://samwha.com.br',
+    ],
     'app' => [
         'name' => 'MRDRIVES',
         'url' => $_ENV['APP_URL'] ?? 'http://localhost:8000',

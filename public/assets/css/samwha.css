@@ -39,3 +39,15 @@
 .samwha-mr-card-actions>a{font-size:12px;font-weight:650;color:#ee701d;display:inline-flex;align-items:center;gap:5px}.samwha-mr-card-actions svg{width:15px;height:15px}
 .samwha-page-range{text-align:center;color:#7a8ca1;font-size:12px;margin-top:24px}
 @media(max-width:700px){.samwha-sort-form{flex-wrap:wrap}.samwha-mr-search{max-width:100%;width:100%}.samwha-mr-card-actions{flex-wrap:wrap}}
+/* Samwha detail follows the MR Drives storefront product layout. */
+.samwha-store-product{max-width:1580px;margin:auto;padding:0 24px}
+.samwha-store-product .shop-detail-content h1{font-size:clamp(27px,2.6vw,42px);line-height:1.16}
+.samwha-store-product .shop-detail-lead{font-size:15px;line-height:1.7}
+.samwha-store-product .shop-detail-whatsapp svg{width:22px;height:22px}
+.samwha-store-manual{display:flex;justify-content:center;align-items:center;gap:9px;margin:14px 0 20px;padding:12px 16px;border:1px solid #cad8e7;border-radius:4px;font-size:13px;font-weight:700;color:#17334f;background:#fff}
+.samwha-store-manual svg{width:18px;height:18px}
+.samwha-store-manual-missing{color:#76869b;font-size:12px;margin:12px 0}
+.samwha-store-description{box-sizing:border-box;max-width:1160px;border-top:1px solid #dbe5ee;padding:28px clamp(22px,4vw,45px);margin:20px auto 32px}
+.samwha-store-description h2{font-size:23px;color:#142d4d;margin:12px 0}
+.samwha-store-description p{font-size:14px;line-height:1.7;color:#596f89}
+@media(max-width:600px){.samwha-store-product{padding-inline:16px}.samwha-store-product .shop-detail-content h1{font-size:26px}}

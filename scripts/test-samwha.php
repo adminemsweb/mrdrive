@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Services {
     function curl_init($url) { return $url; }
     function curl_setopt_array($handle, $options) { return true; }
+    function curl_setopt($handle, $option, $value) { return true; }
     function curl_exec($handle) { return $GLOBALS['test_body']; }
     function curl_getinfo($handle, $option) { return $GLOBALS['test_status']; }
     function curl_close($handle) {}

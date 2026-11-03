@@ -8,7 +8,7 @@ $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
 $canUseCart = $cartEnabled && $saleChannel === 'cart' && $price !== null;
 $canUseWhatsApp = !$canUseCart;
 $reviewCount = 6;
-$isMrd380 = strtoupper(trim((string) ($product['model_code'] ?? ''))) === 'MRD-380';
+$isMrd380 = strtoupper(trim((string) ($product['model_code'] ?? ''))) === 'SCKR1-380';
 ?>
 <nav class="shop-breadcrumb" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><a href="/catalogo">Loja</a><span>/</span><strong><?= e($product['name']) ?></strong></nav>
 
@@ -27,6 +27,7 @@ $isMrd380 = strtoupper(trim((string) ($product['model_code'] ?? ''))) === 'MRD-3
         <?php if (!empty($product['is_featured'])): ?><span class="shop-detail-featured">Destaque</span><?php endif; ?>
         <div class="shop-detail-code"><span><?= e($product['category'] ?? 'Produto MR Drives') ?></span><small>SKU <?= e($product['sku'] ?? $product['model_code']) ?></small></div>
         <h1><?= e($product['name']) ?></h1>
+        <?php if (!empty($product['brand'])): ?><p class="shop-detail-brand">Marca: <strong><?= e($product['brand']) ?></strong></p><?php endif; ?>
         <p class="shop-detail-lead"><?= e($product['short_description']) ?></p>
         <a class="shop-detail-rating" href="#avaliacoes"><span>★★★★★</span><strong>4,8</strong><small><?= $reviewCount ?> opiniões</small></a>
         <div class="shop-stock-status <?= $outOfStock ? 'is-unavailable' : 'is-available' ?>">

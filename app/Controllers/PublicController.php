@@ -439,7 +439,7 @@ final class PublicController
                 'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores industriais.',
                 'power' => '5,5 kW a 115 kW',
                 'voltage' => '220 V / 380 V, conforme modelo',
-                'main_image' => 'assets/img/mrd380/linha.png',
+                'main_image' => 'assets/img/mrd380/mrd380-principal.png',
                 'url' => '/mrd380',
                 'manual_pdf' => 'assets/img/mrd380/MRD-380-catalogo-pt-BR.pdf',
                 'full_description' => 'A MRD-380 é uma soft starter para partida e parada suave de motores, com bypass integrado, painel LCD e comunicação Modbus RS485. O dimensionamento considera a tensão, a corrente nominal do motor e a aplicação. Faixas da linha: 5,5–18,5 kW; 22–37 kW; 45–75 kW; 90–115 kW. Em 220 V, o catálogo informa modelos de 5,5 a 55 kW; em 380 V, de 5,5 a 115 kW.',

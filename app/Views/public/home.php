@@ -180,7 +180,7 @@ $heroMessages = [
             'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores.',
             'power' => '5,5 kW a 115 kW',
             'voltage' => '220 V / 380 V, conforme modelo',
-            'image' => optimized_image_url('assets/img/mrd380/mrd380-principal.png'),
+            'image' => optimized_image_url('assets/img/mrd380/mrd380-transparente.png'),
             'href' => '/mrd380',
         ],
 

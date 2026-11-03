@@ -13,10 +13,10 @@ $productMenuGroups = [
         ['MRD700-IP65', '/mrd700-ip65'],
     ]],
     ['title' => 'Soft-starters', 'models' => [
-        ['SCKR1-380 · WCE Brasil', '/sckr1-380'],
         ['SCKR1-360 · WCE Brasil', '/ticket?produto=SCKR1-360%20WCE%20BRASIL'],
-        ['SCKR1-6800 · WCE Brasil', '/ticket?produto=SCKR1-6800%20WCE%20BRASIL'],
+        ['SCKR1-380 · WCE Brasil', '/sckr1-380'],
         ['SCKR1-6300 · WCE Brasil', '/ticket?produto=SCKR1-6300%20WCE%20BRASIL'],
+        ['SCKR1-6800 · WCE Brasil', '/ticket?produto=SCKR1-6800%20WCE%20BRASIL'],
         ['MRD3000 · MR Drives', '/ticket?produto=MRD3000%20MR-DRIVES'],
     ]],
 ];

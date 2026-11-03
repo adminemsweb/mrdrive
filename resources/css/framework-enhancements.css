@@ -2076,6 +2076,16 @@
   background: linear-gradient(112deg, #24124f 0%, #4b2383 55%, #7653bd 100%);
 }
 
+.storefront-hero-carousel .storefront-promotion--black.swiper-slide {
+  background: #000;
+}
+
+.storefront-hero-carousel .storefront-promotion--black.swiper-slide::before,
+.storefront-hero-carousel .storefront-promotion--black.swiper-slide::after,
+.storefront-hero-carousel .storefront-promotion--black .storefront-promotion-product::before {
+  content: none;
+}
+
 .storefront-hero-carousel .storefront-promotion--orange.swiper-slide {
   background: linear-gradient(112deg, #a83208 0%, #e45413 52%, #ff8a2b 100%);
 }

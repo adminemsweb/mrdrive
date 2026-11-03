@@ -1,11 +1,11 @@
 {
   "resources/js/storefront.js": {
-    "file": "assets/storefront-CtgD0LDf.js",
+    "file": "assets/storefront-qSMZ_YbA.js",
     "name": "storefront",
     "src": "resources/js/storefront.js",
     "isEntry": true,
     "css": [
-      "assets/storefront-CxcGPC_A.css"
+      "assets/storefront-BYQ_RHR3.css"
     ]
   }
 }

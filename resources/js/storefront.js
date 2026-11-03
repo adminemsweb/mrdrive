@@ -116,6 +116,33 @@ if (homeCatalogSection && homeProtectedProductSection) {
   homeProtectedProductSection.before(homeCatalogSection);
 }
 
+const catalogCarousel = document.querySelector('[data-catalog-carousel]');
+
+if (catalogCarousel) {
+  new Swiper(catalogCarousel, {
+    modules: [A11y, Keyboard, Navigation],
+    slidesPerView: 1.12,
+    spaceBetween: 12,
+    speed: 350,
+    grabCursor: true,
+    watchOverflow: true,
+    keyboard: { enabled: true, onlyInViewport: true },
+    navigation: { prevEl: '[data-catalog-prev]', nextEl: '[data-catalog-next]' },
+    a11y: {
+      prevSlideMessage: 'Produtos anteriores',
+      nextSlideMessage: 'Próximos produtos',
+      firstSlideMessage: 'Primeiro produto',
+      lastSlideMessage: 'Último produto',
+      slideLabelMessage: 'Produto {{index}} de {{slidesLength}}',
+    },
+    breakpoints: {
+      560: { slidesPerView: 2, spaceBetween: 14 },
+      820: { slidesPerView: 3, spaceBetween: 16 },
+      1100: { slidesPerView: 4, spaceBetween: 16 },
+    },
+  });
+}
+
 const heroCarousel = document.querySelector('[data-hero-carousel]');
 
 if (heroCarousel) {

@@ -3,6 +3,7 @@ $downloadGroups = [
     [
         'title' => 'Catálogos',
         'items' => [
+            ['MRD-380 - Catálogo técnico em português', 'PDF · Português', asset('img/mrd380/MRD-380-catalogo-pt-BR.pdf')],
             ['MRD600 - Catálogo técnico', 'PDF', asset('img/mrd600/MRD600.pdf')],
             ['MRD700 - Catálogo técnico', 'PDF', asset('img/mrd700/MRD700.pdf')],
         ],
@@ -10,6 +11,7 @@ $downloadGroups = [
     [
         'title' => 'Características técnicas',
         'items' => [
+            ['Linha MRD-380', 'Página técnica', '/mrd380'],
             ['Linha MRD600', 'Página técnica', '/mrd600'],
             ['Linha MRD700', 'Página técnica', '/mrd700'],
             ['MRD700/IP65', 'Página técnica', '/mrd700-ip65'],
@@ -18,6 +20,7 @@ $downloadGroups = [
     [
         'title' => 'Manuais e guias rápidos',
         'items' => [
+            ['MRD-380 - Referência técnica de partida suave em português', 'PDF · Português', asset('img/mrd380/MRD-380-catalogo-pt-BR.pdf')],
             ['Guia rápido MRD600', 'PDF', asset('img/mrd600/mrd600_guia_rapido.pdf')],
             ['Guia rápido MRD700', 'PDF', asset('img/mrd700/mrd700guia_rapido.pdf')],
         ],

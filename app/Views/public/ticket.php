@@ -16,6 +16,7 @@
             <label>WhatsApp<input name="phone" required placeholder="+55 11 99999-9999"></label>
             <label>Produto
                 <select name="product_interest">
+                    <option>MRD-380</option>
                     <option>MRD600</option>
                     <option>MRD700</option>
                     <option>MRD700/IP65</option>
@@ -24,6 +25,7 @@
             </label>
             <label>Catálogo ou guia
                 <select name="catalog">
+                    <option>MRD-380 - catálogo técnico</option>
                     <option>MRD600 - catálogo técnico</option>
                     <option>MRD600 - guia rápido</option>
                     <option>MRD700 - catálogo técnico</option>

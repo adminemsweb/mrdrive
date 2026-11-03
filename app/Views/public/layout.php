@@ -57,7 +57,7 @@ if ($canonicalPath === '/produto' && isset($_GET['id'])) {
     $canonicalPath .= '?id=' . max(0, (int) $_GET['id']);
 }
 $canonicalUrl = 'https://mrdrives.com.br' . ($canonicalPath === '/' ? '/' : rtrim($canonicalPath, '/'));
-$isProductPage = in_array($requestPath, ['/produto', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
+$isProductPage = in_array($requestPath, ['/produto', '/mrd380', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
     && !empty($product)
     && is_array($product);
 $productImagePath = $isProductPage && !empty($product['main_image']) ? optimized_image_url((string) $product['main_image']) : '';
@@ -247,7 +247,7 @@ if ($isProductPage) {
                 </div>
                 <div class="mobile-submenu">
                     <a href="/catalogo#produtos"><strong>Todos os produtos</strong></a>
-                    <a href="/mrd600">MRD600 · Compacto</a>
+                    <a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600 · Compacto</a>
                     <a href="/mrd700">MRD700 · Alto desempenho</a>
                     <a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a>
                 </div>
@@ -288,7 +288,7 @@ if ($isProductPage) {
         <a href="/">Início</a>
         <a href="/catalogo#produtos">Produtos MR Drives</a>
         <a href="/samwha-dsp">Produtos Samwha DSP</a>
-        <a href="/mrd600">MRD600</a>
+        <a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600</a>
         <a href="/mrd700">MRD700</a>
         <a href="/mrd700-ip65">MRD700/IP65</a>
         <a href="/#aplicacoes">Aplicações</a>
@@ -299,7 +299,7 @@ if ($isProductPage) {
     </nav>
     <nav class="marketplace-category-nav site-nav-desktop" aria-label="Departamentos da loja">
         <a href="/">Início</a>
-        <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/catalogo#produtos">Todos os produtos</a><a href="/mrd600">MRD600 · Compacto</a><a href="/mrd700">MRD700 · Alto desempenho</a><a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a></div></div>
+        <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/catalogo#produtos">Todos os produtos</a><a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600 · Compacto</a><a href="/mrd700">MRD700 · Alto desempenho</a><a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a></div></div>
         <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos Samwha DSP</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/samwha-dsp">Todos os produtos Samwha DSP</a><a href="https://wa.me/<?= e(app_config('whatsapp')) ?>?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20produtos%20Samwha%20DSP." target="_blank" rel="noopener">Consultar produtos e disponibilidade</a></div></div>
         <a href="/#aplicacoes">Aplicações</a>
         <a href="/downloads">Downloads</a>

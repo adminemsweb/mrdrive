@@ -119,6 +119,11 @@ if ($path === '/mrd700-ip65') {
     return;
 }
 
+if ($path === '/mrd380') {
+    $controller->mrd380();
+    return;
+}
+
 if ($path === '/mrd600') {
     $controller->mrd600();
     return;

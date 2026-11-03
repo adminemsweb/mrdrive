@@ -8,6 +8,7 @@ $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
 $canUseCart = $cartEnabled && $saleChannel === 'cart' && $price !== null;
 $canUseWhatsApp = !$canUseCart;
 $reviewCount = 6;
+$isMrd380 = strtoupper(trim((string) ($product['model_code'] ?? ''))) === 'MRD-380';
 ?>
 <nav class="shop-breadcrumb" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><a href="/catalogo">Loja</a><span>/</span><strong><?= e($product['name']) ?></strong></nav>
 
@@ -75,7 +76,7 @@ $reviewCount = 6;
 </section>
 
 <?php if (!empty($product['technical_specs'])): ?>
-<section class="shop-tech-section"><span class="shop-kicker">Ficha técnica</span><h2>Recursos e especificações</h2><div class="shop-tech-list"><?php foreach (preg_split('/\R/', trim($product['technical_specs'])) as $spec): if (trim($spec) !== ''): ?><div><span>✓</span><?= e(trim($spec)) ?></div><?php endif; endforeach; ?></div><?php if (!empty($product['manual_pdf'])): ?><a class="shop-manual-link" href="<?= upload_url($product['manual_pdf']) ?>" target="_blank">Baixar manual técnico em PDF →</a><?php endif; ?></section>
+<section class="shop-tech-section"><span class="shop-kicker">Ficha técnica</span><h2>Recursos e especificações</h2><div class="shop-tech-list"><?php foreach (preg_split('/\R/', trim($product['technical_specs'])) as $spec): if (trim($spec) !== ''): ?><div><span>✓</span><?= e(trim($spec)) ?></div><?php endif; endforeach; ?></div><?php if (!empty($product['manual_pdf'])): ?><a class="shop-manual-link" href="<?= upload_url($product['manual_pdf']) ?>" target="_blank"<?= $isMrd380 ? ' download rel="noopener"' : '' ?>><?= $isMrd380 ? 'Baixar catálogo em português (PDF)' : 'Baixar manual técnico em PDF →' ?></a><?php endif; ?></section>
 <?php endif; ?>
 
 <?php if (!empty($technicalView)):

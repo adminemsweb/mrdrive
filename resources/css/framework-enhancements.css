@@ -2282,23 +2282,28 @@
   }
 }
 
-/* Product families grouped consistently across desktop and mobile navigation. */
+/* Compact product menu with consistent model and manufacturer columns. */
 .marketplace-departments .product-category-dropdown {
   left: 0;
-  width: 620px;
+  width: 560px;
   max-width: calc(100vw - 40px);
-  padding: 16px;
+  gap: 0;
+  padding: 14px;
   background: #fff;
   transform: translateY(8px);
 }
 .marketplace-departments.nav-group:hover .product-category-dropdown,
 .marketplace-departments.nav-group:focus-within .product-category-dropdown { transform: translateY(0); }
-.product-menu-all { display: block; padding: 9px 10px; color: var(--mr-brand-navy); font-size: 12px; font-weight: 750; }
-.product-menu-categories { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
-.product-menu-category + .product-menu-category { border-left: 1px solid #e5ebf0; padding-left: 18px; }
-.product-menu-category h3 { margin: 0 0 7px; color: #0c3350; font-size: 13px; line-height: 1.4; }
-.product-menu-category > p { margin: 0 0 5px; color: #72808d; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.product-menu-category > a { display: block; min-height: 36px; padding: 9px 8px; border-radius: 5px; color: #173e62; font-size: 12px; line-height: 1.4; }
+.product-menu-all { display: block; padding: 8px 10px 12px; border-bottom: 1px solid #e5ebf0; color: var(--mr-brand-navy); font-size: 12px; font-weight: 750; }
+.product-menu-all::after { content: "→"; float: right; margin-left: 12px; color: #73899b; }
+.product-menu-categories { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 14px; }
+.product-menu-category { min-width: 0; }
+.product-menu-category + .product-menu-category { border-left: 1px solid #e5ebf0; padding-left: 16px; }
+.product-menu-category h3 { min-height: 20px; margin: 0 0 10px; color: #0c3350; font-size: 13px; line-height: 1.4; }
+.product-menu-columns { display: flex; justify-content: space-between; padding: 0 8px 6px; color: #83909b; font-size: 9px; font-weight: 650; letter-spacing: .07em; text-transform: uppercase; }
+.product-menu-category > a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 36px; padding: 8px; border-radius: 6px; color: #173e62; font-size: 12px; line-height: 1.4; }
+.product-menu-model > span { min-width: 0; font-weight: 600; }
+.product-menu-model > small { flex-shrink: 0; padding: 3px 6px; border-radius: 4px; background: #f0f4f7; color: #61778a; font-size: 10px; line-height: 1.2; white-space: nowrap; }
 .product-menu-category > a:hover, .product-menu-category > a:focus-visible { background: #edf4fa; }
 .mobile-product-menu { display: none; }
 @media (max-width: 980px) {

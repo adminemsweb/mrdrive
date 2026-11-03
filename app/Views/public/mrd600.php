@@ -14,7 +14,7 @@
     <div class="mrd600-hero-media">
         <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/mrd600_2.png') ?>" alt="Inversor MRD600" decoding="async">
         <div class="mrd600-hero-badges">
-            <span>0,4 a 15 kW</span>
+            <span>0,4 a 7,5 kW</span>
             <span>220V / 380V</span>
             <span>RS485 Modbus</span>
         </div>
@@ -31,31 +31,32 @@
 </section>
 <?php endif; ?>
 
-<section class="section mrd600-feature-section">
-    <div class="section-heading">
-        <div>
-            <p class="eyebrow">Características do produto</p>
-            <h2>Compacto, comunicável e pronto para aplicações industriais.</h2>
-        </div>
+<section class="section mrd600-voltage-section" aria-labelledby="mrd600-voltage-title">
+    <div class="section-heading"><div><p class="eyebrow">Versões disponíveis</p><h2 id="mrd600-voltage-title">Tensões de entrada e saída.</h2></div></div>
+    <div class="mrd600-voltage-wrap" tabindex="0" role="region" aria-label="Tabela de tensões por modelo MRD600">
+        <table class="mrd600-voltage-table">
+            <thead><tr><th scope="col">Modelo</th><th scope="col">Tensão de entrada</th><th scope="col">Tensão de saída</th></tr></thead>
+            <tbody>
+                <tr><th scope="row">MRD600M-2S</th><td>Monofásica 220 VCA (180–280 VCA)</td><td>Trifásica 220 VCA</td></tr>
+                <tr><th scope="row">MRD600M-2T</th><td>Trifásica 220 VCA (180–280 VCA)</td><td>Trifásica 220 VCA</td></tr>
+                <tr><th scope="row">MRD600M-4T</th><td>Trifásica 380 VCA (±20%)</td><td>Trifásica de 0 a 380 VCA</td></tr>
+                <tr><th scope="row">MRD600M-2S4T</th><td>Monofásica 220 VCA</td><td>Trifásica de 0 a 380 VCA</td></tr>
+            </tbody>
+        </table>
     </div>
-    <div class="mrd600-feature-grid">
+    <p class="mrd600-voltage-note">As tensões variam conforme a versão do equipamento. Selecione o modelo de acordo com a rede de alimentação e a tensão do motor.</p>
+</section>
+
+<section class="section mrd600-feature-section">
+    <div class="section-heading"><div><p class="eyebrow">Características do produto</p><h2>Pequeno em tamanho, poderoso em desempenho.</h2></div></div>
+    <div class="mrd600-feature-grid mrd600-feature-grid--technical">
         <?php foreach ([
-            ['01', 'Design compacto', 'Adequado para espacos de instalação limitados, como embalagens, máquinas de rotulagem e esteiras transportadoras.'],
-            ['02', 'Teclado emborrachado', 'Interface projetada para facilitar a operação diária e o acesso rápido aos comandos.'],
-            ['03', 'Teclado externo', 'Flexível para montagem em painel e operação remota conforme a necessidade da máquina.'],
-            ['04', 'Software para PC', 'Configuração com um único clique, economizando tempo de depuração e parametrização.'],
-            ['05', 'Filtro EMC C3', 'Maior capacidade anti-interferência eletromagnética para ambientes industriais.'],
-            ['06', 'Dutos independentes', 'Melhor dissipação de calor e manutenção mais fácil.'],
-            ['07', 'DI/DO/AI programáveis', 'Entradas e saídas programáveis com RS485 Modbus RTU e ASCII para comunicação com dispositivos.'],
-            ['08', 'PID integrado', 'Controle de processo direto no inversor para bombas, ventilação e controle de vazão/pressão.'],
-            ['09', 'Múltiplas velocidades', 'Função integrada para operação em diferentes velocidades conforme o processo.'],
-            ['10', 'Modo de sobreposição', 'Suporte ao modo de sobreposição de disparo para estratégias específicas de acionamento.'],
+            ['01', 'Economia de espaço de montagem', 'A estrutura tipo livro do MRD600M economiza espaço no painel e permite montagem em paralelo sem redução de capacidade.'],
+            ['02', 'Projeto de aterramento EMC', 'Seleção independente do aterramento por parafuso, para adequar o equipamento à instalação e reduzir interferências EMC e correntes de fuga.'],
+            ['03', 'Projeto térmico e dissipação de calor', 'Face traseira revestida e dissipador com aletas corrugadas favorecem a dissipação de calor e a estabilidade térmica dos componentes.'],
+            ['04', 'Penetração mínima de poeira', 'A ventilação forçada é mantida afastada dos componentes eletrônicos, com as placas de circuito protegidas dentro do drive.'],
         ] as $feature): ?>
-            <article>
-                <span><?= e($feature[0]) ?></span>
-                <h3><?= e($feature[1]) ?></h3>
-                <p><?= e($feature[2]) ?></p>
-            </article>
+            <article><span><?= e($feature[0]) ?></span><h3><?= e($feature[1]) ?></h3><p><?= e($feature[2]) ?></p></article>
         <?php endforeach; ?>
     </div>
 </section>
@@ -71,7 +72,7 @@
     <div class="mrd600-spec-table-wrap">
         <table class="mrd600-spec-table">
             <tbody>
-                <tr><th>Tensão de entrada</th><td><strong>208~240V monofásico e trifásico</strong><br>380~480V trifásico</td></tr>
+                <tr><th>Tensão de entrada</th><td><strong>208~240V monofásico e trifásico</strong><br>380~440V trifásico</td></tr>
                 <tr><th>Frequência de saída</th><td>0~600Hz</td></tr>
                 <tr><th>Tecnologia de controle</th><td>V/F, SVC, Controle de Torque</td></tr>
                 <tr><th>Torque inicial</th><td>0,5Hz 150% (V/F), 0,25Hz 180% (SVC)</td></tr>
@@ -90,12 +91,12 @@
         <article>
             <p class="eyebrow">Ligação e terminais</p>
             <h2>Diagrama elétrico de referência.</h2>
-            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600.png') ?>" alt="Diagrama elétrico MRD600" loading="lazy" decoding="async">
+            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600_2.png') ?>" alt="Diagrama elétrico MRD600" loading="lazy" decoding="async">
         </article>
         <article>
             <p class="eyebrow">Dimensão do modelo</p>
             <h2>Medidas para painel e montagem.</h2>
-            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600_2.png') ?>" alt="Dimensões mecanicas MRD600" loading="lazy" decoding="async">
+            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600.png') ?>" alt="Dimensões mecânicas MRD600" loading="lazy" decoding="async">
         </article>
     </div>
 </section>
@@ -139,8 +140,6 @@
                 <tr><td>MRD600-4T-4.0G</td><td>4.0</td><td>10,5/14,6</td><td>9,0/13,0</td><td>124</td><td>98</td><td>170</td></tr>
                 <tr><td>MRD600-4T-5.5G</td><td>5,5</td><td>14,6/20,5</td><td>13,0/17,0</td><td>124</td><td>98</td><td>170</td></tr>
                 <tr><td>MRD600-4T-7.5G</td><td>7,5</td><td>20,5/22,0</td><td>17,0/20,0</td><td>124</td><td>98</td><td>170</td></tr>
-                <tr><td>MRD600-4T-11.0G</td><td>11.0</td><td>26,0/35,0</td><td>25,0/32,0</td><td>160</td><td>135</td><td>228</td></tr>
-                <tr><td>MRD600-4T-15.0G</td><td>15.0</td><td>35,0/38,5</td><td>32,0/37,0</td><td>160</td><td>135</td><td>228</td></tr>
             </tbody>
         </table>
     </div>

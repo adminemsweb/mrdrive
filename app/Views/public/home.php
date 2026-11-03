@@ -3,9 +3,10 @@ use App\Core\Csrf;
 
 $heroProducts = array_values($products);
 $heroMessages = [
-    ['Linha compacta e versátil', 'Inversores de frequência para máquinas e automação industrial', 'purple', 'Explore a linha MRD600'],
-    ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],
-    ['Linha protegida IP65', 'Proteção preparada para ambientes severos', 'blue', 'Conheça o MRD700/IP65'],
+    'MRD-380' => ['Partida suave com bypass integrado', 'Soft-starter para partida e parada suave de motores', 'purple', 'Conheça o MRD-380'],
+    'MRD600' => ['Linha compacta e versátil', 'Inversores de frequência para máquinas e automação industrial', 'purple', 'Explore a linha MRD600'],
+    'MRD700' => ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],
+    'MRD700/IP65' => ['Linha protegida IP65', 'Proteção preparada para ambientes severos', 'blue', 'Conheça o MRD700/IP65'],
 ];
 ?>
 <section class="storefront-hero" aria-label="Loja de automação industrial MR Drives">
@@ -14,7 +15,7 @@ $heroMessages = [
             <?php foreach ($heroProducts as $index => $item):
                 $heroImage = !empty($item['main_image']) ? optimized_image_url($item['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
                 $heroUrl = $item['url'] ?? ('/produto?id=' . (int) $item['id']);
-                $message = $heroMessages[$index] ?? ['Linha MR Drives', 'Controle industrial para a sua operação', 'blue', 'Conheça nossos produtos'];
+                $message = $heroMessages[(string) ($item['model_code'] ?? '')] ?? ['Linha MR Drives', 'Controle industrial para a sua operação', 'blue', 'Conheça nossos produtos'];
             ?>
                 <article class="storefront-promotion storefront-promotion--<?= e($message[2]) ?> swiper-slide">
                     <div class="storefront-promotion-copy">
@@ -175,7 +176,7 @@ $heroMessages = [
             'name' => 'MRD600',
             'model_code' => 'MRD600',
             'short_description' => 'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
-            'power' => '0.4 kW a 18 kW',
+            'power' => '0,4 kW a 7,5 kW',
             'voltage' => '220 V / 380 V',
             'image' => optimized_image_url('assets/img/mrd600/mrd600_2.png'),
             'href' => '/mrd600',

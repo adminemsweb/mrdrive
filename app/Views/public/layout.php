@@ -5,6 +5,23 @@ use App\Core\CustomerAuth;
 $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $customerUser = CustomerAuth::user();
 $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
+$productMenuGroups = [
+    ['title' => 'Inversores de frequência', 'models' => [
+        ['MRD320/321', '/ticket?produto=MRD320%2F321'],
+        ['MRD600', '/mrd600'],
+        ['MRD700', '/mrd700'],
+        ['MRD700-IP65', '/mrd700-ip65'],
+    ]],
+    ['title' => 'Soft-starters', 'models' => [
+        ['MRD-380 · MR Drives', '/mrd380'],
+        ['SCKR1-360 · WCE Brasil', '/ticket?produto=SCKR1-360%20WCE%20BRASIL'],
+        ['SCKR1-380 · WCE Brasil', '/ticket?produto=SCKR1-380%20WCE%20BRASIL'],
+        ['SCKR1-6800 · WCE Brasil', '/ticket?produto=SCKR1-6800%20WCE%20BRASIL'],
+        ['SCKR1-6300 · WCE Brasil', '/ticket?produto=SCKR1-6300%20WCE%20BRASIL'],
+        ['MRD3000 · MR Drives', '/ticket?produto=MRD3000%20MR-DRIVES'],
+    ]],
+];
+
 $seoPages = [
     '/' => [
         'title' => 'Inversores de Frequência Industriais | MR Drives',
@@ -245,9 +262,7 @@ if ($isProductPage) {
                 </div>
                 <div class="mobile-submenu">
                     <a href="/catalogo#produtos"><strong>Todos os produtos</strong></a>
-                    <a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600 · Compacto</a>
-                    <a href="/mrd700">MRD700 · Alto desempenho</a>
-                    <a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a>
+                    <?php require app_path('Views/public/product-menu.php'); ?>
                 </div>
             </div>
             <div class="mobile-nav-group">
@@ -283,19 +298,20 @@ if ($isProductPage) {
     </header>
     <nav class="marketplace-category-nav site-nav-mobile-scroll" aria-label="Navegação principal no celular">
         <a href="/">Início</a>
-        <a href="/catalogo#produtos">Produtos MR Drives</a>
-        <a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600</a>
-        <a href="/mrd700">MRD700</a>
-        <a href="/mrd700-ip65">MRD700/IP65</a>
+<button class="mobile-product-menu-toggle" type="button" data-product-menu-toggle aria-controls="mobile-product-menu" aria-expanded="false">Produtos MR Drives <i data-lucide="chevron-down"></i></button>
         <a href="/#aplicacoes">Aplicações</a>
         <a href="/downloads">Downloads</a>
         <a href="/#feedbacks">Avaliações</a>
         <a href="/#contato">Contato</a>
         <a href="<?= $customerUser ? '/minha-conta' : '/entrar' ?>"><?= $customerUser ? 'Minha conta' : 'Entrar' ?></a>
     </nav>
+    <div class="mobile-product-menu" id="mobile-product-menu" hidden>
+        <a class="product-menu-all" href="/catalogo#produtos">Todos os produtos</a>
+        <?php require app_path('Views/public/product-menu.php'); ?>
+    </div>
     <nav class="marketplace-category-nav site-nav-desktop" aria-label="Departamentos da loja">
         <a href="/">Início</a>
-        <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/catalogo#produtos">Todos os produtos</a><a href="/mrd380">MRD-380 · Soft starter</a><a href="/mrd600">MRD600 · Compacto</a><a href="/mrd700">MRD700 · Alto desempenho</a><a href="/mrd700-ip65">MRD700/IP65 · Proteção IP65</a></div></div>
+<div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown product-category-dropdown"><a class="product-menu-all" href="/catalogo#produtos">Todos os produtos</a><?php require app_path('Views/public/product-menu.php'); ?></div></div>
         <a href="/#aplicacoes">Aplicações</a>
         <a href="/downloads">Downloads</a>
         <a href="/#feedbacks">Avaliações</a>

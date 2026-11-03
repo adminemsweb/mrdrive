@@ -11,7 +11,7 @@ SELECT
     'MRD600', 'MRD600', 'Inversores compactos',
     'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
     'Inversor vetorial compacto para controle preciso de motores em máquinas, bombas, ventiladores e sistemas industriais.',
-    '0.4 kW a 18 kW', '220 V / 380 V',
+    '0,4 kW a 7,5 kW', '220 V / 380 V',
     'Esteiras, ventiladores, máquinas industriais, bombas e sistemas de embalagem',
     'Controle vetorial\nDisplay duplo LED\nPotenciômetro integrado\nEntradas digitais e analógicas',
     'MRD600', NULL, NULL, 'whatsapp', 0, 0, 'Prazo confirmado no atendimento',

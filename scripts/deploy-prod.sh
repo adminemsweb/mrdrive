@@ -132,6 +132,9 @@ if [ -n "$MARIADB_CONTAINER" ]; then
       echo "==> Alinhando catálogo oficial da loja"
       docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_store_catalog.sql || true
     fi
+    if [ -f database/update_mrd600_specs.sql ]; then
+      docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_mrd600_specs.sql
+    fi
     if [ -f database/update_mrd380.sql ]; then
       docker exec -i "$MARIADB_CONTAINER" "$DB_CLIENT" -uroot -p"$ROOT_PASS" "$DB_NAME" < database/update_mrd380.sql
     fi

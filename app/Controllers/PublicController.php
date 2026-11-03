@@ -471,14 +471,18 @@ Faixas: 5,5–18,5 / 22–37 / 45–75 / 90–115 kW
                 'sku' => 'MRD600',
                 'category' => 'Inversores compactos',
                 'short_description' => 'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
-                'power' => '0.4 kW a 18 kW',
+                'power' => '0,4 kW a 7,5 kW',
                 'voltage' => '220 V / 380 V',
                 'main_image' => 'assets/img/mrd600/mrd600_2.png',
                 'url' => '/mrd600',
                 'manual_pdf' => 'assets/img/mrd600/MRD600.pdf',
                 'full_description' => 'Inversor vetorial compacto para controle preciso de motores em máquinas, bombas, ventiladores e sistemas industriais.',
                 'recommended_applications' => 'Esteiras, ventiladores, máquinas industriais, bombas e sistemas de embalagem',
-                'technical_specs' => "Controle vetorial\nDisplay duplo LED\nPotenciômetro integrado\nEntradas digitais e analógicas",
+                'technical_specs' => '1 ano de garantia
+Saída para resistor de frenagem incorporada
+Comunicação Modbus RS485 incorporada
+Filtros EMC C2/C3 incorporados
+IHM LED e LCD para instalação remota (opcional)',
                 'price' => null,
                 'compare_at_price' => null,
                 'sale_channel' => 'whatsapp',

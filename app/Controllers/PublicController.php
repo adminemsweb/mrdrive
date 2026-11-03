@@ -151,7 +151,7 @@ final class PublicController
 
     public function mrd380(): void
     {
-        $this->storeProductByModel('MRD-380');
+        $this->storeProductByModel('SCKR1-380');
     }
 
     public function mrd600(): void
@@ -338,7 +338,7 @@ final class PublicController
         $modelCode = strtoupper(trim((string) ($product['model_code'] ?? '')));
 
         return match ($modelCode) {
-            'MRD-380' => 'Soft Starter MRD-380 com Bypass Integrado | MR Drives',
+            'SCKR1-380' => 'Soft Starter SCKR1-380 WCE Brasil | MR Drives',
             'MRD600' => 'Inversor de Frequência MRD600 220 V e 380 V | MR Drives',
             'MRD700' => 'Inversor Vetorial MRD700 para Automação | MR Drives',
             'MRD700/IP65', 'MRD700-IP65' => 'Inversor IP65 MRD700 para Ambientes Severos | MR Drives',
@@ -375,6 +375,7 @@ final class PublicController
             'model_code' => $fallback['model_code'],
             'sku' => !empty($product['sku']) ? $product['sku'] : $fallback['sku'],
             'category' => $fallback['category'],
+            'brand' => $fallback['brand'] ?? ($product['brand'] ?? 'MR Drives'),
             'main_image' => $fallback['main_image'],
             'manual_pdf' => $fallback['manual_pdf'],
             'url' => $fallback['url'],
@@ -432,17 +433,18 @@ final class PublicController
         return [
             [
                 'id' => 380,
-                'name' => 'MRD-380',
-                'model_code' => 'MRD-380',
-                'sku' => 'MRD-380',
+                'name' => 'SCKR1-380',
+                'brand' => 'WCE Brasil',
+                'model_code' => 'SCKR1-380',
+                'sku' => 'SCKR1-380',
                 'category' => 'Soft starters',
                 'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores industriais.',
                 'power' => '5,5 kW a 115 kW',
                 'voltage' => '220 V / 380 V, conforme modelo',
                 'main_image' => 'assets/img/mrd380/mrd380-transparente.png',
-                'url' => '/mrd380',
-                'manual_pdf' => 'assets/img/mrd380/MRD-380-catalogo-pt-BR.pdf',
-                'full_description' => 'A MRD-380 é uma soft starter para partida e parada suave de motores, com bypass integrado, painel LCD e comunicação Modbus RS485. O dimensionamento considera a tensão, a corrente nominal do motor e a aplicação. Faixas da linha: 5,5–18,5 kW; 22–37 kW; 45–75 kW; 90–115 kW. Em 220 V, o catálogo informa modelos de 5,5 a 55 kW; em 380 V, de 5,5 a 115 kW.',
+                'url' => '/sckr1-380',
+                'manual_pdf' => 'assets/img/mrd380/SCKR1-380-catalogo-pt-BR.pdf',
+                'full_description' => 'A SCKR1-380 é uma soft starter para partida e parada suave de motores, com bypass integrado, painel LCD e comunicação Modbus RS485. O dimensionamento considera a tensão, a corrente nominal do motor e a aplicação. Faixas da linha: 5,5–18,5 kW; 22–37 kW; 45–75 kW; 90–115 kW. Em 220 V, o catálogo informa modelos de 5,5 a 55 kW; em 380 V, de 5,5 a 115 kW.',
                 'recommended_applications' => 'Motores assíncronos trifásicos, bombas e sistemas industriais que exigem partida suave',
                 'technical_specs' => 'Bypass integrado
 Partida por rampa de tensão, limitação de corrente e torque
@@ -560,7 +562,7 @@ IHM LED e LCD para instalação remota (opcional)',
 
             foreach ($products as $product) {
                 $identity = strtolower((string) (($product['model_code'] ?? '') . ' ' . ($product['name'] ?? '')));
-                if ($expected === 'mrd-380' && strtolower(trim((string) ($product['model_code'] ?? ''))) === $expected) {
+                if ($expected === 'sckr1-380' && strtolower(trim((string) ($product['model_code'] ?? ''))) === $expected) {
                     $match = $product;
                     break;
                 }

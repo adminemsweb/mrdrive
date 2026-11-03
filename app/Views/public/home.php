@@ -3,7 +3,7 @@ use App\Core\Csrf;
 
 $heroProducts = array_values($products);
 $heroMessages = [
-    'MRD-380' => ['Partida suave com bypass integrado', 'Soft-starter para partida e parada suave de motores', 'purple', 'Conheça o MRD-380'],
+    'SCKR1-380' => ['Partida suave com bypass integrado', 'Soft-starter para partida e parada suave de motores', 'purple', 'Conheça o SCKR1-380'],
     'MRD600' => ['Linha compacta e versátil', 'Inversores de frequência para máquinas e automação industrial', 'purple', 'Explore a linha MRD600'],
     'MRD700' => ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],
     'MRD700/IP65' => ['Linha protegida IP65', 'Proteção preparada para ambientes severos', 'blue', 'Conheça o MRD700/IP65'],
@@ -176,13 +176,14 @@ $heroMessages = [
         [
             'id' => 'mrd380-family',
             'is_new' => true,
-            'name' => 'MRD-380',
-            'model_code' => 'MRD-380',
+            'name' => 'SCKR1-380',
+            'brand' => 'WCE Brasil',
+            'model_code' => 'SCKR1-380',
             'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores.',
             'power' => '5,5 kW a 115 kW',
             'voltage' => '220 V / 380 V, conforme modelo',
             'image' => optimized_image_url('assets/img/mrd380/mrd380-transparente.png'),
-            'href' => '/mrd380',
+            'href' => '/sckr1-380',
         ],
 
         [
@@ -224,7 +225,8 @@ $heroMessages = [
                 <img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" loading="lazy" decoding="async">
                 <div>
                     <p class="code"><?= e($product['model_code']) ?></p>
-                    <h3><?= e($product['name']) ?></h3>
+                    <h3><a class="product-card-link" href="<?= e($product['href']) ?>"><?= e($product['name']) ?></a></h3>
+                    <p class="product-card-brand">Marca: <?= e($product['brand'] ?? 'MR Drives') ?></p>
                     <div class="product-rating" aria-label="Avaliação 4,8 de 5 estrelas">
                         <strong>4,8</strong><span aria-hidden="true">★★★★★</span><small>Avaliações</small>
                     </div>
@@ -320,7 +322,7 @@ $heroMessages = [
         <input type="hidden" name="email" value="lead@mrdrives.local">
         <label>Produto
             <select name="product_interest" id="product_interest">
-                <option>MRD-380</option>
+                <option>SCKR1-380</option>
                     <option>MRD600</option>
                 <option>MRD700</option>
                 <option>MRD700/IP65</option>

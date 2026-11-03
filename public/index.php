@@ -119,7 +119,11 @@ if ($path === '/mrd700-ip65') {
     return;
 }
 
-if ($path === '/mrd380') {
+if ($path === '/mrd380' || $path === '/mrd380/') {
+    header('Location: /sckr1-380', true, 301);
+    return;
+}
+if ($path === '/sckr1-380' || $path === '/sckr1-380/') {
     $controller->mrd380();
     return;
 }

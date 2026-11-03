@@ -92,6 +92,7 @@ sort($categories);
                 <div class="shop-product-content">
                     <div class="shop-product-meta"><span><?= e($category) ?></span><small>SKU <?= e($product['sku'] ?? $product['model_code']) ?></small></div>
                     <a class="shop-product-title" href="<?= e($productUrl) ?>"><h3><?= e($product['name']) ?></h3></a>
+                    <?php if (!empty($product['brand'])): ?><span class="shop-card-brand">Marca: <?= e($product['brand']) ?></span><?php endif; ?>
                     <a class="shop-card-rating" href="<?= e($productUrl) ?>#avaliacoes" aria-label="Ver avaliações de <?= e($product['name']) ?>"><span>★★★★★</span><strong>4,8</strong><small>Avaliações de clientes</small></a>
                     <p><?= e($product['short_description']) ?></p>
                     <ul class="shop-mini-specs">

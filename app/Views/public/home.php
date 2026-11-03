@@ -160,6 +160,7 @@ $heroMessages = [
     <?php $featuredProducts = [
         [
             'id' => 'mrd380-family',
+            'is_new' => true,
             'name' => 'MRD-380',
             'model_code' => 'MRD-380',
             'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores.',
@@ -204,6 +205,7 @@ $heroMessages = [
     <div class="catalog-grid swiper-wrapper">
         <?php foreach ($featuredProducts as $product): ?>
             <article class="product-card swiper-slide">
+                <?php if (!empty($product['is_new'])): ?><span class="product-launch-badge">Lançamento</span><?php endif; ?>
                 <img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" loading="lazy" decoding="async">
                 <div>
                     <p class="code"><?= e($product['model_code']) ?></p>

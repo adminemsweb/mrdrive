@@ -4198,6 +4198,21 @@
   border-radius: 10px;
   box-shadow: 0 5px 16px rgba(9, 47, 102, .06);
 }
+#catalogo .product-launch-badge {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  left: 12px;
+  padding: 5px 9px;
+  border-radius: 5px;
+  background: #ff6200;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 #catalogo .product-card:last-child { grid-column: auto; justify-self: auto; }
 #catalogo .product-card:hover { transform: none; }
 #catalogo .product-card img {

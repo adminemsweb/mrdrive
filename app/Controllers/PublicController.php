@@ -148,6 +148,11 @@ final class PublicController
         $this->storeProductByModel('MRD700/IP65');
     }
 
+    public function mrd380(): void
+    {
+        $this->storeProductByModel('MRD-380');
+    }
+
     public function mrd600(): void
     {
         $this->storeProductByModel('MRD600');
@@ -332,6 +337,7 @@ final class PublicController
         $modelCode = strtoupper(trim((string) ($product['model_code'] ?? '')));
 
         return match ($modelCode) {
+            'MRD-380' => 'Soft Starter MRD-380 com Bypass Integrado | MR Drives',
             'MRD600' => 'Inversor de Frequência MRD600 220 V e 380 V | MR Drives',
             'MRD700' => 'Inversor Vetorial MRD700 para Automação | MR Drives',
             'MRD700/IP65', 'MRD700-IP65' => 'Inversor IP65 MRD700 para Ambientes Severos | MR Drives',
@@ -424,6 +430,40 @@ final class PublicController
     {
         return [
             [
+                'id' => 380,
+                'name' => 'MRD-380',
+                'model_code' => 'MRD-380',
+                'sku' => 'MRD-380',
+                'category' => 'Soft starters',
+                'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores industriais.',
+                'power' => '5,5 kW a 115 kW',
+                'voltage' => '220 V / 380 V, conforme modelo',
+                'main_image' => 'assets/img/mrd380/linha.png',
+                'url' => '/mrd380',
+                'manual_pdf' => 'assets/img/mrd380/MRD-380-catalogo-pt-BR.pdf',
+                'full_description' => 'A MRD-380 é uma soft starter para partida e parada suave de motores, com bypass integrado, painel LCD e comunicação Modbus RS485. O dimensionamento considera a tensão, a corrente nominal do motor e a aplicação. Faixas da linha: 5,5–18,5 kW; 22–37 kW; 45–75 kW; 90–115 kW. Em 220 V, o catálogo informa modelos de 5,5 a 55 kW; em 380 V, de 5,5 a 115 kW.',
+                'recommended_applications' => 'Motores assíncronos trifásicos, bombas e sistemas industriais que exigem partida suave',
+                'technical_specs' => 'Bypass integrado
+Partida por rampa de tensão, limitação de corrente e torque
+Parada suave ajustável
+Display LCD e painel removível
+Comunicação Modbus RS485
+Proteções de sobrecarga, falta de fase, sequência de fase, sobretensão e subtensão
+Faixas: 5,5–18,5 / 22–37 / 45–75 / 90–115 kW
+220 V: 5,5 a 55 kW | 380 V: 5,5 a 115 kW',
+                'price' => null,
+                'compare_at_price' => null,
+                'sale_channel' => 'whatsapp',
+                'stock_quantity' => 0,
+                'track_stock' => 0,
+                'shipping_days' => 'Prazo e disponibilidade confirmados no atendimento',
+                'is_featured' => 1,
+                'is_offer' => 0,
+                'is_best_seller' => 0,
+                'is_new' => 1,
+            ],
+
+            [
                 'id' => 600,
                 'name' => 'MRD600',
                 'model_code' => 'MRD600',
@@ -515,6 +555,10 @@ final class PublicController
 
             foreach ($products as $product) {
                 $identity = strtolower((string) (($product['model_code'] ?? '') . ' ' . ($product['name'] ?? '')));
+                if ($expected === 'mrd-380' && strtolower(trim((string) ($product['model_code'] ?? ''))) === $expected) {
+                    $match = $product;
+                    break;
+                }
                 if ($expected === 'mrd600' && str_contains($identity, 'mrd600')) {
                     $match = $product;
                     break;

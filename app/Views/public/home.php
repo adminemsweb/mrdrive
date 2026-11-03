@@ -155,6 +155,17 @@ $heroMessages = [
     </div>
     <?php $featuredProducts = [
         [
+            'id' => 'mrd380-family',
+            'name' => 'MRD-380',
+            'model_code' => 'MRD-380',
+            'short_description' => 'Soft starter com bypass integrado para partida e parada suave de motores.',
+            'power' => '5,5 kW a 115 kW',
+            'voltage' => '220 V / 380 V, conforme modelo',
+            'image' => optimized_image_url('assets/img/mrd380/linha.png'),
+            'href' => '/mrd380',
+        ],
+
+        [
             'id' => 'mrd600-family',
             'name' => 'MRD600',
             'model_code' => 'MRD600',
@@ -286,7 +297,8 @@ $heroMessages = [
         <input type="hidden" name="email" value="lead@mrdrives.local">
         <label>Produto
             <select name="product_interest" id="product_interest">
-                <option>MRD600</option>
+                <option>MRD-380</option>
+                    <option>MRD600</option>
                 <option>MRD700</option>
                 <option>MRD700/IP65</option>
                 <option>Dimensionamento técnico</option>

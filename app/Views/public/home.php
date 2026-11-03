@@ -152,6 +152,10 @@ $heroMessages = [
             <p class="eyebrow">Catálogo</p>
             <h2>Produtos MRDRIVES</h2>
         </div>
+        <div class="catalog-carousel-controls" aria-label="Navegação de produtos">
+            <button type="button" data-catalog-prev aria-label="Produtos anteriores"><i data-lucide="chevron-left"></i></button>
+            <button type="button" data-catalog-next aria-label="Próximos produtos"><i data-lucide="chevron-right"></i></button>
+        </div>
     </div>
     <?php $featuredProducts = [
         [
@@ -196,9 +200,10 @@ $heroMessages = [
             'href' => '/mrd700-ip65',
         ],
     ]; ?>
-    <div class="catalog-grid">
+    <div class="catalog-carousel swiper" data-catalog-carousel aria-label="Produtos MR Drives">
+    <div class="catalog-grid swiper-wrapper">
         <?php foreach ($featuredProducts as $product): ?>
-            <article class="product-card">
+            <article class="product-card swiper-slide">
                 <img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" loading="lazy" decoding="async">
                 <div>
                     <p class="code"><?= e($product['model_code']) ?></p>
@@ -218,6 +223,7 @@ $heroMessages = [
                 </div>
             </article>
         <?php endforeach; ?>
+    </div>
     </div>
 </section>
 

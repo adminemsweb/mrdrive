@@ -7287,7 +7287,7 @@ body {
 
 @media (min-width: 981px) and (max-width: 1180px) {
   .marketplace-category-nav.site-nav-desktop {
-    gap: 4px !important;
+    gap: 2px !important;
     padding-inline: 12px !important;
   }
   .site-nav-desktop .marketplace-departments-menu {
@@ -7296,7 +7296,7 @@ body {
   .marketplace-category-nav.site-nav-desktop > a,
   .marketplace-category-nav.site-nav-desktop .marketplace-departments > button {
     padding-inline: 8px !important;
-    font-size: .68rem !important;
+    font-size: .64rem !important;
   }
 }
 

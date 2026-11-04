@@ -109,8 +109,8 @@ if (privacyNavigation) {
   privacyTargets.forEach((section) => privacyObserver.observe(section));
 }
 
-const productMenuToggle = document.querySelector('[data-product-menu-toggle]');
-const mobileProductMenu = document.querySelector('#mobile-product-menu');
+document.querySelectorAll('[data-product-menu-toggle]').forEach((productMenuToggle) => {
+const mobileProductMenu = document.getElementById(productMenuToggle.getAttribute('aria-controls'));
 if (productMenuToggle && mobileProductMenu) {
   const closeProductMenu = () => {
     mobileProductMenu.hidden = true;
@@ -141,6 +141,8 @@ if (productMenuToggle && mobileProductMenu) {
   window.addEventListener('resize', closeProductMenu);
   window.addEventListener('scroll', closeProductMenu, { passive: true });
 }
+
+});
 
 const homeCatalogSection = document.querySelector('#catalogo');
 const homeProtectedProductSection = document.querySelector('.mrd-home-video');

@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="mrd600-hero-media">
-        <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/mrd600_2.png') ?>" alt="Inversor MRD600" decoding="async">
+        <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/mrd600-capa.jpeg') ?>" alt="Inversor MRD600" decoding="async">
         <div class="mrd600-hero-badges">
             <span>0,4 a 7,5 kW</span>
             <span>220V / 380V</span>
@@ -49,16 +49,7 @@
 
 <section class="section mrd600-feature-section">
     <div class="section-heading"><div><p class="eyebrow">Características do produto</p><h2>Pequeno em tamanho, poderoso em desempenho.</h2></div></div>
-    <div class="mrd600-feature-grid mrd600-feature-grid--technical">
-        <?php foreach ([
-            ['01', 'Economia de espaço de montagem', 'A estrutura tipo livro do MRD600M economiza espaço no painel e permite montagem em paralelo sem redução de capacidade.'],
-            ['02', 'Projeto de aterramento EMC', 'Seleção independente do aterramento por parafuso, para adequar o equipamento à instalação e reduzir interferências EMC e correntes de fuga.'],
-            ['03', 'Projeto térmico e dissipação de calor', 'Face traseira revestida e dissipador com aletas corrugadas favorecem a dissipação de calor e a estabilidade térmica dos componentes.'],
-            ['04', 'Penetração mínima de poeira', 'A ventilação forçada é mantida afastada dos componentes eletrônicos, com as placas de circuito protegidas dentro do drive.'],
-        ] as $feature): ?>
-            <article><span><?= e($feature[0]) ?></span><h3><?= e($feature[1]) ?></h3><p><?= e($feature[2]) ?></p></article>
-        <?php endforeach; ?>
-    </div>
+    <figure class="mrd600-resource-image"><img src="<?= optimized_image_url('assets/img/mrd600/mrd600-recursos.jpeg') ?>" alt="Recursos do MRD600: montagem em paralelo, aterramento EMC, dissipação de calor e proteção dos componentes" loading="lazy" decoding="async"></figure>
 </section>
 
 <section class="section mrd600-spec-section">
@@ -93,11 +84,6 @@
             <h2>Diagrama elétrico de referência.</h2>
             <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600_2.png') ?>" alt="Diagrama elétrico MRD600" loading="lazy" decoding="async">
         </article>
-        <article>
-            <p class="eyebrow">Dimensão do modelo</p>
-            <h2>Medidas para painel e montagem.</h2>
-            <img src="<?= optimized_image_url('assets/img/mrd600/modelomrd600.png') ?>" alt="Dimensões mecânicas MRD600" loading="lazy" decoding="async">
-        </article>
     </div>
 </section>
 
@@ -105,41 +91,32 @@
     <div class="section-heading">
         <div>
             <p class="eyebrow">Tabela de modelos</p>
-            <h2>Seleção por tensão, potência e dimensões.</h2>
+            <h2>Modelos e dimensões do MRD600.</h2>
         </div>
         <a class="text-link" href="/#contato" data-product="MRD600">Solicitar dimensionamento</a>
     </div>
     <div class="mrd600-model-table-wrap">
         <table class="mrd600-model-table">
-            <thead>
-                <tr>
-                    <th>Modelo de acionamento CA</th>
-                    <th>Motor (kW)</th>
-                    <th>Corrente entrada (A)</th>
-                    <th>Saída nominal (A)</th>
-                    <th>D</th>
-                    <th>C</th>
-                    <th>H</th>
-                </tr>
-            </thead>
+            <thead><tr><th scope="col">Modelo</th><th scope="col">Altura (mm)</th><th scope="col">Largura (mm)</th><th scope="col">Profundidade (mm)</th></tr></thead>
             <tbody>
-                <tr class="group"><td colspan="7">Tensão de entrada: monofásica 220V. Faixa de tensão: -15% a 20%.</td></tr>
-                <tr><td>MRD600-2S-0.4G</td><td>0,4</td><td>5.4</td><td>2.3</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-2S-0,7G</td><td>0,7</td><td>8.2</td><td>4</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-2S-1.5G</td><td>1,5</td><td>14.0</td><td>7</td><td>120</td><td>98</td><td>170</td></tr>
-                <tr><td>MRD600-2S-2.2G</td><td>2.2</td><td>23.0</td><td>9,6</td><td>120</td><td>98</td><td>170</td></tr>
-                <tr class="group"><td colspan="7">Tensão de entrada: trifásica 220V. Faixa: -15%~20%.</td></tr>
-                <tr><td>MRD600-2T-0.4G</td><td>0,4</td><td>2.7</td><td>2.3</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-2T-0,7G</td><td>0,7</td><td>4.2</td><td>4</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-2T-1.5G</td><td>1,5</td><td>7,7</td><td>7</td><td>120</td><td>98</td><td>170</td></tr>
-                <tr><td>MRD600-2T-2.2G</td><td>2.2</td><td>12</td><td>9,6</td><td>120</td><td>98</td><td>170</td></tr>
-                <tr class="group"><td colspan="7">Tensão de entrada: trifásica 380V. Faixa: -15%~20%.</td></tr>
-                <tr><td>MRD600-4T-0,7G</td><td>0,7</td><td>3,4/5,0</td><td>2.1/3.8</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-4T-1.5G</td><td>1,5</td><td>5,0/5,8</td><td>3.8/5.1</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-4T-2.2G</td><td>2.2</td><td>5,8/10,5</td><td>5.1/9.0</td><td>107</td><td>83</td><td>149</td></tr>
-                <tr><td>MRD600-4T-4.0G</td><td>4.0</td><td>10,5/14,6</td><td>9,0/13,0</td><td>124</td><td>98</td><td>170</td></tr>
-                <tr><td>MRD600-4T-5.5G</td><td>5,5</td><td>14,6/20,5</td><td>13,0/17,0</td><td>124</td><td>98</td><td>170</td></tr>
-                <tr><td>MRD600-4T-7.5G</td><td>7,5</td><td>20,5/22,0</td><td>17,0/20,0</td><td>124</td><td>98</td><td>170</td></tr>
+                <tr><th scope="row">MRD600M-2S-1.5GB</th><td>149</td><td>83</td><td>111</td></tr>
+                <tr><th scope="row">MRD600M-2S-2.2GB</th><td>170</td><td>98</td><td>124</td></tr>
+                <tr><th scope="row">MRD600M-2S-4.0GB</th><td>170</td><td>98</td><td>124</td></tr>
+                <tr><th scope="row">MRD600M-2S-5.5GB</th><td>228</td><td>135</td><td>160</td></tr>
+                <tr><th scope="row">MRD600M-2S-7.5GB</th><td>228</td><td>135</td><td>160</td></tr>
+                <tr><th scope="row">MRD600M-2T-1.5GB</th><td>149</td><td>83</td><td>111</td></tr>
+                <tr><th scope="row">MRD600M-2T-2.2GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2T-4.0GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2T-5.5GB</th><td>228</td><td>135</td><td>160</td></tr>
+                <tr><th scope="row">MRD600M-2T-7.5GB</th><td>228</td><td>135</td><td>160</td></tr>
+                <tr><th scope="row">MRD600M-2S4T-0.75GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2S4T-1.5GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2S4T-2.2GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2S4T-4.0GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-2S4T-5.5GB</th><td>170</td><td>98</td><td>120</td></tr>
+                <tr><th scope="row">MRD600M-4T-0.75GB/1.5PB</th><td>149</td><td>83</td><td>111</td></tr>
+                <tr><th scope="row">MRD600M-4T-1.5GB/2.2PB</th><td>149</td><td>83</td><td>111</td></tr>
+                <tr><th scope="row">MRD600M-4T-2.2GB/4.0PB</th><td>149</td><td>83</td><td>111</td></tr>
             </tbody>
         </table>
     </div>

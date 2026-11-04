@@ -3,6 +3,8 @@ use App\Core\Csrf;
 
 $heroProducts = array_values($products);
 $heroMessages = [
+    'MRD320/321' => ['Linha vetorial compacta', 'Controle de motores com praticidade e desempenho', 'blue', 'Conheça o MRD320/321'],
+    'SCKR1-360' => ['Partida e parada suave', 'Controle e proteção para motores industriais', 'black', 'Conheça o SCKR1-360'],
     'SCKR1-380' => ['Partida suave com bypass integrado', 'Soft-starter para partida e parada suave de motores', 'black', 'Conheça o SCKR1-380'],
     'MRD600' => ['Linha compacta e versátil', 'Inversores de frequência para máquinas e automação industrial', 'purple', 'Explore a linha MRD600'],
     'MRD700' => ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],

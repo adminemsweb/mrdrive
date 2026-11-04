@@ -80,6 +80,10 @@ $isMrd380 = strtoupper(trim((string) ($product['model_code'] ?? ''))) === 'SCKR1
 <section class="shop-tech-section"><span class="shop-kicker">Ficha técnica</span><h2>Recursos e especificações</h2><div class="shop-tech-list"><?php foreach (preg_split('/\R/', trim($product['technical_specs'])) as $spec): if (trim($spec) !== ''): ?><div><span>✓</span><?= e(trim($spec)) ?></div><?php endif; endforeach; ?></div><?php if (!empty($product['manual_pdf'])): ?><a class="shop-manual-link" href="<?= upload_url($product['manual_pdf']) ?>" target="_blank"<?= $isMrd380 ? ' download rel="noopener"' : '' ?>><?= $isMrd380 ? 'Baixar catálogo em português (PDF)' : 'Baixar manual técnico em PDF →' ?></a><?php endif; ?></section>
 <?php endif; ?>
 
+<?php if (!empty($product['catalog_pdf'])): ?>
+<section class="shop-tech-section"><a class="shop-manual-link" href="<?= e(upload_url($product['catalog_pdf'])) ?>" target="_blank" rel="noopener">Baixar catálogo técnico em PDF →</a></section>
+<?php endif; ?>
+
 <?php if (!empty($technicalView)):
     $embeddedShopDetail = true;
     require app_path('Views/public/' . basename((string) $technicalView) . '.php');

@@ -7,13 +7,13 @@ $customerUser = CustomerAuth::user();
 $cartEnabled = (bool) (app_config('store')['cart_enabled'] ?? false);
 $productMenuGroups = [
     ['title' => 'Inversores de frequência', 'models' => [
-        ['MRD320/321', '/ticket?produto=MRD320%2F321'],
+        ['MRD320/321', '/mrd320'],
         ['MRD600', '/mrd600'],
         ['MRD700', '/mrd700'],
         ['MRD700-IP65', '/mrd700-ip65'],
     ]],
     ['title' => 'Soft-starters', 'models' => [
-        ['SCKR1-360 · WCE Brasil', '/ticket?produto=SCKR1-360%20WCE%20BRASIL'],
+        ['SCKR1-360 · WCE Brasil', '/sckr1-360'],
         ['SCKR1-380 · WCE Brasil', '/sckr1-380'],
         ['SCKR1-6300 · WCE Brasil', '/ticket?produto=SCKR1-6300%20WCE%20BRASIL'],
         ['SCKR1-6800 · WCE Brasil', '/ticket?produto=SCKR1-6800%20WCE%20BRASIL'],
@@ -73,7 +73,7 @@ if ($canonicalPath === '/produto' && isset($_GET['id'])) {
     $canonicalPath .= '?id=' . max(0, (int) $_GET['id']);
 }
 $canonicalUrl = 'https://mrdrives.com.br' . ($canonicalPath === '/' ? '/' : rtrim($canonicalPath, '/'));
-$isProductPage = in_array($requestPath, ['/produto', '/sckr1-380', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
+$isProductPage = in_array($requestPath, ['/produto', '/sckr1-360', '/sckr1-380', '/mrd320', '/mrd321', '/mrd320-321', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
     && !empty($product)
     && is_array($product);
 $productImagePath = $isProductPage && !empty($product['main_image']) ? optimized_image_url((string) $product['main_image']) : '';

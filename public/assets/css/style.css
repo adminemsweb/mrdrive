@@ -7254,13 +7254,26 @@ body {
 
 .mrd600-diagram-grid {
   display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-template-columns: minmax(0, 1fr) !important;
   gap: 22px !important;
-  max-width: 1180px !important;
+  max-width: 760px !important;
   margin: 0 auto !important;
 }
 
+.mrd600-resource-image {
+  width: min(100%, 886px);
+  margin: 24px auto 0;
+}
+
+.mrd600-resource-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .mrd600-diagram-grid article {
+  min-width: 0;
+  text-align: center;
   padding: clamp(18px, 3vw, 30px) !important;
   border: 1px solid rgba(8,35,63,.1) !important;
   border-radius: 8px !important;
@@ -7268,18 +7281,39 @@ body {
   box-shadow: 0 20px 50px rgba(8,35,63,.08) !important;
 }
 
+.mrd600-diagram-grid article h2 {
+  margin: 8px auto 0 !important;
+  font-size: clamp(24px, 2.5vw, 34px) !important;
+  line-height: 1.2 !important;
+}
+
+.mrd600-diagram-grid article .eyebrow {
+  font-size: 12px !important;
+}
+
 .mrd600-diagram-grid img {
+  display: block !important;
   width: 100% !important;
-  margin-top: 20px !important;
+  max-width: 520px !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 24px auto 0 !important;
   border-radius: 6px !important;
   background: #fff !important;
   object-fit: contain !important;
 }
 
 .mrd600-model-table thead th {
+  background: #183e60 !important;
   position: sticky !important;
   top: 0 !important;
   z-index: 1 !important;
+}
+
+.mrd600-model-table tbody th {
+  background: #fff !important;
+  color: #092f66 !important;
+  font-weight: 600 !important;
 }
 
 .mrd600-model-table .group td {

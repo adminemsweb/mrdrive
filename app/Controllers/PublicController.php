@@ -154,6 +154,16 @@ final class PublicController
         $this->storeProductByModel('SCKR1-380');
     }
 
+    public function mrd320(): void
+    {
+        $this->storeProductByModel('MRD320/321');
+    }
+
+    public function sckr360(): void
+    {
+        $this->storeProductByModel('SCKR1-360');
+    }
+
     public function mrd600(): void
     {
         $this->storeProductByModel('MRD600');
@@ -385,6 +395,11 @@ final class PublicController
 
     private function productPresentation(string $modelCode): array
     {
+        foreach (json_decode((string) file_get_contents(base_path('config/product-lines.json')), true) as $line) {
+            if ($line['model_code'] === $modelCode) {
+                return ['gallery' => $line['gallery']];
+            }
+        }
         $normalized = strtolower(str_replace([' ', '-'], '', $modelCode));
 
         if (str_contains($normalized, 'mrd700') && str_contains($normalized, 'ip65')) {
@@ -420,7 +435,7 @@ final class PublicController
                 'technical_view' => 'mrd600',
                 'gallery' => array_map(
                     static fn(string $file): string => 'assets/img/mrd600/' . $file,
-                    ['mrd600.png', 'mrd600_3.png', 'mrd600_4.png', 'mrd600_5.png', 'mrd600_6.png']
+                    ['mrd600-recursos.jpeg', 'mrd600.png', 'mrd600_3.png', 'mrd600_4.png', 'mrd600_5.png', 'mrd600_6.png']
                 ),
             ];
         }
@@ -430,7 +445,7 @@ final class PublicController
 
     private function fallbackProducts(): array
     {
-        return [
+        return array_merge([
             [
                 'id' => 380,
                 'name' => 'SCKR1-380',
@@ -475,7 +490,7 @@ Faixas: 5,5–18,5 / 22–37 / 45–75 / 90–115 kW
                 'short_description' => 'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
                 'power' => '0,4 kW a 7,5 kW',
                 'voltage' => '220 V / 380 V',
-                'main_image' => 'assets/img/mrd600/mrd600_2.png',
+                'main_image' => 'assets/img/mrd600/mrd600-capa.jpeg',
                 'url' => '/mrd600',
                 'manual_pdf' => 'assets/img/mrd600/MRD600.pdf',
                 'full_description' => 'Inversor vetorial compacto para controle preciso de motores em máquinas, bombas, ventiladores e sistemas industriais.',
@@ -548,7 +563,7 @@ IHM LED e LCD para instalação remota (opcional)',
                 'is_best_seller' => 1,
                 'is_new' => 1,
             ],
-        ];
+        ], json_decode((string) file_get_contents(base_path('config/product-lines.json')), true));
     }
 
     private function featuredLines(array $products): array
@@ -562,7 +577,7 @@ IHM LED e LCD para instalação remota (opcional)',
 
             foreach ($products as $product) {
                 $identity = strtolower((string) (($product['model_code'] ?? '') . ' ' . ($product['name'] ?? '')));
-                if ($expected === 'sckr1-380' && strtolower(trim((string) ($product['model_code'] ?? ''))) === $expected) {
+                if (strtolower(trim((string) ($product['model_code'] ?? ''))) === $expected) {
                     $match = $product;
                     break;
                 }

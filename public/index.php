@@ -128,6 +128,16 @@ if ($path === '/sckr1-380' || $path === '/sckr1-380/') {
     return;
 }
 
+if ($path === '/mrd320' || $path === '/mrd321' || $path === '/mrd320-321') {
+    $controller->mrd320();
+    return;
+}
+
+if ($path === '/sckr1-360') {
+    $controller->sckr360();
+    return;
+}
+
 if ($path === '/mrd600') {
     $controller->mrd600();
     return;

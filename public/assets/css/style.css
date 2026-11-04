@@ -7285,6 +7285,21 @@ body {
   background: #edf4f8;
 }
 
+@media (min-width: 981px) and (max-width: 1180px) {
+  .marketplace-category-nav.site-nav-desktop {
+    gap: 4px !important;
+    padding-inline: 12px !important;
+  }
+  .site-nav-desktop .marketplace-departments-menu {
+    display: none !important;
+  }
+  .marketplace-category-nav.site-nav-desktop > a,
+  .marketplace-category-nav.site-nav-desktop .marketplace-departments > button {
+    padding-inline: 8px !important;
+    font-size: .68rem !important;
+  }
+}
+
 .mrd600-diagram-grid article {
   min-width: 0;
   text-align: center;

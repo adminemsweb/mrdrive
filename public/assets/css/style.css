@@ -7271,6 +7271,20 @@ body {
   height: auto;
 }
 
+#mobile-wce-menu > a {
+  display: block;
+  padding: 12px 10px;
+  color: #12385b;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
+}
+
+#mobile-wce-menu > a:hover,
+#mobile-wce-menu > a:focus-visible {
+  background: #edf4f8;
+}
+
 .mrd600-diagram-grid article {
   min-width: 0;
   text-align: center;

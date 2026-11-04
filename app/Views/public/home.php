@@ -16,6 +16,9 @@ $heroMessages = [
         <div class="swiper-wrapper">
             <?php foreach ($heroProducts as $index => $item):
                 $heroImage = !empty($item['main_image']) ? optimized_image_url($item['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
+                if (($item['model_code'] ?? '') === 'MRD600') {
+                    $heroImage = optimized_image_url('assets/img/mrd600/mrd600_2.png');
+                }
                 $heroUrl = $item['url'] ?? ('/produto?id=' . (int) $item['id']);
                 $message = $heroMessages[(string) ($item['model_code'] ?? '')] ?? ['Linha MR Drives', 'Controle industrial para a sua operação', 'blue', 'Conheça nossos produtos'];
             ?>

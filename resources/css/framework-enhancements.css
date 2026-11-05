@@ -4988,6 +4988,18 @@
   .customer-dashboard-list { grid-template-columns: 1fr; }
   .customer-dashboard-card { padding: 21px 18px; }
 }
+/* Designer artwork keeps its full composition at every viewport size. */
+.designer-banner-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.designer-banner-carousel { width: 100%; background: #fff; }
+.designer-banner-carousel .swiper-wrapper { align-items: stretch; }
+.designer-banner-carousel .designer-banner-slide { height: auto; }
+.designer-banner-slide > a { display: block; width: 100%; }
+.designer-banner-slide img { display: block; width: 100%; height: auto; aspect-ratio: 2073 / 758; object-fit: contain; }
+.designer-banner-carousel .designer-banner-pagination { position: relative; inset: auto; display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 36px; margin: 0; padding: 6px 12px; box-sizing: border-box; background: #fff; }
+.designer-banner-pagination .swiper-pagination-bullet { width: 28px; height: 4px; margin: 0 !important; border-radius: 2px; background: #12385b; opacity: .25; }
+.designer-banner-pagination .swiper-pagination-bullet-active { background: #ff6500; opacity: 1; }
+.designer-banner-slide > a:focus-visible { outline: 3px solid #ff6500; outline-offset: -3px; }
+
 /* Compact home carousel, shared by MR Drives and Samwha. */
 .storefront-hero-carousel,.storefront-hero-carousel .swiper-wrapper,.storefront-hero-carousel .storefront-promotion.swiper-slide{min-height:440px!important}
 .storefront-hero-carousel .storefront-promotion.swiper-slide{height:auto!important}

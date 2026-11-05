@@ -184,7 +184,7 @@ if (heroCarousel) {
   new Swiper(heroCarousel, {
     modules: [A11y, Autoplay, Keyboard, Pagination],
     slidesPerView: 1,
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 650,
     loop: true,
     keyboard: { enabled: true, onlyInViewport: true },

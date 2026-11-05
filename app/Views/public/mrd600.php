@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="mrd600-hero-media">
-        <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/mrd600-capa.jpeg') ?>" alt="Inversor MRD600" decoding="async">
+        <img class="mrd600-main-product" src="<?= optimized_image_url('assets/img/mrd600/nova-foto-18.jpg') ?>" alt="Inversor MRD600" decoding="async">
         <div class="mrd600-hero-badges">
             <span>0,4 a 7,5 kW</span>
             <span>220V / 380V</span>
@@ -99,27 +99,13 @@
         <table class="mrd600-model-table">
             <thead><tr><th scope="col">Modelo</th><th scope="col">Altura (mm)</th><th scope="col">Largura (mm)</th><th scope="col">Profundidade (mm)</th></tr></thead>
             <tbody>
-                <tr><th scope="row">MRD600M-2S-1.5GB</th><td>149</td><td>83</td><td>111</td></tr>
-                <tr><th scope="row">MRD600M-2S-2.2GB</th><td>170</td><td>98</td><td>124</td></tr>
-                <tr><th scope="row">MRD600M-2S-4.0GB</th><td>170</td><td>98</td><td>124</td></tr>
-                <tr><th scope="row">MRD600M-2S-5.5GB</th><td>228</td><td>135</td><td>160</td></tr>
-                <tr><th scope="row">MRD600M-2S-7.5GB</th><td>228</td><td>135</td><td>160</td></tr>
-                <tr><th scope="row">MRD600M-2T-1.5GB</th><td>149</td><td>83</td><td>111</td></tr>
-                <tr><th scope="row">MRD600M-2T-2.2GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2T-4.0GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2T-5.5GB</th><td>228</td><td>135</td><td>160</td></tr>
-                <tr><th scope="row">MRD600M-2T-7.5GB</th><td>228</td><td>135</td><td>160</td></tr>
-                <tr><th scope="row">MRD600M-2S4T-0.75GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2S4T-1.5GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2S4T-2.2GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2S4T-4.0GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-2S4T-5.5GB</th><td>170</td><td>98</td><td>120</td></tr>
-                <tr><th scope="row">MRD600M-4T-0.75GB/1.5PB</th><td>149</td><td>83</td><td>111</td></tr>
-                <tr><th scope="row">MRD600M-4T-1.5GB/2.2PB</th><td>149</td><td>83</td><td>111</td></tr>
-                <tr><th scope="row">MRD600M-4T-2.2GB/4.0PB</th><td>149</td><td>83</td><td>111</td></tr>
+                <?php foreach (json_decode((string) file_get_contents(base_path('config/mrd600-dimensions.json')), true) as [$model, $height, $width, $depth]): ?>
+                <tr><th scope="row"><?= e($model) ?></th><td><?= (int) $height ?></td><td><?= (int) $width ?></td><td><?= (int) $depth ?></td></tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
+<p><a class="text-link" href="/assets/documents/MRD600M-modelos-e-dimensoes.xlsx" download>Baixar tabela de modelos e dimensões (Excel)</a></p>
 </section>
 
 <?php if (empty($embeddedShopDetail)): ?>

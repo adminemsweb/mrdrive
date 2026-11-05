@@ -159,6 +159,11 @@ final class PublicController
         $this->storeProductByModel('MRD320/321');
     }
 
+    public function sckr6800(): void
+    {
+        $this->storeProductByModel('SCKR1-6800');
+    }
+
     public function sckr360(): void
     {
         $this->storeProductByModel('SCKR1-360');
@@ -313,6 +318,10 @@ final class PublicController
         $presentation = $this->productPresentation((string) ($product['model_code'] ?? ''));
         $gallery = [];
 
+        if (($product['model_code'] ?? '') === 'MRD600') {
+            $images = [];
+        }
+
         foreach ($images as $image) {
             if (!empty($image['image_path'])) {
                 $gallery[] = ['image_path' => (string) $image['image_path']];
@@ -433,10 +442,7 @@ final class PublicController
         if (str_contains($normalized, 'mrd600')) {
             return [
                 'technical_view' => 'mrd600',
-                'gallery' => array_map(
-                    static fn(string $file): string => 'assets/img/mrd600/' . $file,
-                    ['mrd600-recursos.jpeg', 'mrd600.png', 'mrd600_3.png', 'mrd600_4.png', 'mrd600_5.png', 'mrd600_6.png']
-                ),
+                'gallery' => ['assets/img/mrd600/nova-foto-1.jpg','assets/img/mrd600/nova-foto-2.jpg','assets/img/mrd600/nova-foto-3.jpg','assets/img/mrd600/nova-foto-4.jpg','assets/img/mrd600/nova-foto-5.jpg','assets/img/mrd600/nova-foto-6.jpg','assets/img/mrd600/nova-foto-7.jpg','assets/img/mrd600/nova-foto-8.jpg','assets/img/mrd600/nova-foto-9.jpg','assets/img/mrd600/nova-foto-10.jpg','assets/img/mrd600/nova-foto-11.jpg','assets/img/mrd600/nova-foto-12.jpg','assets/img/mrd600/nova-foto-13.jpg','assets/img/mrd600/nova-foto-14.jpg','assets/img/mrd600/nova-foto-15.jpg','assets/img/mrd600/nova-foto-16.jpg','assets/img/mrd600/nova-foto-17.jpg','assets/img/mrd600/nova-foto-19.jpg','assets/img/mrd600/nova-foto-20.jpg','assets/img/mrd600/nova-foto-21.jpg','assets/img/mrd600/nova-foto-22.jpg'],
             ];
         }
 
@@ -490,7 +496,7 @@ Faixas: 5,5–18,5 / 22–37 / 45–75 / 90–115 kW
                 'short_description' => 'Inversor compacto para máquinas, bombas, ventiladores e aplicações industriais de rotina.',
                 'power' => '0,4 kW a 7,5 kW',
                 'voltage' => '220 V / 380 V',
-                'main_image' => 'assets/img/mrd600/mrd600-capa.jpeg',
+                'main_image' => 'assets/img/mrd600/nova-foto-18.jpg',
                 'url' => '/mrd600',
                 'manual_pdf' => 'assets/img/mrd600/MRD600.pdf',
                 'full_description' => 'Inversor vetorial compacto para controle preciso de motores em máquinas, bombas, ventiladores e sistemas industriais.',

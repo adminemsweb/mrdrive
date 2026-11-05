@@ -67,7 +67,7 @@ if ($canonicalPath === '/produto' && isset($_GET['id'])) {
     $canonicalPath .= '?id=' . max(0, (int) $_GET['id']);
 }
 $canonicalUrl = 'https://mrdrives.com.br' . ($canonicalPath === '/' ? '/' : rtrim($canonicalPath, '/'));
-$isProductPage = in_array($requestPath, ['/produto', '/sckr1-360', '/sckr1-380', '/mrd320', '/mrd321', '/mrd320-321', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
+$isProductPage = in_array($requestPath, ['/produto', '/sckr1-360', '/sckr1-380', '/sckr1-6800', '/mrd320', '/mrd321', '/mrd320-321', '/mrd600', '/mrd700', '/mrd700-ip65'], true)
     && !empty($product)
     && is_array($product);
 $productImagePath = $isProductPage && !empty($product['main_image']) ? optimized_image_url((string) $product['main_image']) : '';

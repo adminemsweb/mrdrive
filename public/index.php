@@ -138,6 +138,11 @@ if ($path === '/sckr1-360') {
     return;
 }
 
+if ($path === '/sckr1-6800') {
+    $controller->sckr6800();
+    return;
+}
+
 if ($path === '/mrd600') {
     $controller->mrd600();
     return;

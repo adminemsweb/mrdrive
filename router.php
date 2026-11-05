@@ -5,7 +5,7 @@ declare(strict_types=1);
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $root = __DIR__;
 
-$publicFile = realpath($root . '/public' . $path);
+$publicFile = realpath($root . '/public' . rawurldecode($path));
 if ($publicFile && str_starts_with($publicFile, realpath($root . '/public')) && is_file($publicFile)) {
     $extension = strtolower(pathinfo($publicFile, PATHINFO_EXTENSION));
     $types = [

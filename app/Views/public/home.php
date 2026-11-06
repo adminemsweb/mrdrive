@@ -1,27 +1,61 @@
 <?php
 use App\Core\Csrf;
 
-$designerBanners = [
-    ['Banner corporativo de soft starters MR Drives (1).png', 'Linha de soft-starters MR Drives e WCE Brasil', '/catalogo'],
-    ['Banner corporativo MR Drives Soft Starter.png', 'Soft-starters WCE Brasil: conheça a linha SCKR1-360', '/sckr1-360'],
-    ['Banner corporativo de soft starter MR Drives.png', 'Soft-starter WCE Brasil: consulte modelos e aplicações', '/catalogo'],
-    ['Banner corporativo de soft starters MR Drives.png', 'Soft-starters para partida e parada suave de motores', '/catalogo'],
-    ['Partidas suaves WCP sobre mapa global.png', 'Soluções WCE Brasil para partida suave de motores', '/catalogo'],
+$heroProducts = array_values($products);
+$heroMessages = [
+    'MRD320/321' => ['Linha vetorial compacta', 'Controle de motores com praticidade e desempenho', 'blue', 'Conheça o MRD320/321'],
+    'SCKR1-360' => ['Partida e parada suave', 'Controle e proteção para motores industriais', 'black', 'Conheça o SCKR1-360'],
+    'SCKR1-380' => ['Partida suave com bypass integrado', 'Soft-starter para partida e parada suave de motores', 'black', 'Conheça o SCKR1-380'],
+    'MRD600' => ['Linha compacta e versátil', 'Inversores de frequência para máquinas e automação industrial', 'purple', 'Explore a linha MRD600'],
+    'MRD700' => ['Linha de alto desempenho', 'Mais desempenho para a sua automação industrial', 'orange', 'Conheça o MRD700'],
+    'MRD700/IP65' => ['Linha protegida IP65', 'Proteção preparada para ambientes severos', 'blue', 'Conheça o MRD700/IP65'],
 ];
 ?>
-<section class="storefront-hero designer-banner-hero" aria-label="Destaques MR Drives">
-    <h1 class="designer-banner-heading">MR Drives: inversores de frequência e soft-starters para automação industrial</h1>
-    <div class="designer-banner-carousel swiper" data-hero-carousel>
+<section class="storefront-hero" aria-label="Loja de automação industrial MR Drives">
+    <div class="storefront-hero-carousel swiper" data-hero-carousel>
         <div class="swiper-wrapper">
-            <?php foreach ($designerBanners as $index => [$file, $description, $url]): ?>
-                <article class="designer-banner-slide swiper-slide">
-                    <a href="<?= e($url) ?>" aria-label="<?= e($description) ?>">
-                        <img src="/BannerSITE/<?= rawurlencode($file) ?>" alt="<?= e($description) ?>" width="2073" height="758" decoding="async" <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
-                    </a>
+            <?php foreach ($heroProducts as $index => $item):
+                $heroImage = !empty($item['main_image']) ? optimized_image_url($item['main_image']) : optimized_image_url('assets/img/mrd600/mrd600_2.png');
+                if (($item['model_code'] ?? '') === 'MRD600') {
+                    $heroImage = optimized_image_url('assets/img/mrd600/mrd600_2.png');
+                }
+                $heroUrl = $item['url'] ?? ('/produto?id=' . (int) $item['id']);
+                $message = $heroMessages[(string) ($item['model_code'] ?? '')] ?? ['Linha MR Drives', 'Controle industrial para a sua operação', 'blue', 'Conheça nossos produtos'];
+            ?>
+                <article class="storefront-promotion storefront-promotion--<?= e($message[2]) ?> swiper-slide">
+                    <div class="storefront-promotion-copy">
+                        <span class="storefront-promotion-label"><?= e($message[0]) ?> <b>•</b> Entrega nacional</span>
+                        <?php if ($index === 0): ?>
+                            <h1><?= e($message[1]) ?></h1>
+                        <?php else: ?>
+                            <h2><?= e($message[1]) ?></h2>
+                        <?php endif; ?>
+                        <p><?= e($item['short_description']) ?></p>
+                        <div class="storefront-promotion-tags"><span><?= e($item['power']) ?></span><span><?= e($item['voltage']) ?></span></div>
+                        <div class="storefront-promotion-actions"><a href="<?= e($heroUrl) ?>"><?= e($message[3]) ?> <i data-lucide="arrow-right"></i></a><a href="/ticket">Falar com um especialista</a></div>
+                    </div>
+                    <div class="storefront-promotion-product">
+                        <span class="storefront-promotion-model"><?= e($item['name']) ?></span>
+                        <img src="<?= e($heroImage) ?>" alt="<?= e($item['name']) ?>" decoding="async" <?= $index === 0 ? 'fetchpriority="high"' : 'loading="lazy"' ?>>
+                    </div>
                 </article>
             <?php endforeach; ?>
+            <article class="storefront-promotion storefront-promotion--samwha swiper-slide">
+                <div class="storefront-promotion-copy">
+                    <span class="storefront-promotion-label">Samwha DSP <b>•</b> Automação industrial</span>
+                    <h2>Proteção, controle e medição para sua indústria</h2>
+                    <p>Conheça os relés, contatores e instrumentos Samwha DSP. Consulte os modelos e acesse os manuais técnicos.</p>
+                    <div class="storefront-promotion-tags"><span>Relés e contatores</span><span>Medição e controle</span></div>
+                    <div class="storefront-promotion-actions"><a href="/samwha-dsp">Explore a linha Samwha <i data-lucide="arrow-right"></i></a><a href="/downloads#manuais-samwha">Manuais técnicos</a></div>
+                </div>
+                <div class="storefront-promotion-product storefront-samwha-brand">
+                    <span class="storefront-promotion-model">SAMWHA DSP</span>
+                    <div class="storefront-samwha-logo"><img src="<?= asset('img/logosamwha.png') ?>" alt="Samwha DSP Brasil" loading="lazy" decoding="async"></div>
+                    <span class="storefront-samwha-caption">Soluções para automação industrial</span>
+                </div>
+            </article>
         </div>
-        <div class="storefront-hero-pagination designer-banner-pagination" aria-label="Selecionar banner"></div>
+        <div class="storefront-hero-pagination" aria-label="Selecionar produto em destaque"></div>
     </div>
     <div class="storefront-hero-assurances">
         <span><i data-lucide="truck"></i><strong>Entrega nacional</strong><small>Atendimento em todo o Brasil</small></span>
@@ -187,7 +221,7 @@ $designerBanners = [
             'image' => optimized_image_url('assets/img/mrd700-ip65/mrd700ip65-transparent.png'),
             'href' => '/mrd700-ip65',
         ],
-    ]; ?>
+    ]; $featuredProducts = array_values(array_filter($featuredProducts, 'store_product_enabled')); ?>
     <div class="catalog-carousel swiper" data-catalog-carousel aria-label="Produtos MR Drives">
     <div class="catalog-grid swiper-wrapper">
         <?php foreach ($featuredProducts as $product): ?>

@@ -260,7 +260,6 @@ if ($isProductPage) {
                     <?php require app_path('Views/public/product-menu.php'); ?>
                 </div>
             </div>
-            <div class="mobile-nav-group"><div class="mobile-nav-row"><a href="/sckr1-360">Produtos WCE Brasil</a><button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir produtos WCE Brasil"></button></div><div class="mobile-submenu"><?php require app_path('Views/public/wce-menu.php'); ?></div></div>
             <div class="mobile-nav-group"><div class="mobile-nav-row"><a href="/samwha-dsp">Produtos Samwha DSP</a><button type="button" class="mobile-submenu-toggle" aria-expanded="false" aria-label="Abrir produtos Samwha DSP"></button></div><div class="mobile-submenu"><a href="/samwha-dsp">Todos os produtos Samwha DSP</a><a href="https://wa.me/<?= e(app_config('whatsapp')) ?>?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20produtos%20Samwha%20DSP." target="_blank" rel="noopener">Consultar produtos e disponibilidade</a></div></div>
             <div class="mobile-nav-group">
                 <div class="mobile-nav-row">
@@ -296,7 +295,6 @@ if ($isProductPage) {
     <nav class="marketplace-category-nav site-nav-mobile-scroll" aria-label="Navegação principal no celular">
         <a href="/">Início</a>
         <button class="mobile-product-menu-toggle" type="button" data-product-menu-toggle aria-controls="mobile-product-menu" aria-expanded="false">Produtos MR Drives <i data-lucide="chevron-down"></i></button>
-        <button class="mobile-product-menu-toggle" type="button" data-product-menu-toggle aria-controls="mobile-wce-menu" aria-expanded="false">Produtos WCE Brasil <i data-lucide="chevron-down"></i></button>
         <a href="/samwha-dsp">Produtos Samwha DSP</a>
 
 
@@ -311,11 +309,9 @@ if ($isProductPage) {
         <a class="product-menu-all" href="/catalogo#produtos">Todos os produtos</a>
         <?php require app_path('Views/public/product-menu.php'); ?>
     </div>
-    <div class="mobile-product-menu" id="mobile-wce-menu" hidden><?php require app_path('Views/public/wce-menu.php'); ?></div>
     <nav class="marketplace-category-nav site-nav-desktop" aria-label="Departamentos da loja">
         <a href="/">Início</a>
         <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos MR Drives</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown product-category-dropdown"><a class="product-menu-all" href="/catalogo#produtos">Todos os produtos</a><?php require app_path('Views/public/product-menu.php'); ?></div></div>
-        <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos WCE Brasil</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><?php require app_path('Views/public/wce-menu.php'); ?></div></div>
         <div class="marketplace-departments nav-group"><button type="button" aria-haspopup="true"><i class="marketplace-departments-menu" data-lucide="menu"></i><span class="marketplace-departments-label">Produtos Samwha DSP</span><i class="marketplace-departments-chevron" data-lucide="chevron-down"></i></button><div class="nav-dropdown"><a href="/samwha-dsp">Todos os produtos Samwha DSP</a><a href="https://wa.me/<?= e(app_config('whatsapp')) ?>?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20produtos%20Samwha%20DSP." target="_blank" rel="noopener">Consultar produtos e disponibilidade</a></div></div>
         <a href="/#aplicacoes">Aplicações</a>
         <a href="/downloads">Downloads</a>

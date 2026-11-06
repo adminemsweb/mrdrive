@@ -23,7 +23,6 @@
             </label>
             <label>Catálogo ou guia
                 <select name="catalog">
-                    <option>SCKR1-380 - catálogo técnico</option>
                     <option>MRD600 - catálogo técnico</option>
                     <option>MRD600 - guia rápido</option>
                     <option>MRD700 - catálogo técnico</option>

@@ -4,9 +4,6 @@ $downloadGroups = [
         'title' => 'Catálogos',
         'items' => [
             ['MRD320/321 - Catálogo técnico', 'PDF · Português', '/assets/documents/MRD320-321-catalogo.pdf'],
-            ['SCKR1-360 - Catálogo WCE Brasil', 'PDF · Português', '/assets/documents/SCKR1-360-catalogo-pt-BR.pdf'],
-            ['SCKR1-6800 - Catálogo atualizado WCE Brasil', 'PDF · Português', '/assets/documents/SCKR1-6800-catalogo-pt-BR.pdf'],
-            ['SCKR1-380 - Catálogo técnico em português', 'PDF · Português', asset('img/mrd380/SCKR1-380-catalogo-pt-BR.pdf')],
             ['MRD600 - Catálogo técnico', 'PDF', asset('img/mrd600/MRD600.pdf')],
             ['MRD700 - Catálogo técnico', 'PDF', asset('img/mrd700/MRD700.pdf')],
         ],
@@ -14,11 +11,8 @@ $downloadGroups = [
     [
         'title' => 'Características técnicas',
         'items' => [
-            ['Linha SCKR1-380', 'Página técnica', '/sckr1-380'],
             ['Linha MRD600', 'Página técnica', '/mrd600'],
             ['Linha MRD320/321', 'Página técnica', '/mrd320'],
-            ['SCKR1-360 · WCE Brasil', 'Página técnica', '/sckr1-360'],
-            ['SCKR1-6800 · WCE Brasil', 'Página técnica', '/sckr1-6800'],
             ['MRD600M - Modelos e dimensões', 'Excel · Milímetros', '/assets/documents/MRD600M-modelos-e-dimensoes.xlsx'],
             ['Linha MRD700', 'Página técnica', '/mrd700'],
             ['MRD700/IP65', 'Página técnica', '/mrd700-ip65'],
@@ -27,11 +21,8 @@ $downloadGroups = [
     [
         'title' => 'Manuais e guias rápidos',
         'items' => [
-            ['SCKR1-380 - Referência técnica de partida suave em português', 'PDF · Português', asset('img/mrd380/SCKR1-380-catalogo-pt-BR.pdf')],
             ['Guia rápido MRD600', 'PDF', asset('img/mrd600/mrd600_guia_rapido.pdf')],
             ['MRD320 - Manual de operação', 'PDF · Português', '/assets/documents/MRD320-manual.pdf'],
-            ['SCKR1-360 - Manual atualizado WCE Brasil', 'PDF · Português', '/assets/documents/SCKR1-360-manual-pt-BR.pdf'],
-            ['SCKR1-6800 - Manual de operação WCE Brasil', 'PDF · Português', '/assets/documents/SCKR1-6800-manual-pt-BR.pdf'],
             ['Guia rápido MRD700', 'PDF', asset('img/mrd700/mrd700guia_rapido.pdf')],
         ],
     ],
@@ -66,6 +57,10 @@ if (!empty($documents)) {
         ]);
     }
 }
+foreach ($downloadGroups as &$group) {
+    $group['items'] = array_values(array_filter($group['items'], static fn(array $item): bool => !preg_match('/WCE|SCKR|MRD.?380/i', implode(' ', $item))));
+}
+unset($group);
 $manuals = [];
 if (!empty($samwhaDownloads['data'])) {
     foreach ($samwhaDownloads['data'] as $product) {

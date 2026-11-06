@@ -46,6 +46,14 @@ function versioned_asset(string $path): string
     return asset($normalizedPath) . $version;
 }
 
+function store_product_enabled(array $product): bool
+{
+    $identity = strtoupper(implode(' ', array_map('strval', [
+        $product['brand'] ?? '', $product['model_code'] ?? '', $product['name'] ?? '',
+    ])));
+    return !str_contains($identity, 'WCE') && !str_contains($identity, 'SCKR');
+}
+
 function optimized_image_url(?string $path): string
 {
     $normalizedPath = ltrim((string) $path, '/');

@@ -315,6 +315,12 @@ final class PublicController
 
     private function renderStoreProduct(array $product, array $images, array $relatedProducts): void
     {
+        if (!store_product_enabled($product)) {
+            http_response_code(404);
+            $this->notFound();
+            return;
+        }
+        $relatedProducts = array_values(array_filter($relatedProducts, 'store_product_enabled'));
         $presentation = $this->productPresentation((string) ($product['model_code'] ?? ''));
         $gallery = [];
 
@@ -578,6 +584,9 @@ IHM LED e LCD para instalação remota (opcional)',
         $featured = [];
 
         foreach ($fallbacks as $fallback) {
+            if (!store_product_enabled($fallback)) {
+                continue;
+            }
             $expected = strtolower((string) $fallback['model_code']);
             $match = null;
 
@@ -610,7 +619,7 @@ IHM LED e LCD para instalação remota (opcional)',
     private function fallbackProduct(int $id): ?array
     {
         foreach ($this->fallbackProducts() as $product) {
-            if ((int) $product['id'] === $id) {
+            if ((int) $product['id'] === $id && store_product_enabled($product)) {
                 return $product;
             }
         }
@@ -630,7 +639,7 @@ IHM LED e LCD para instalação remota (opcional)',
                 str_contains($expected, 'mrd600') => str_contains($identity, 'mrd600'),
                 default => $identity === $expected,
             };
-            if ($isMatch) {
+            if ($isMatch && store_product_enabled($product)) {
                 return $product;
             }
         }

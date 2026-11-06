@@ -327,7 +327,6 @@ $heroMessages = [
         <input type="hidden" name="email" value="lead@mrdrives.local">
         <label>Produto
             <select name="product_interest" id="product_interest">
-                <option>SCKR1-380</option>
                     <option>MRD600</option>
                 <option>MRD700</option>
                 <option>MRD700/IP65</option>

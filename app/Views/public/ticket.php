@@ -16,7 +16,7 @@
             <label>WhatsApp<input name="phone" required placeholder="+55 11 99999-9999"></label>
             <label>Produto
                 <select name="product_interest">
-                    <?php foreach (['SCKR1-380', 'MRD320/321', 'MRD600', 'MRD700', 'MRD700/IP65', 'SCKR1-360 WCE BRASIL', 'SCKR1-6800 WCE BRASIL', 'SCKR1-6300 WCE BRASIL', 'MRD3000 MR-DRIVES', 'Dimensionamento técnico'] as $model): ?>
+                    <?php foreach (['MRD320/321', 'MRD600', 'MRD700', 'MRD700/IP65', 'MRD3000 MR-DRIVES', 'Dimensionamento técnico'] as $model): ?>
                         <option value="<?= e($model) ?>" <?= ($_GET['produto'] ?? '') === $model ? 'selected' : '' ?>><?= e($model) ?></option>
                     <?php endforeach; ?>
                 </select>
